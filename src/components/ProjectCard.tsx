@@ -10,7 +10,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
   const [isExpanded, setIsExpanded] = React.useState(false);
 
   return (
-    <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+    <div className="bg-gray-500 rounded-xl shadow-lg overflow-hidden">
       <img
         src={project.image}
         alt={project.title}
