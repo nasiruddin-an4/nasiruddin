@@ -2,27 +2,27 @@ import { Mail, Phone, MapPin } from 'lucide-react';
 
 export function Contact() {
   return (
-    <section id="contact" className="py-20 bg-gray-50">
+    <section id="contact" className="py-20">
       <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-bold text-gray-900 mb-8">Get in Touch</h2>
+        <h2 className="text-4xl font-bold text-gray-300 mb-8">Get in Touch</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <div>
-            <p className="text-gray-600 mb-8">
+            <p className="text-gray-400 mb-8">
               I'm always interested in hearing about new projects and opportunities.
               Whether you have a question or just want to say hi, feel free to reach out!
             </p>
             <div className="space-y-4">
               <div className="flex items-center">
                 <Mail className="w-5 h-5 text-blue-600 mr-3" />
-                <span>john.doe@example.com</span>
+                <span>nasir@example.com</span>
               </div>
               <div className="flex items-center">
                 <Phone className="w-5 h-5 text-blue-600 mr-3" />
-                <span>+1 (555) 123-4567</span>
+                <span>01815654292</span>
               </div>
               <div className="flex items-center">
                 <MapPin className="w-5 h-5 text-blue-600 mr-3" />
-                <span>San Francisco, CA</span>
+                <span>Dhaka, bangladesh</span>
               </div>
             </div>
           </div>

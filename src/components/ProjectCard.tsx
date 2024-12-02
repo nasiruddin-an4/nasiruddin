@@ -10,15 +10,15 @@ export function ProjectCard({ project }: ProjectCardProps) {
   const [isExpanded, setIsExpanded] = React.useState(false);
 
   return (
-    <div className="bg-gray-500 rounded-xl shadow-lg overflow-hidden">
+    <div className="border rounded-xl shadow-lg overflow-hidden">
       <img
         src={project.image}
         alt={project.title}
         className="w-full h-48 object-cover"
       />
       <div className="p-6">
-        <h3 className="text-xl font-bold text-gray-900 mb-2">{project.title}</h3>
-        <p className="text-gray-600 mb-4">{project.description}</p>
+        <h3 className="text-xl font-bold mb-2">{project.title}</h3>
+        <p className="text-gray-400 mb-4">{project.description}</p>
         
         <div className="flex flex-wrap gap-2 mb-4">
           {project.technologies.map((tech, index) => (
@@ -72,7 +72,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
                 <Lightbulb className="w-5 h-5 text-blue-600 mr-2" />
                 Challenge
               </h4>
-              <p className="text-gray-600">{project.challenge}</p>
+              <p className="text-gray-400">{project.challenge}</p>
             </div>
 
             <div>
@@ -80,12 +80,12 @@ export function ProjectCard({ project }: ProjectCardProps) {
                 <Wrench className="w-5 h-5 text-blue-600 mr-2" />
                 Solution
               </h4>
-              <p className="text-gray-600">{project.solution}</p>
+              <p className="text-gray-400">{project.solution}</p>
             </div>
 
             <div>
               <h4 className="font-semibold mb-2">Key Features</h4>
-              <ul className="list-disc list-inside space-y-1 text-gray-600">
+              <ul className="list-disc list-inside space-y-1 text-gray-400">
                 {project.features.map((feature, index) => (
                   <li key={index}>{feature}</li>
                 ))}
@@ -97,14 +97,14 @@ export function ProjectCard({ project }: ProjectCardProps) {
         <div className="flex gap-4 mt-4 pt-4 border-t">
           <a
             href={project.githubUrl}
-            className="inline-flex items-center text-gray-600 hover:text-gray-900"
+            className="inline-flex items-center text-gray-300 hover:text-gray-500"
           >
             <Github className="w-5 h-5 mr-2" />
             Code
           </a>
           <a
             href={project.liveUrl}
-            className="inline-flex items-center text-gray-600 hover:text-gray-900"
+            className="inline-flex items-center text-gray-300 hover:text-gray-500"
           >
             <ExternalLink className="w-5 h-5 mr-2" />
             Live Demo

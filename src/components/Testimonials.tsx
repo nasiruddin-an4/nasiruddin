@@ -22,9 +22,9 @@ export function Testimonials() {
   }, []);
 
   return (
-    <section className="py-20 bg-gray-50 overflow-hidden">
+    <section className="py-20 overflow-hidden">
       <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-bold text-gray-900 mb-8 text-center">
+        <h2 className="text-4xl font-bold text-gray-400 mb-8 text-center">
           What People Say
         </h2>
         <div 

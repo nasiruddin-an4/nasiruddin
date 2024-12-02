@@ -47,8 +47,8 @@ export function Experience() {
               <div className="flex items-start gap-3">
                 <Target className="w-5 h-5 text-blue-600 mt-1" />
                 <div>
-                  <h3 className="font-semibold text-gray-900">Strategic Problem Solver</h3>
-                  <p className="text-gray-600">
+                  <h3 className="font-semibold">Strategic Problem Solver</h3>
+                  <p className="text-gray-400">
                     Proven track record of solving complex technical challenges with innovative solutions.
                   </p>
                 </div>
@@ -56,8 +56,8 @@ export function Experience() {
               <div className="flex items-start gap-3">
                 <Users className="w-5 h-5 text-blue-600 mt-1" />
                 <div>
-                  <h3 className="font-semibold text-gray-900">Client-Focused Approach</h3>
-                  <p className="text-gray-600">
+                  <h3 className="font-semibold">Client-Focused Approach</h3>
+                  <p className="text-gray-400">
                     Dedicated to understanding and exceeding client expectations through effective communication.
                   </p>
                 </div>
@@ -76,13 +76,13 @@ export function Experience() {
             {stats.map((stat, index) => (
               <div
                 key={index}
-                className="p-6 bg-white rounded-xl shadow-lg border border-gray-100 hover:border-blue-500 transition-colors"
+                className="p-6 rounded-xl shadow-lg border border-gray-100 hover:border-blue-500 transition-colors"
               >
                 <div className="mb-4">{stat.icon}</div>
-                <div className="text-3xl font-bold text-gray-900 mb-2">
+                <div className="text-3xl font-bold mb-2">
                   {stat.value}
                 </div>
-                <div className="text-gray-600">{stat.label}</div>
+                <div className="text-gray-400">{stat.label}</div>
               </div>
             ))}
           </div>
