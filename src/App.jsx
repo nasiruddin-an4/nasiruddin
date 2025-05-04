@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 // Components
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import BackToTop from './components/BackToTop';
 
 // Pages
 import HomePage from './pages/HomePage';
@@ -24,6 +25,7 @@ function App() {
         </Routes>
       </main>
       <Footer />
+      <BackToTop />
     </div>
   );
 }

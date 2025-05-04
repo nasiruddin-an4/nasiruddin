@@ -1,0 +1,332 @@
+import { Code, Database, Wrench, Users2, CheckCircle2, Clock4, Trophy } from 'lucide-react';
+
+export const services = [
+	{
+		id: 1,
+		title: 'Development',
+		icon: 'Code',
+		skills: ['HTML/CSS', 'JavaScript', 'Animation', 'WordPress', 'React'],
+	},
+	{
+		id: 2,
+		title: 'Illustration',
+		icon: 'PenTool',
+		skills: [
+			'Character Design',
+			'Icon Set',
+			'Illustration Guide',
+			'Illustration Set',
+			'Motion Graphic',
+		],
+	},
+	{
+		id: 3,
+		title: 'UI/UX Design',
+		icon: 'Layout',
+		skills: [
+			'Landing Pages',
+			'User Flow',
+			'Wireframing',
+			'Prototyping',
+			'Mobile App Design',
+		],
+	},
+	{
+		id: 4,
+		title: 'Backend Development',
+		icon: 'Database',
+		skills: ['Node.js', 'Express.js', 'MongoDB', 'REST APIs', 'GraphQL'],
+	},
+	{
+		id: 5,
+		title: 'Mobile Development',
+		icon: 'Smartphone',
+		skills: [
+			'React Native',
+			'Flutter',
+			'iOS Development',
+			'Android Development',
+			'Cross-Platform Apps',
+		],
+	},
+	{
+		id: 6,
+		title: 'DevOps',
+		icon: 'Settings',
+		skills: [
+			'Docker',
+			'Kubernetes',
+			'CI/CD',
+			'AWS Services',
+			'Server Management',
+		],
+	},
+];
+
+export const skillsData = [
+	{
+		name: 'Frontend Development',
+		icon: Code,
+		description:
+			'Building responsive and interactive user interfaces using modern web technologies and frameworks.',
+		skills: [
+			{ name: 'React/Next.js', proficiency: 90 },
+			{ name: 'JavaScript/TypeScript', proficiency: 85 },
+			{ name: 'TailwindCSS/SASS', proficiency: 88 },
+			{ name: 'Redux/Context API', proficiency: 82 },
+		],
+	},
+	{
+		name: 'Backend Development',
+		icon: Database,
+		description:
+			'Developing robust server-side applications and RESTful APIs with various technologies.',
+		skills: [
+			{ name: 'Node.js/Express', proficiency: 85 },
+			{ name: 'MongoDB/PostgreSQL', proficiency: 80 },
+			{ name: 'REST APIs/GraphQL', proficiency: 82 },
+			{ name: 'Firebase/Supabase', proficiency: 78 },
+		],
+	},
+	{
+		name: 'Development Tools',
+		icon: Wrench,
+		description:
+			'Utilizing modern development tools and practices for efficient workflow and deployment.',
+		skills: [
+			{ name: 'Git/GitHub', proficiency: 88 },
+			{ name: 'Docker/Kubernetes', proficiency: 75 },
+			{ name: 'AWS/Vercel', proficiency: 80 },
+			{ name: 'Jest/Testing', proficiency: 82 },
+		],
+	},
+];
+
+export const statsData = [
+	{
+		id: 1,
+		title: 'Happy Clients',
+		value: 150,
+		icon: Users2,
+		suffix: '+',
+		color: 'blue',
+	},
+	{
+		id: 2,
+		title: 'Projects Completed',
+		value: 200,
+		icon: CheckCircle2,
+		suffix: '+',
+		color: 'green',
+	},
+	{
+		id: 3,
+		title: 'Years Experience',
+		value: 5,
+		icon: Clock4,
+		suffix: '+',
+		color: 'purple',
+	},
+];
+
+export const projectsData = [
+	{
+		id: 1,
+		title: 'Daffodil International College',
+		description:
+			'A comprehensive web application for managing student information, courses, and grades.',
+    image: 'public/dic.png',
+		preview: 'public/dic.png', // Add preview GIF/video
+		techStack: ['React', 'Node.js', 'MongoDB', 'Express', 'Tailwind CSS'],
+		liveLink: 'https://dic.edu.bd',
+		features: [
+			'User authentication',
+			'Product search and filtering',
+			'Shopping cart functionality',
+			'Secure checkout process',
+			'Admin dashboard',
+		],
+	},
+	{
+		id: 2,
+		title: 'Travel Adventure App',
+		description: 'A modern travel planning application with interactive maps, itinerary builder, and social features.',
+		image: 'public/travel-app.png',
+		preview: 'public/travel-app-preview.png',
+		techStack: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL', 'MapBox'],
+		liveLink: 'https://travel-adventure.demo',
+		features: [
+			'Interactive map integration',
+			'Real-time weather updates',
+			'Trip planning tools',
+			'Social sharing features',
+			'Travel recommendations'
+		]
+	},
+	{
+		id: 3,
+		title: 'AI Task Manager',
+		description: 'An AI-powered task management system that helps organize and prioritize work efficiently.',
+		image: 'public/task-manager.png',
+		preview: 'public/task-manager-preview.png',
+		techStack: ['React', 'Python', 'FastAPI', 'TensorFlow', 'Redis'],
+		liveLink: 'https://ai-taskmanager.demo',
+		features: [
+			'AI-based task prioritization',
+			'Smart task categorization',
+			'Team collaboration tools',
+			'Performance analytics',
+			'Custom workflow automation'
+		]
+	},
+	{
+		id: 4,
+		title: 'E-Learning Platform',
+		description: 'A comprehensive online learning platform with video courses, quizzes, and progress tracking.',
+		image: 'public/elearning.png',
+		preview: 'public/elearning-preview.png',
+		techStack: ['Vue.js', 'Django', 'AWS', 'Docker', 'Stripe'],
+		liveLink: 'https://elearning-platform.demo',
+		features: [
+			'Video streaming integration',
+			'Interactive quizzes',
+			'Progress tracking',
+			'Certificate generation',
+			'Payment processing'
+		]
+	},
+	{
+		id: 4,
+		title: 'E-Learning Platform',
+		description: 'A comprehensive online learning platform with video courses, quizzes, and progress tracking.',
+		image: 'public/elearning.png',
+		preview: 'public/elearning-preview.png',
+		techStack: ['Vue.js', 'Django', 'AWS', 'Docker', 'Stripe'],
+		liveLink: 'https://elearning-platform.demo',
+		features: [
+			'Video streaming integration',
+			'Interactive quizzes',
+			'Progress tracking',
+			'Certificate generation',
+			'Payment processing'
+		]
+	},
+	{
+		id: 4,
+		title: 'E-Learning Platform',
+		description: 'A comprehensive online learning platform with video courses, quizzes, and progress tracking.',
+		image: 'public/elearning.png',
+		preview: 'public/elearning-preview.png',
+		techStack: ['Vue.js', 'Django', 'AWS', 'Docker', 'Stripe'],
+		liveLink: 'https://elearning-platform.demo',
+		features: [
+			'Video streaming integration',
+			'Interactive quizzes',
+			'Progress tracking',
+			'Certificate generation',
+			'Payment processing'
+		]
+	}
+];
+
+export const testimonialsData = [
+  {
+    id: 1,
+    name: "Sarah Johnson",
+    role: "CEO at TechStart",
+    company: "TechStart Inc.",
+    image: "/testimonials/client1.jpg",
+    content: "Working with this team has been an absolute pleasure. Their attention to detail and innovative solutions have helped us achieve our goals faster than expected.",
+    rating: 5
+  },
+  {
+    id: 2,
+    name: "Michael Chang",
+    role: "Product Manager",
+    company: "Innovation Labs",
+    image: "/testimonials/client2.jpg",
+    content: "The level of professionalism and technical expertise is outstanding. They delivered our project on time and exceeded our expectations.",
+    rating: 5
+  },
+  {
+    id: 3,
+    name: "Emma Williams",
+    role: "Marketing Director",
+    company: "Global Media",
+    image: "/testimonials/client3.jpg",
+    content: "Their creative approach to problem-solving and dedication to client satisfaction makes them stand out. Highly recommended!",
+    rating: 5
+  },
+  {
+    id: 4,
+    name: "David Miller",
+    role: "Startup Founder",
+    company: "InnovateTech",
+    image: "/testimonials/client4.jpg",
+    content: "Outstanding service and technical expertise. They helped turn our vision into reality with their innovative solutions.",
+    rating: 5
+  }
+];
+
+export const clientsData = [
+  {
+    id: 1,
+    name: "Tech Corp",
+    logo: "/clients/client1.svg",
+  },
+  {
+    id: 2,
+    name: "Star Lotus",
+    logo: "/clients/client2.svg",
+  },
+  {
+    id: 3,
+    name: "Sun Systems",
+    logo: "/clients/client3.svg",
+  },
+  {
+    id: 4,
+    name: "Lotus Inc",
+    logo: "/clients/client4.svg",
+  },
+  // Add duplicates for seamless loop
+  {
+    id: 5,
+    name: "Tech Corp",
+    logo: "/clients/client1.svg",
+  },
+  {
+    id: 6,
+    name: "Star Lotus",
+    logo: "/clients/client2.svg",
+  },
+  {
+    id: 7,
+    name: "Sun Systems",
+    logo: "/clients/client3.svg",
+  },
+  {
+    id: 8,
+    name: "Lotus Inc",
+    logo: "/clients/client4.svg",
+  }
+];
+
+export const blogData = [
+  {
+    id: 1,
+    title: "The Future of Web Development in 2024",
+    excerpt: "Explore the latest trends and technologies shaping the future of web development.",
+    category: "Web Development",
+    date: "March 15, 2024",
+    image: "/blog/web-dev-2024.jpg",
+    author: {
+      name: "John Smith",
+      avatar: "/authors/john.jpg",
+      role: "Senior Developer"
+    },
+    readTime: "5 min read",
+    tags: ["React", "Next.js", "Web Development"]
+  },
+  // ...more blog posts
+];

@@ -1,67 +1,67 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, Download } from 'lucide-react';
+import { useMediaQuery } from 'react-responsive'; // Add this import
+import { 
+  Download, 
+  Facebook, 
+  Settings, 
+  Linkedin,
+  Paintbrush 
+} from 'lucide-react';
 
 const Hero = () => {
+  const isMobile = useMediaQuery({ maxWidth: 768 }); // Add responsive hook
+
   return (
-    <section id="home" className="pt-28 pb-16 md:pt-36 md:pb-24">
-      <div className="container">
-        <div className="flex flex-col md:flex-row items-center gap-12">
-          {/* Content */}
+    <section className="min-h-screen bg-gray-900 text-white relative overflow-hidden">
+      <div className="container mx-auto relative z-10 h-screen px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12 h-full relative pt-20 lg:pt-0">
+          {/* Left Content */}
           <motion.div 
-            className="flex-1"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
+            className="w-full lg:w-[55%] flex flex-col justify-center text-center lg:text-left"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
-              Hi, I'm <span className="text-blue-600 dark:text-blue-400">Nasir Uddin</span>
-            </h1>
-            <h2 className="text-xl sm:text-2xl text-gray-600 dark:text-gray-400 mb-6">
-              Frontend Developer & UI/UX Designer
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-serif">
+              Hello! I'm <br />
+              <p className="font-bold mt-3 lg:mt-5 text-4xl sm:text-5xl md:text-6xl lg:text-8xl">
+                Nasir Uddin
+              </p>
             </h2>
-            <p className="text-gray-700 dark:text-gray-300 mb-8 max-w-lg">
-              I specialize in creating beautiful, responsive websites and applications
-              with modern technologies. Let's work together to bring your ideas to life.
+            <p className="text-gray-400 mb-6 lg:mb-8 max-w-2xl text-sm sm:text-md mt-4 lg:mt-5 mx-auto lg:mx-0">
+              Frontend Developer specializing in React & Modern Web Technologies.
             </p>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex justify-center lg:justify-start gap-4">
               <a 
-                href="#contact" 
-                className="btn btn-primary"
+                href="/resume.pdf" 
+                className="px-6 sm:px-8 py-3 sm:py-4 text-gray-400 rounded-full flex items-center gap-2 hover:bg-gray-800 hover:text-gray-300 transition-colors border border-gray-700 duration-300 text-sm sm:text-base"
               >
-                Get in Touch
-                <ArrowRight size={18} />
-              </a>
-              <a 
-                href="#" 
-                className="btn btn-secondary"
-              >
-                Download CV
-                <Download size={18} />
+                Get Resume <Download className="w-4 h-4 sm:w-5 sm:h-5" />
               </a>
             </div>
           </motion.div>
 
-          {/* Image */}
+          {/* Right Content */}
           <motion.div 
-            className="flex-1 flex justify-center"
+            className="w-full lg:w-[45%] relative lg:absolute lg:bottom-0 lg:right-0 mt-8 lg:mt-0"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className="relative w-full max-w-md">
-              <div className="aspect-square rounded-full overflow-hidden border-4 border-blue-600 dark:border-blue-400 shadow-xl animate-float">
-                <img 
-                  src="https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
-                  alt="Nasir Uddin" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="absolute -bottom-4 -right-4 bg-white dark:bg-gray-800 px-6 py-3 rounded-full shadow-lg font-semibold text-blue-600 dark:text-blue-400">
-                5+ Years Experience
-              </div>
-            </div>
+            <img 
+              src="public/nasiruddin.png" 
+              alt="Professional portrait" 
+              className="w-full max-w-md lg:max-w-2xl mx-auto"
+            />
           </motion.div>
         </div>
+      </div>
+
+
+      {/* Background Elements - Adjusted for mobile */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-1/4 left-1/4 w-48 sm:w-96 h-48 sm:h-96 bg-blue-500 rounded-full filter blur-[100px] sm:blur-[150px] opacity-20"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-48 sm:w-96 h-48 sm:h-96 bg-purple-500 rounded-full filter blur-[100px] sm:blur-[150px] opacity-20"></div>
       </div>
     </section>
   );

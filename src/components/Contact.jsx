@@ -53,89 +53,116 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="section bg-gray-50 dark:bg-gray-800">
-      <div className="container">
-        <h2 className="section-title">Get In Touch</h2>
-        <p className="section-subtitle">
-          Have a question or want to work together? Feel free to contact me!
-        </p>
+    <section className="py-32 bg-gray-900 relative overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute top-0 -right-1/4 w-1/2 h-1/2 bg-gradient-to-br from-blue-500/10 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 -left-1/4 w-1/2 h-1/2 bg-gradient-to-tr from-purple-500/10 to-transparent rounded-full blur-3xl"></div>
+      </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="mb-20 text-center">
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-blue-400 text-lg mb-4 tracking-wider"
+          >
+            || GET IN TOUCH
+          </motion.p>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-5xl font-serif text-white mb-8"
+          >
+            Let's Work Together
+          </motion.h2>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-stretch">
           {/* Contact Information */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
+            className="lg:col-span-2 bg-gray-800/50 backdrop-blur-xl rounded-2xl p-8 border border-gray-700/50 h-full flex flex-col"
           >
-            <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
-            <p className="text-gray-600 dark:text-gray-400 mb-8">
-              Feel free to reach out to me through any of these channels. I'll get back to you as soon as possible.
-            </p>
+            <div className="flex-1">
+              <h3 className="text-2xl font-bold text-white mb-6">Contact Info</h3>
+              <p className="text-gray-400 mb-8 leading-relaxed">
+                Feel free to reach out. I'll get back to you as soon as possible.
+              </p>
 
-            <div className="space-y-6">
-              <div className="flex items-start gap-4">
-                <div className="p-3 bg-blue-100 dark:bg-blue-900/30 rounded-lg text-blue-600 dark:text-blue-400">
-                  <Mail size={24} />
-                </div>
-                <div>
-                  <h4 className="font-medium text-lg">Email</h4>
-                  <a 
-                    href="mailto:contact@example.com" 
-                    className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                  >
-                    contact@example.com
-                  </a>
-                </div>
-              </div>
+              <div className="space-y-6">
+                <motion.div 
+                  className="flex items-start gap-4 p-4 rounded-xl bg-gray-800/50 hover:bg-gray-800 transition-colors group"
+                  whileHover={{ x: 5 }}
+                >
+                  <div className="p-3 bg-blue-500/10 rounded-lg text-blue-400 group-hover:scale-110 transition-transform">
+                    <Mail size={24} />
+                  </div>
+                  <div>
+                    <h4 className="font-medium text-gray-200 mb-1">Email</h4>
+                    <a 
+                      href="mailto:contact@example.com" 
+                      className="text-gray-400 hover:text-blue-400 transition-colors"
+                    >
+                      contact@example.com
+                    </a>
+                  </div>
+                </motion.div>
 
-              <div className="flex items-start gap-4">
-                <div className="p-3 bg-blue-100 dark:bg-blue-900/30 rounded-lg text-blue-600 dark:text-blue-400">
-                  <Phone size={24} />
-                </div>
-                <div>
-                  <h4 className="font-medium text-lg">Phone</h4>
-                  <a 
-                    href="tel:+1234567890" 
-                    className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                  >
-                    +1 (234) 567-890
-                  </a>
-                </div>
-              </div>
+                <motion.div 
+                  className="flex items-start gap-4 p-4 rounded-xl bg-gray-800/50 hover:bg-gray-800 transition-colors group"
+                  whileHover={{ x: 5 }}
+                >
+                  <div className="p-3 bg-green-500/10 rounded-lg text-green-400 group-hover:scale-110 transition-transform">
+                    <Phone size={24} />
+                  </div>
+                  <div>
+                    <h4 className="font-medium text-gray-200 mb-1">Phone</h4>
+                    <a 
+                      href="tel:+1234567890" 
+                      className="text-gray-400 hover:text-green-400 transition-colors"
+                    >
+                      +1 (234) 567-890
+                    </a>
+                  </div>
+                </motion.div>
 
-              <div className="flex items-start gap-4">
-                <div className="p-3 bg-blue-100 dark:bg-blue-900/30 rounded-lg text-blue-600 dark:text-blue-400">
-                  <MapPin size={24} />
-                </div>
-                <div>
-                  <h4 className="font-medium text-lg">Location</h4>
-                  <p className="text-gray-600 dark:text-gray-400">
-                    San Francisco, California
-                  </p>
-                </div>
+                <motion.div 
+                  className="flex items-start gap-4 p-4 rounded-xl bg-gray-800/50 hover:bg-gray-800 transition-colors group"
+                  whileHover={{ x: 5 }}
+                >
+                  <div className="p-3 bg-purple-500/10 rounded-lg text-purple-400 group-hover:scale-110 transition-transform">
+                    <MapPin size={24} />
+                  </div>
+                  <div>
+                    <h4 className="font-medium text-gray-200 mb-1">Location</h4>
+                    <p className="text-gray-400">
+                      San Francisco, California
+                    </p>
+                  </div>
+                </motion.div>
               </div>
             </div>
 
-            <div className="mt-10">
-              <h4 className="font-medium text-lg mb-4">Find me on</h4>
+            <div className="mt-auto pt-8 border-t border-gray-700/50">
+              <h4 className="font-medium text-gray-200 mb-6">Connect With Me</h4>
               <div className="flex gap-4">
-                <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub" 
-                  className="p-3 bg-gray-100 dark:bg-gray-700 hover:bg-blue-100 dark:hover:bg-blue-900/30 rounded-lg text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
-                </a>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"
-                  className="p-3 bg-gray-100 dark:bg-gray-700 hover:bg-blue-100 dark:hover:bg-blue-900/30 rounded-lg text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                </a>
-                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter"
-                  className="p-3 bg-gray-100 dark:bg-gray-700 hover:bg-blue-100 dark:hover:bg-blue-900/30 rounded-lg text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
-                </a>
-                <a href="mailto:contact@example.com" aria-label="Email"
-                  className="p-3 bg-gray-100 dark:bg-gray-700 hover:bg-blue-100 dark:hover:bg-blue-900/30 rounded-lg text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
-                </a>
+                {/* Social Links */}
+                <motion.a 
+                  href="#" 
+                  whileHover={{ y: -5 }}
+                  className="p-3 bg-gray-800/50 hover:bg-gray-800 rounded-lg text-gray-400 hover:text-blue-400 transition-colors"
+                >
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path>
+                  </svg>
+                </motion.a>
+                {/* Add more social links similarly */}
               </div>
             </div>
           </motion.div>
@@ -146,94 +173,100 @@ const Contact = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
+            className="lg:col-span-3 bg-gray-800/50 backdrop-blur-xl rounded-2xl p-8 border border-gray-700/50 h-full flex flex-col"
           >
-            <div className="card">
-              <h3 className="text-2xl font-bold mb-6">Send Me a Message</h3>
-              
-              {formStatus.submitted && formStatus.success && (
-                <div className="mb-6 p-4 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded-lg flex items-center gap-2">
-                  <CheckCircle size={20} />
-                  <p>Thank you! Your message has been sent successfully.</p>
-                </div>
+            <div className="flex-1">
+              <h3 className="text-2xl font-bold text-white mb-8">Send Message</h3>
+
+              {/* Status Messages */}
+              {formStatus.submitted && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className={`mb-6 p-4 rounded-lg flex items-center gap-2 ${
+                    formStatus.success 
+                      ? 'bg-green-500/10 text-green-400' 
+                      : 'bg-red-500/10 text-red-400'
+                  }`}
+                >
+                  {formStatus.success ? <CheckCircle size={20} /> : <AlertCircle size={20} />}
+                  <p>{formStatus.success ? 'Message sent successfully!' : formStatus.error}</p>
+                </motion.div>
               )}
-              
-              {formStatus.submitted && !formStatus.success && (
-                <div className="mb-6 p-4 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 rounded-lg flex items-center gap-2">
-                  <AlertCircle size={20} />
-                  <p>{formStatus.error}</p>
-                </div>
-              )}
-              
-              <form onSubmit={handleSubmit}>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+
+              {/* Form */}
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+                    <label className="block text-sm font-medium text-gray-300 mb-2">
                       Your Name
                     </label>
                     <input 
                       type="text" 
-                      id="name" 
                       name="name" 
                       value={formData.name}
                       onChange={handleChange}
+                      className="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg text-gray-100 placeholder-gray-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-colors"
+                      placeholder="John Doe"
                       required
-                      className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-600 focus:border-transparent transition-colors"
                     />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+                    <label className="block text-sm font-medium text-gray-300 mb-2">
                       Your Email
                     </label>
                     <input 
                       type="email" 
-                      id="email" 
                       name="email" 
                       value={formData.email}
                       onChange={handleChange}
+                      className="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg text-gray-100 placeholder-gray-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-colors"
+                      placeholder="john@example.com"
                       required
-                      className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-600 focus:border-transparent transition-colors"
                     />
                   </div>
                 </div>
-                
-                <div className="mb-4">
-                  <label htmlFor="subject" className="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-2">
                     Subject
                   </label>
                   <input 
                     type="text" 
-                    id="subject" 
                     name="subject" 
                     value={formData.subject}
                     onChange={handleChange}
+                    className="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg text-gray-100 placeholder-gray-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-colors"
+                    placeholder="How can I help you?"
                     required
-                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-600 focus:border-transparent transition-colors"
                   />
                 </div>
-                
-                <div className="mb-6">
-                  <label htmlFor="message" className="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">
-                    Your Message
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                    Message
                   </label>
                   <textarea
-                    id="message" 
                     name="message" 
-                    rows="5"
+                    rows="6"
                     value={formData.message}
                     onChange={handleChange}
+                    className="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg text-gray-100 placeholder-gray-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-colors resize-none"
+                    placeholder="Your message..."
                     required
-                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-600 focus:border-transparent transition-colors"
                   ></textarea>
                 </div>
-                
-                <button 
-                  type="submit" 
-                  className="btn btn-primary w-full flex items-center justify-center gap-2"
+
+                <motion.button
+                  type="submit"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                   disabled={formStatus.submitting}
+                  className="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium flex items-center justify-center gap-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {formStatus.submitting ? 'Sending...' : 'Send Message'}
-                  <Send size={18} />
-                </button>
+                  <Send size={18} className={formStatus.submitting ? 'animate-pulse' : ''} />
+                </motion.button>
               </form>
             </div>
           </motion.div>

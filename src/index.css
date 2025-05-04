@@ -28,15 +28,15 @@ body {
   }
   
   .btn {
-    @apply px-6 py-3 rounded-md font-medium transition-all duration-300 inline-flex items-center gap-2;
+    @apply px-6 py-3 rounded-lg font-medium transition-colors;
   }
   
   .btn-primary {
-    @apply bg-blue-600 hover:bg-blue-700 text-white;
+    @apply bg-blue-600 text-white hover:bg-blue-700;
   }
   
   .btn-secondary {
-    @apply bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700;
+    @apply bg-gray-700 text-white hover:bg-gray-600;
   }
   
   .card {
@@ -61,4 +61,32 @@ body {
 @keyframes slideUp {
   from { transform: translateY(20px); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+/* Optional: Pause animation on hover */
+/* .animate-marquee:hover {
+  animation-play-state: paused;
+} */
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 }

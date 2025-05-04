@@ -52,11 +52,16 @@ export default {
       },
       animation: {
         'float': 'float 3s ease-in-out infinite',
+        slideDown: 'slideDown 0.3s ease-out'
       },
       keyframes: {
         float: {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-10px)' },
+        },
+        slideDown: {
+          '0%': { transform: 'scaleY(0)' },
+          '100%': { transform: 'scaleY(1)' }
         }
       },
     },
