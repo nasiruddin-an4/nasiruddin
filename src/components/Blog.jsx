@@ -11,7 +11,7 @@ const BlogCard = ({ post }) => {
       className="group h-full"
     >
       <div className="overflow-hidden rounded-xl bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 hover:border-gray-600/50 transition-all duration-300 h-full flex flex-col">
-        <div className="relative h-64">
+        <div className="relative h-64 overflow-hidden">
           <img
             src={post.image}
             alt={post.title}

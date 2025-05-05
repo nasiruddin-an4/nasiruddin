@@ -151,11 +151,11 @@ export const projectsData = [
 	},
 	{
 		id: 2,
-		title: 'Travel Adventure App',
-		description: 'A modern travel planning application with interactive maps, itinerary builder, and social features.',
+		title: 'Daffodil Software Limited (DSL)',
+		description: 'Daffodil Software Limited is a leading software development company that specializes in creating innovative and efficient solutions for businesses of all sizes.',
 		category: 'web',
-		image: 'public/travel-app.png',
-		preview: 'public/travel-app-preview.png',
+		image: 'public/dsl.png',
+		preview: 'public/dsl.png',
 		techStack: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL', 'MapBox'],
 		liveLink: 'https://travel-adventure.demo',
 		githubLink: 'https://github.com/yourusername/travel-adventure-app',
@@ -169,11 +169,11 @@ export const projectsData = [
 	},
 	{
 		id: 3,
-		title: 'AI Task Manager',
-		description: 'An AI-powered task management system that helps organize and prioritize work efficiently.',
+		title: 'Master of Business Administration (MBA), DIU',
+		description: 'The Master of Business Administration (MBA) program at Daffodil International University (DIU) is designed to develop future business leaders with advanced management skills, strategic thinking, and practical knowledge. It offers a dynamic curriculum, experienced faculty, and industry-relevant training to prepare students for leadership roles in a competitive global market.',
 		category: 'web',
-		image: 'public/task-manager.png',
-		preview: 'public/task-manager-preview.png',
+		image: 'public/diu-mba.png',
+		preview: 'public/diu-mba.png',
 		techStack: ['React', 'Python', 'FastAPI', 'TensorFlow', 'Redis'],
 		liveLink: 'https://ai-taskmanager.demo',
 		githubLink: 'https://github.com/yourusername/ai-task-manager',
@@ -187,11 +187,11 @@ export const projectsData = [
 	},
 	{
 		id: 4,
-		title: 'E-Learning Platform',
-		description: 'A comprehensive online learning platform with video courses, quizzes, and progress tracking.',
+		title: 'Daffodil Media Corner',
+		description: 'The Daffodil Media Corner website showcases news, events, and media coverage of Daffodil International University, offering a quick glimpse into campus life and achievements.',
 		category: 'web',
-		image: 'public/elearning.png',
-		preview: 'public/elearning-preview.png',
+		image: 'public/dmc.png',
+		preview: 'public/dmc.png',
 		techStack: ['Vue.js', 'Django', 'AWS', 'Docker', 'Stripe'],
 		liveLink: 'https://elearning-platform.demo',
 		githubLink: 'https://github.com/yourusername/elearning-platform',
@@ -204,12 +204,12 @@ export const projectsData = [
 		]
 	},
 	{
-		id: 4,
-		title: 'E-Learning Platform',
-		description: 'A comprehensive online learning platform with video courses, quizzes, and progress tracking.',
+		id: 5,
+		title: 'Daffodil International Professional Training Institute',
+		description: 'Daffodil International Professional Training Institute (DIPTI) offers industry-focused IT and professional training programs to equip learners with practical skills for career growth and success.',
 		category: 'web',
-		image: 'public/elearning.png',
-		preview: 'public/elearning-preview.png',
+		image: 'public/dipti.png',
+		preview: 'public/dipti.png',
 		techStack: ['Vue.js', 'Django', 'AWS', 'Docker', 'Stripe'],
 		liveLink: 'https://elearning-platform.demo',
 		githubLink: 'https://github.com/yourusername/elearning-platform',
@@ -222,12 +222,12 @@ export const projectsData = [
 		]
 	},
 	{
-		id: 4,
-		title: 'E-Learning Platform',
-		description: 'A comprehensive online learning platform with video courses, quizzes, and progress tracking.',
+		id: 6,
+		title: 'DIIT IT Club at Daffodil Institute of IT (DIIT)',
+		description: 'The DIIT IT Club at Daffodil Institute of IT (DIIT) is a student-driven organization that fosters technological innovation and professional growth. It regularly hosts workshops, coding contests, and seminars on topics like Python, Django, resume writing, and job application strategies, often in collaboration with industry professionals and alumni. These initiatives aim to enhance students',
 		category: 'web',
-		image: 'public/elearning.png',
-		preview: 'public/elearning-preview.png',
+		image: 'public/diit.png',
+		preview: 'public/diit.png',
 		techStack: ['Vue.js', 'Django', 'AWS', 'Docker', 'Stripe'],
 		liveLink: 'https://elearning-platform.demo',
 		githubLink: 'https://github.com/yourusername/elearning-platform',
@@ -247,7 +247,7 @@ export const testimonialsData = [
     name: "Sarah Johnson",
     role: "CEO at TechStart",
     company: "TechStart Inc.",
-    image: "/testimonials/client1.jpg",
+    image: "https://randomuser.me/api/portraits/women/23.jpg",
     content: "Working with this team has been an absolute pleasure. Their attention to detail and innovative solutions have helped us achieve our goals faster than expected.",
     rating: 5
   },
@@ -256,7 +256,7 @@ export const testimonialsData = [
     name: "Michael Chang",
     role: "Product Manager",
     company: "Innovation Labs",
-    image: "/testimonials/client2.jpg",
+    image: "https://randomuser.me/api/portraits/men/54.jpg",
     content: "The level of professionalism and technical expertise is outstanding. They delivered our project on time and exceeded our expectations.",
     rating: 5
   },
@@ -265,7 +265,7 @@ export const testimonialsData = [
     name: "Emma Williams",
     role: "Marketing Director",
     company: "Global Media",
-    image: "/testimonials/client3.jpg",
+    image: "https://randomuser.me/api/portraits/women/45.jpg",
     content: "Their creative approach to problem-solving and dedication to client satisfaction makes them stand out. Highly recommended!",
     rating: 5
   },
@@ -274,7 +274,7 @@ export const testimonialsData = [
     name: "David Miller",
     role: "Startup Founder",
     company: "InnovateTech",
-    image: "/testimonials/client4.jpg",
+    image: "https://randomuser.me/api/portraits/men/32.jpg",
     content: "Outstanding service and technical expertise. They helped turn our vision into reality with their innovative solutions.",
     rating: 5
   }
@@ -283,44 +283,44 @@ export const testimonialsData = [
 export const clientsData = [
   {
     id: 1,
-    name: "Tech Corp",
-    logo: "/clients/client1.svg",
+    name: "Google",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg",
   },
   {
     id: 2,
-    name: "Star Lotus",
-    logo: "/clients/client2.svg",
+    name: "Microsoft",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoft/microsoft-original.svg",
   },
   {
     id: 3,
-    name: "Sun Systems",
-    logo: "/clients/client3.svg",
+    name: "Amazon",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg",
   },
   {
     id: 4,
-    name: "Lotus Inc",
-    logo: "/clients/client4.svg",
+    name: "Facebook",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/facebook/facebook-original.svg",
   },
-  // Add duplicates for seamless loop
+  // Add more for seamless loop
   {
     id: 5,
-    name: "Tech Corp",
-    logo: "/clients/client1.svg",
+    name: "Apple",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apple/apple-original.svg",
   },
   {
     id: 6,
-    name: "Star Lotus",
-    logo: "/clients/client2.svg",
+    name: "Twitter",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/twitter/twitter-original.svg",
   },
   {
     id: 7,
-    name: "Sun Systems",
-    logo: "/clients/client3.svg",
+    name: "LinkedIn",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg",
   },
   {
     id: 8,
-    name: "Lotus Inc",
-    logo: "/clients/client4.svg",
+    name: "Slack",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/slack/slack-original.svg",
   }
 ];
 
@@ -331,10 +331,10 @@ export const blogData = [
     excerpt: "Explore the latest trends and technologies shaping the future of web development.",
     category: "Web Development",
     date: "March 15, 2024",
-    image: "/blog/web-dev-2024.jpg",
+    image: "https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
     author: {
       name: "John Smith",
-      avatar: "/authors/john.jpg",
+      avatar: "https://randomuser.me/api/portraits/men/41.jpg",
       role: "Senior Developer"
     },
     readTime: "5 min read",
@@ -346,10 +346,10 @@ export const blogData = [
     excerpt: "A comprehensive guide to creating intuitive and aesthetically pleasing user interfaces.",
     category: "UI/UX Design",
     date: "March 20, 2024",
-    image: "/blog/ui-design-principles.jpg",
+    image: "https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
     author: {
       name: "Emma Davis",
-      avatar: "/authors/emma.jpg",
+      avatar: "https://randomuser.me/api/portraits/women/33.jpg",
       role: "UI/UX Designer"
     },
     readTime: "7 min read",
@@ -361,10 +361,10 @@ export const blogData = [
     excerpt: "Learn best practices for developing high-performance backend systems using Node.js.",
     category: "Backend Development",
     date: "March 25, 2024",
-    image: "/blog/nodejs-scaling.jpg",
+    image: "https://images.unsplash.com/photo-1627398242454-45a1465c2479?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
     author: {
       name: "Michael Chen",
-      avatar: "/authors/michael.jpg",
+      avatar: "https://randomuser.me/api/portraits/men/26.jpg",
       role: "Backend Engineer"
     },
     readTime: "6 min read",

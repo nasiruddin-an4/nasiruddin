@@ -149,8 +149,8 @@ const Contact = () => {
               </div>
             </div>
 
-            <div className="mt-auto pt-8 border-t border-gray-700/50">
-              <h4 className="font-medium text-gray-200 mb-6">Connect With Me</h4>
+            <div className="mt-auto pt-5">
+              <h4 className="font-medium text-gray-200 mb-6 border-t border-gray-700/50 pt-2">Connect With Me</h4>
               <div className="flex gap-4 flex-wrap">
                 {/* Twitter/X */}
                 <motion.a 
