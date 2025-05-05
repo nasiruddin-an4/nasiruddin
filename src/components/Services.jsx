@@ -138,7 +138,7 @@ const Services = () => {
   };
 
   return (
-    <section className="py-32 bg-gradient-to-b from-gray-900 to-gray-800 overflow-hidden relative">
+    <section className="py-32 bg-gradient-to-b from-gray-700 to-gray-800 overflow-hidden relative">
       {/* Animated background */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full filter blur-3xl -translate-x-1/2 -translate-y-1/2 animate-pulse"></div>
