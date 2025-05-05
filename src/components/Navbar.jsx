@@ -46,6 +46,18 @@ const Navbar = () => {
     setActiveDropdown(activeDropdown === index ? null : index);
   };
 
+  // Handle navigation links click
+  const handleNavLinkClick = (e, href, hasDropdown) => {
+    if (hasDropdown) {
+      // If it has dropdown, just toggle the dropdown
+      e.preventDefault();
+    } else {
+      // If it's a direct link, close the menu before navigation
+      setIsMenuOpen(false);
+      setActiveDropdown(null);
+    }
+  };
+
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-4 sm:px-6 lg:px-8 ${
@@ -143,20 +155,28 @@ const Navbar = () => {
             {mainNav.map((link, index) => (
               <li key={link.name}>
                 <div>
-                  <button
-                    className="w-full text-left py-3 font-medium text-gray-400 hover:text-blue-400 transition-colors flex items-center justify-between"
-                    onClick={() => link.dropdownItems && toggleDropdown(index)}
-                  >
-                    {link.name}
-                    {link.dropdownItems && (
+                  {link.dropdownItems ? (
+                    <button
+                      className="w-full text-left py-3 font-medium text-gray-400 hover:text-blue-400 transition-colors flex items-center justify-between"
+                      onClick={() => toggleDropdown(index)}
+                    >
+                      {link.name}
                       <ChevronDown 
                         size={16} 
                         className={`transition-transform duration-300 ${
                           activeDropdown === index ? 'rotate-180' : ''
                         }`}
                       />
-                    )}
-                  </button>
+                    </button>
+                  ) : (
+                    <Link
+                      to={link.href}
+                      className="block w-full text-left py-3 font-medium text-gray-400 hover:text-blue-400 transition-colors"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {link.name}
+                    </Link>
+                  )}
                   
                   {link.dropdownItems && activeDropdown === index && (
                     <div className="pl-4 mt-1 space-y-1 border-l-2 border-gray-700">
