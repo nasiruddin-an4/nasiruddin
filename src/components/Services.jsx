@@ -7,7 +7,8 @@ import {
   Layout, 
   Database, 
   Smartphone, 
-  Settings 
+  Settings,
+  ArrowRight
 } from 'lucide-react';
 
 const iconMap = {
@@ -85,14 +86,14 @@ const Services = () => {
     return () => sliderRef.current?.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Autoplay functionality - slide one card at a time
+  // Autoplay functionality
   useEffect(() => {
     const interval = setInterval(() => {
       if (!isDragging && sliderRef.current) {
         const cardWidth = 350;
         const gap = 32;
         sliderRef.current.scrollBy({
-          left: cardWidth + gap, // Move one card at a time
+          left: cardWidth + gap,
           behavior: 'smooth'
         });
       }
@@ -137,8 +138,15 @@ const Services = () => {
   };
 
   return (
-    <section className="py-32 bg-gradient-to-b from-gray-900 to-gray-800 overflow-hidden">
-      <div className="container mx-auto px-4">
+    <section className="py-32 bg-gradient-to-b from-gray-900 to-gray-800 overflow-hidden relative">
+      {/* Animated background */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full filter blur-3xl -translate-x-1/2 -translate-y-1/2 animate-pulse"></div>
+        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-purple-500/10 rounded-full filter blur-3xl translate-x-1/2 translate-y-1/2 animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 left-1/2 w-[300px] h-[300px] bg-pink-500/10 rounded-full filter blur-3xl -translate-x-1/2 -translate-y-1/2 animate-pulse delay-500"></div>
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -146,12 +154,27 @@ const Services = () => {
           transition={{ duration: 0.6 }}
           className="mb-20 text-center"
         >
-          <p className="text-blue-400 text-lg mb-4 tracking-wider">
-            || My Services
-          </p>
-          <h2 className="text-5xl font-serif text-white mb-8 leading-tight">
+          <motion.div
+            className="inline-flex items-center gap-4 mb-6"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <span className="w-12 h-[2px] bg-gradient-to-r from-blue-400 to-purple-400"></span>
+            <span className="text-blue-400 text-lg tracking-wider">My Services</span>
+            <span className="w-12 h-[2px] bg-gradient-to-l from-blue-400 to-purple-400"></span>
+          </motion.div>
+          
+          <motion.h2 
+            className="text-5xl font-serif text-white mb-8 leading-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
             Crafting Exceptional Solutions for My Clients
-          </h2>
+          </motion.h2>
         </motion.div>
 
         <div className="relative">
@@ -175,20 +198,31 @@ const Services = () => {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: (index % services.length) * 0.1 }}
-                  className="min-w-[350px] max-w-[350px] bg-gray-900/80 backdrop-blur-sm rounded-2xl p-8 hover:bg-gray-900 transition-all duration-300 relative group overflow-hidden shadow-xl"
+                  className="min-w-[350px] max-w-[350px] bg-gray-900/40 backdrop-blur-md rounded-2xl p-8 hover:bg-gray-900/60 transition-all duration-300 relative group overflow-hidden"
+                  style={{
+                    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)'
+                  }}
                 >
-                  {/* Gradient Border Effect */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
-                  {/* Floating Particles */}
+                  {/* 3D Card Effect */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
+                  
+                  {/* Animated Border */}
+                  <div className="absolute inset-0 rounded-2xl p-[1px] bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <div className="absolute inset-0 bg-gray-900/40 rounded-2xl"></div>
+                  </div>
+
+                  {/* Floating Elements */}
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                     <div className="absolute top-4 right-4 w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
                     <div className="absolute bottom-8 left-8 w-3 h-3 bg-purple-400 rounded-full animate-pulse delay-200"></div>
+                    <div className="absolute top-1/2 left-1/2 w-1 h-1 bg-pink-400 rounded-full animate-pulse delay-500"></div>
                   </div>
 
                   <div className="relative z-10">
                     <motion.div 
-                      className="mb-6"
-                      whileHover={{ scale: 1.1 }}
+                      className="mb-6 inline-block p-4 rounded-xl bg-gradient-to-br from-blue-500/20 to-purple-500/20"
+                      whileHover={{ scale: 1.1, rotate: 5 }}
                       transition={{ duration: 0.3 }}
                     >
                       <Icon size={48} className="text-blue-400" />
@@ -196,9 +230,9 @@ const Services = () => {
                     
                     <a 
                       href={`/services/${service.id}`} 
-                      className="inline-block hover:text-blue-400 transition-colors duration-300"
+                      className="block group-hover:text-blue-400 transition-colors duration-300"
                     >
-                      <h3 className="text-2xl font-semibold text-white mb-6">
+                      <h3 className="text-2xl font-semibold text-white mb-6 group-hover:translate-x-4 transition-transform duration-300">
                         {service.title}
                       </h3>
                     </a>
@@ -207,14 +241,22 @@ const Services = () => {
                       {service.skills.map((skill, index) => (
                         <motion.li 
                           key={index}
-                          className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors duration-200"
+                          className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors duration-200 group/item"
                           whileHover={{ x: 5 }}
                         >
-                          <span className="text-blue-400">•</span>
+                          <span className="text-blue-400 group-hover/item:scale-150 transition-transform duration-300">•</span>
                           <span className="text-sm">{skill}</span>
                         </motion.li>
                       ))}
                     </ul>
+
+                    <motion.div 
+                      className="mt-8 flex items-center gap-2 text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                      whileHover={{ x: 5 }}
+                    >
+                      <span className="text-sm">Learn More</span>
+                      <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
+                    </motion.div>
                   </div>
                 </motion.div>
               );
@@ -228,7 +270,9 @@ const Services = () => {
                 key={index}
                 onClick={() => goToSlide(index)}
                 className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  currentIndex === index ? 'bg-blue-400 scale-125' : 'bg-gray-600'
+                  currentIndex === index 
+                    ? 'bg-gradient-to-r from-blue-400 to-purple-400 scale-125' 
+                    : 'bg-gray-600'
                 }`}
               />
             ))}
