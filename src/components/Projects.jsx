@@ -103,77 +103,93 @@ const ProjectModal = ({ project, onClose }) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm overflow-y-auto"
+      onClick={(e) => {
+        // Close modal when clicking the backdrop
+        if (e.target === e.currentTarget) onClose();
+      }}
     >
       <motion.div
         initial={{ scale: 0.9, y: 20 }}
         animate={{ scale: 1, y: 0 }}
         exit={{ scale: 0.9, y: 20 }}
-        className="relative w-full max-w-4xl bg-gray-900 rounded-2xl overflow-hidden"
+        className="relative w-full max-w-4xl bg-gray-900 rounded-2xl overflow-hidden my-4 md:my-0 max-h-[90vh] md:max-h-[85vh] flex flex-col"
       >
+        {/* Close button - visible on all screen sizes */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 p-2 rounded-full bg-gray-800/50 text-gray-400
-            hover:bg-red-500/20 hover:text-red-400 transition-colors z-10"
+          className="absolute top-4 right-4 p-2 rounded-full bg-gray-800/80 text-gray-400
+            hover:bg-red-500/20 hover:text-red-400 transition-colors z-10 backdrop-blur-sm"
         >
           <X size={20} />
         </button>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="relative h-[300px] md:h-full">
-            <img 
-              src={project.preview || project.image} 
-              alt={project.title}
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent" />
-          </div>
+        <div className="overflow-y-auto custom-scrollbar">
+          <div className="flex flex-col md:grid md:grid-cols-2 gap-4 md:gap-6">
+            {/* Image section - full width on mobile */}
+            <div className="relative h-[200px] sm:h-[250px] md:h-full">
+              <img 
+                src={project.preview || project.image} 
+                alt={project.title}
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent" />
+            </div>
 
-          <div className="p-6">
-            <h3 className="text-2xl font-bold text-white mb-4">{project.title}</h3>
-            <p className="text-gray-400 mb-6">{project.description}</p>
+            {/* Content section */}
+            <div className="p-4 sm:p-6">
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 sm:mb-4 pr-8">{project.title}</h3>
+              <p className="text-gray-400 text-sm sm:text-base mb-4 sm:mb-6">{project.description}</p>
 
-            <div className="space-y-4">
-              <div>
-                <h4 className="text-sm font-medium text-gray-300 mb-2 flex items-center gap-2">
-                  <Tags size={16} className="text-blue-400" />
-                  Technologies Used
-                </h4>
-                <div className="flex flex-wrap gap-2">
-                  {project.techStack.map(tech => (
-                    <span key={tech} className="px-3 py-1 text-xs rounded-full bg-blue-500/10
-                      border border-blue-500/20 text-blue-400">
-                      {tech}
-                    </span>
-                  ))}
+              <div className="space-y-3 sm:space-y-4">
+                <div>
+                  <h4 className="text-sm font-medium text-gray-300 mb-2 flex items-center gap-2">
+                    <Tags size={16} className="text-blue-400" />
+                    Technologies Used
+                  </h4>
+                  <div className="flex flex-wrap gap-2">
+                    {project.techStack.map(tech => (
+                      <span key={tech} className="px-3 py-1 text-xs rounded-full bg-blue-500/10
+                        border border-blue-500/20 text-blue-400">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <h4 className="text-sm font-medium text-gray-300 mb-2">Key Features</h4>
+                  <ul className="space-y-2">
+                    {project.features.map((feature, index) => (
+                      <li key={index} className="text-sm text-gray-400 flex items-start gap-2">
+                        <ChevronRight size={16} className="mt-1 text-blue-400 flex-shrink-0" />
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
-
-              <div>
-                <h4 className="text-sm font-medium text-gray-300 mb-2">Key Features</h4>
-                <ul className="space-y-2">
-                  {project.features.map((feature, index) => (
-                    <li key={index} className="text-sm text-gray-400 flex items-start gap-2">
-                      <ChevronRight size={16} className="mt-1 text-blue-400" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </div>
             </div>
+          </div>
+        </div>
 
-            <div className="flex items-center gap-4 mt-8">
-              <a href={project.liveLink} target="_blank" rel="noopener noreferrer"
-                className="flex-1 py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg
-                  text-center transition-colors text-sm font-medium">
-                View Live Demo
-              </a>
-              <a href={project.githubLink} target="_blank" rel="noopener noreferrer"
-                className="flex-1 py-2 px-4 bg-gray-800 hover:bg-gray-700 text-gray-300 rounded-lg
-                  text-center transition-colors text-sm font-medium">
-                View Source Code
-              </a>
-            </div>
+        {/* Action buttons - fixed at bottom */}
+        <div className="p-4 sm:p-6 border-t border-gray-800 bg-gray-900/90 backdrop-blur-sm mt-auto">
+          <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4">
+            <a href={project.liveLink} target="_blank" rel="noopener noreferrer"
+              className="w-full py-2.5 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg
+                text-center transition-colors text-sm font-medium flex items-center justify-center gap-2"
+            >
+              <span>View Live Demo</span>
+              <ExternalLink size={16} />
+            </a>
+            <a href={project.githubLink} target="_blank" rel="noopener noreferrer"
+              className="w-full py-2.5 px-4 bg-gray-800 hover:bg-gray-700 text-gray-300 rounded-lg
+                text-center transition-colors text-sm font-medium flex items-center justify-center gap-2"
+            >
+              <span>View Source Code</span>
+              <Github size={16} />
+            </a>
           </div>
         </div>
       </motion.div>
