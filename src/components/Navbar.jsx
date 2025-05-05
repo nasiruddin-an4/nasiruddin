@@ -1,7 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useTheme } from '../contexts/ThemeContext';
-import { Menu, X, Code, ChevronDown, ArrowRight } from 'lucide-react';
+import { 
+  Menu, X, Code, ChevronDown, ArrowRight, 
+  Monitor, Database, Layers, Paintbrush,
+  Lightbulb, FileCode, Bell, User,
+  FolderGit, Code2, Briefcase
+} from 'lucide-react';
+import { navLinks } from '../constants';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -10,33 +16,7 @@ const Navbar = () => {
   const { theme, toggleTheme } = useTheme();
   const dropdownRef = useRef(null);
 
-  const navLinks = [
-    { 
-      name: 'Home', 
-      href: '#' 
-    },
-    {
-      name: 'Service',
-      href: '#'
-    },
-    {
-      name: 'Blog',
-      href: '#'
-    },
-    {
-      name: 'Page',
-      href: '#',
-      dropdownItems: [
-        { name: 'Web Development', href: '#projects?category=web' },
-        { name: 'UI/UX Design', href: '#projects?category=design' },
-        { name: 'Mobile Apps', href: '#projects?category=mobile' }
-      ]
-    },
-    {
-      name: 'Contact',
-      href: '#contact'
-    },
-  ];
+  const { mainNav } = navLinks;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -90,10 +70,10 @@ const Navbar = () => {
           {/* Desktop Navigation - Middle */}
           <nav className="hidden md:flex items-center justify-center flex-1 mx-10">
             <ul className="flex gap-14">
-              {navLinks.map((link, index) => (
+              {mainNav.map((link, index) => (
                 <li key={link.name} className="relative group" ref={dropdownRef}>
-                  <a 
-                    href={link.href}
+                  <Link 
+                    to={link.href}
                     className="font-medium text-gray-500 hover:text-gray-300 transition-colors flex items-center gap-1 duration-300 py-2"
                   >
                     {link.name}
@@ -103,23 +83,23 @@ const Navbar = () => {
                         className="transition-transform group-hover:rotate-180"
                       />
                     )}
-                  </a>
+                  </Link>
                   {link.dropdownItems && (
-                    <div className="absolute top-full left-0 mt-2 min-w-[200px] bg-mainBG rounded-md shadow-lg 
+                    <div className="absolute top-full -left-5 mt-2 min-w-[230px] bg-mainBG rounded-md shadow-lg 
                       opacity-0 invisible group-hover:opacity-100 group-hover:visible 
                       transition-all duration-300 ease-out
                       origin-top transform 
                       scale-y-0 group-hover:scale-y-100">
                       {link.dropdownItems.map((item) => (
-                        <a
+                        <Link
                           key={item.name}
-                          href={item.href}
+                          to={item.href}
                           className="flex items-center px-5 py-3 text-[15px] text-gray-400 hover:text-gray-100 
                             border-b border-gray-700 last:border-none
                             transition-colors first:animate-slideDown"
                         >
                           {item.name}
-                        </a>
+                        </Link>
                       ))}
                     </div>
                   )}
@@ -130,13 +110,13 @@ const Navbar = () => {
 
           {/* Right Section - Hire Button */}
           <div className="hidden md:flex items-center">
-            <a
-              href="#contact"
+            <Link
+              to="/contact"
               className="px-8 py-4 rounded-full border border-gray-700 text-gray-300 hover:bg-blue-400/10 font-medium transition-colors flex items-center gap-2 duration-300"
             >
               Hire Me
               <ArrowRight size={18} />
-            </a>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -160,7 +140,7 @@ const Navbar = () => {
       {isMenuOpen && (
         <div className="md:hidden absolute top-full left-0 right-0 bg-gray-900/95 backdrop-blur-sm shadow-lg animate-fade-in border-t border-gray-800">
           <ul className="py-4 px-4 sm:px-6 flex flex-col gap-2">
-            {navLinks.map((link, index) => (
+            {mainNav.map((link, index) => (
               <li key={link.name}>
                 <div>
                   <button
@@ -181,9 +161,9 @@ const Navbar = () => {
                   {link.dropdownItems && activeDropdown === index && (
                     <div className="pl-4 mt-1 space-y-1 border-l-2 border-gray-700">
                       {link.dropdownItems.map((item) => (
-                        <a
+                        <Link
                           key={item.name}
-                          href={item.href}
+                          to={item.href}
                           className="block py-2.5 text-sm text-gray-300 hover:text-blue-400 transition-colors"
                           onClick={() => {
                             setIsMenuOpen(false);
@@ -191,7 +171,7 @@ const Navbar = () => {
                           }}
                         >
                           {item.name}
-                        </a>
+                        </Link>
                       ))}
                     </div>
                   )}
@@ -199,14 +179,14 @@ const Navbar = () => {
               </li>
             ))}
             <li>
-              <a
-                href="#contact"
+              <Link
+                to="/contact"
                 className="block w-full text-center py-3 mt-4 rounded-full border border-blue-400 text-blue-400 hover:bg-blue-400/10 font-medium transition-colors flex items-center justify-center gap-2"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Hire Me
                 <ArrowRight size={16} className="sm:w-[18px] sm:h-[18px]" />
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

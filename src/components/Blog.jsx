@@ -8,14 +8,14 @@ const BlogCard = ({ post }) => {
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="group"
+      className="group h-full"
     >
-      <div className="overflow-hidden rounded-xl bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 hover:border-gray-600/50 transition-all duration-300">
-        <div className="relative">
+      <div className="overflow-hidden rounded-xl bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 hover:border-gray-600/50 transition-all duration-300 h-full flex flex-col">
+        <div className="relative h-64">
           <img
             src={post.image}
             alt={post.title}
-            className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-60"></div>
           <div className="absolute bottom-4 left-4 flex items-center gap-2">
@@ -31,7 +31,7 @@ const BlogCard = ({ post }) => {
           </div>
         </div>
         
-        <div className="p-6">
+        <div className="p-6 flex flex-col flex-1">
           <div className="flex items-center gap-4 mb-4">
             <span className="text-blue-400 text-sm">{post.category}</span>
             <span className="text-gray-400 text-sm flex items-center gap-1">
@@ -40,11 +40,11 @@ const BlogCard = ({ post }) => {
             </span>
           </div>
           
-          <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-blue-400 transition-colors">
+          <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-blue-400 transition-colors line-clamp-2">
             {post.title}
           </h3>
           
-          <p className="text-gray-400 mb-4">{post.excerpt}</p>
+          <p className="text-gray-400 mb-4 line-clamp-3">{post.excerpt}</p>
           
           <div className="flex flex-wrap gap-2 mb-6">
             {post.tags.map(tag => (
@@ -58,7 +58,7 @@ const BlogCard = ({ post }) => {
             ))}
           </div>
           
-          <div className="flex justify-between items-center pt-4 border-t border-gray-700/50">
+          <div className="flex justify-between items-center pt-4 border-t border-gray-700/50 mt-auto">
             <span className="text-gray-400 text-sm">{post.date}</span>
             <button className="text-blue-400 flex items-center gap-1 text-sm hover:gap-2 transition-all group-hover:text-blue-300">
               Read More <ChevronRight size={16} />

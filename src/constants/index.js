@@ -106,7 +106,7 @@ export const statsData = [
 	{
 		id: 1,
 		title: 'Happy Clients',
-		value: 150,
+		value: 500,
 		icon: Users2,
 		suffix: '+',
 		color: 'blue',
@@ -122,7 +122,7 @@ export const statsData = [
 	{
 		id: 3,
 		title: 'Years Experience',
-		value: 5,
+		value: 4,
 		icon: Clock4,
 		suffix: '+',
 		color: 'purple',
@@ -328,5 +328,137 @@ export const blogData = [
     readTime: "5 min read",
     tags: ["React", "Next.js", "Web Development"]
   },
-  // ...more blog posts
+  {
+    id: 2,
+    title: "Mastering Modern UI Design Principles",
+    excerpt: "A comprehensive guide to creating intuitive and aesthetically pleasing user interfaces.",
+    category: "UI/UX Design",
+    date: "March 20, 2024",
+    image: "/blog/ui-design-principles.jpg",
+    author: {
+      name: "Emma Davis",
+      avatar: "/authors/emma.jpg",
+      role: "UI/UX Designer"
+    },
+    readTime: "7 min read",
+    tags: ["UI Design", "User Experience", "Design Principles"]
+  },
+  {
+    id: 3,
+    title: "Building Scalable Applications with Node.js",
+    excerpt: "Learn best practices for developing high-performance backend systems using Node.js.",
+    category: "Backend Development",
+    date: "March 25, 2024",
+    image: "/blog/nodejs-scaling.jpg",
+    author: {
+      name: "Michael Chen",
+      avatar: "/authors/michael.jpg",
+      role: "Backend Engineer"
+    },
+    readTime: "6 min read",
+    tags: ["Node.js", "Scalability", "Performance"]
+  }
 ];
+
+export const navLinks = {
+  mainNav: [
+    { 
+      name: 'Home', 
+      href: '/' 
+    },
+    {
+      name: 'Service',
+      href: '#',
+      dropdownItems: [
+        { 
+          name: 'Frontend Development',
+          href: '#service/frontend',
+          icon: 'Monitor',
+          description: 'Creating responsive and interactive user interfaces'
+        },
+        { 
+          name: 'Backend Development',
+          href: '#service/backend',
+          icon: 'Database',
+          description: 'Building robust server-side applications'
+        },
+        { 
+          name: 'Full Stack Development',
+          href: '#service/fullstack',
+          icon: 'Layers',
+          description: 'End-to-end web application development'
+        },
+        { 
+          name: 'UI/UX Design',
+          href: '#service/design',
+          icon: 'Paintbrush',
+          description: 'Creating intuitive and beautiful interfaces'
+        }
+      ]
+    },
+    {
+      name: 'Blog',
+      href: '#',
+      dropdownItems: [
+        { 
+          name: 'Web Development',
+          href: '#blog/web',
+          icon: 'Code',
+          description: 'Latest web development trends and tutorials'
+        },
+        { 
+          name: 'Tech Insights',
+          href: '#blog/tech',
+          icon: 'Lightbulb',
+          description: 'Deep dives into technology topics'
+        },
+        { 
+          name: 'Programming Tips',
+          href: '#blog/tips',
+          icon: 'FileCode',
+          description: 'Useful programming tricks and best practices'
+        },
+        { 
+          name: 'Latest Updates',
+          href: '#blog/updates',
+          icon: 'Bell',
+          description: 'Recent updates and announcements'
+        }
+      ]
+    },
+    {
+      name: 'Page',
+      href: '#',
+      dropdownItems: [
+        { 
+          name: 'About Me',
+          href: '#about',
+          icon: 'User',
+          description: 'Learn more about my journey'
+        },
+        { 
+          name: 'Projects',
+          href: '#projects',
+          icon: 'FolderGit',
+          description: 'Explore my latest work'
+        },
+        { 
+          name: 'Skills',
+          href: '#skills',
+          icon: 'Code2',
+          description: 'Technical skills and expertise'
+        },
+        { 
+          name: 'Experience',
+          href: '#experience',
+          icon: 'Briefcase',
+          description: 'Professional work experience'
+        }
+      ]
+    },
+    {
+      name: 'Contact',
+      href: '/contact'
+    }
+  ]
+};
