@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: "Lora", serif;
+  --font-heading: "Lato", sans-serif;
+  --font-mono: var(--font-geist-mono);
+  --color-brandYellow: #fceb3b;
+  --color-brandBlack: var(--color-slate-900);
+  --color-deepTwilight: #03045e;
+  --color-brightTealBlue: #0077b6;
+  --color-turquoiseSurf: #00b4d8;
+  --color-frostedBlue: #90e0ef;
+  --color-lightCyan: #caf0f8;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+}

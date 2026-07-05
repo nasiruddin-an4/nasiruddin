@@ -1,0 +1,24 @@
+[
+  {
+    "id": 1,
+    "link": "/experience",
+    "image": "/heroBG.jpeg",
+    "title": "NASIR UDDIN",
+    "subtitle": "builds web applications"
+  },
+  {
+    "id": 2,
+    "link": "/about",
+    "image": "/ab5.jpg",
+    "title": "NASIR UDDIN",
+    "subtitle": "crafts digital experiences"
+  },
+  {
+    "id": 3,
+    "link": "/cv",
+    "image": "/abdulla-1.jpg",
+    "title": "NASIR UDDIN",
+    "subtitle": "creates modern interfaces",
+    "isLogo": false
+  }
+]

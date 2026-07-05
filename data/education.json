@@ -1,0 +1,35 @@
+[
+  {
+    "company": "Daffodil Institute of IT (DIIT)",
+    "role": "B.Sc. (Eng.) in Computer Science & Engineering (CSE)",
+    "type": "Education",
+    "duration": "2025",
+    "location": "",
+    "website": "",
+    "logo": "",
+    "description": "",
+    "skills": []
+  },
+  {
+    "company": "Nindupur M.K. Alomgir High School and College",
+    "role": "Higher Secondary Certificate (HSC)",
+    "type": "Education",
+    "duration": "2019",
+    "location": "",
+    "website": "",
+    "logo": "",
+    "description": "",
+    "skills": []
+  },
+  {
+    "company": "Nandarpur Union High School",
+    "role": "Secondary School Certificate (SSC)",
+    "type": "Education",
+    "duration": "2017",
+    "location": "",
+    "website": "",
+    "logo": "",
+    "description": "",
+    "skills": []
+  }
+]
