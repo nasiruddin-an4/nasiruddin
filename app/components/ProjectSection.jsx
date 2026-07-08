@@ -1,90 +1,107 @@
 "use client";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Autoplay } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-
-import projectsData from "../../data/projects.json";
-import AnimatedHeading from "./AnimatedHeading";
+import Image from "next/image";
 import Link from "next/link";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
+import { motion } from "framer-motion";
+import AnimatedHeading from "./AnimatedHeading";
+import projectsData from "@/data/projects.json";
 
 export default function ProjectSection() {
+  // Take top 4 projects to display on the home screen
+  const recentProjects = projectsData.slice(0, 4);
+
   return (
-    <section className="w-full bg-slate-950 text-white flex flex-col py-10 md:py-24">
-      <div className="flex flex-col items-center px-4 mb-16 text-center">
-        <AnimatedHeading
-          className="text-2xl md:text-3xl lg:text-4xl"
-          initialColor="text-brandBlack"
-          finalColor="text-brandBlack"
-        >
-          My Projects
-        </AnimatedHeading>
-      </div>
+    <section className="w-full bg-brandBlack text-white flex flex-col py-16 md:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 border-t border-zinc-800/50">
+      <div className="container mx-auto max-w-7xl">
+        <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-12 md:mb-16 gap-6">
+          <div>
+            <div className="mb-4">
+              <AnimatedHeading
+                className="text-2xl md:text-3xl lg:text-4xl"
+                initialColor="text-brandBlack"
+                finalColor="text-brandBlack"
+              >
+                MY WORK
+              </AnimatedHeading>
+            </div>
+            <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white font-bold max-w-2xl">
+              Recent Projects
+            </h3>
+            <p className="mt-4 text-zinc-400 text-lg md:text-xl font-serif max-w-2xl">
+              A selection of my recent work in web development, design, and digital experiences.
+            </p>
+          </div>
+          <Link href="/projects">
+            <button className="bg-transparent hover:bg-white text-white hover:text-brandBlack border border-white transition-colors duration-300 px-6 py-4 uppercase tracking-widest text-sm font-bold">
+              View All Projects
+            </button>
+          </Link>
+        </div>
 
-      <div className="w-full max-w-7xl mx-auto px-4  relative group/swiper">
-        <Swiper
-          modules={[Navigation, Autoplay]}
-          spaceBetween={40}
-          slidesPerView={1}
-          breakpoints={{
-            768: {
-              slidesPerView: 2,
-            },
-          }}
-          navigation={{
-            nextEl: '.custom-next',
-            prevEl: '.custom-prev',
-          }}
-          autoplay={{ delay: 5000, disableOnInteraction: false }}
-          className="w-full !pb-16"
-        >
-          {projectsData.map((project) => (
-            <SwiperSlide key={project.id} className="h-auto pb-4">
-              <Link href={`/projects/${project.id}`} className="block group cursor-pointer h-full flex flex-col">
-                {/* Image Container */}
-                <div className="relative w-full aspect-[16/10] overflow-hidden mb-6">
-                  <div
-                    className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-                    style={{ backgroundImage: `url('${project.image}')` }}
-                  />
-                  <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500" />
-                </div>
-
-                {/* Content */}
-                <div className="flex flex-col flex-1 px-2">
-                  <div className="flex items-start justify-between mb-3">
-                    <h3 className="text-2xl md:text-3xl font-bold text-white group-hover:text-brandYellow transition-colors pr-4">
-                      {project.title}
-                    </h3>
-
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-14">
+          {recentProjects.map((project, i) => (
+            <motion.div
+              key={project.id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              className="flex flex-col group"
+            >
+              <Link href={`/projects/${project.id}`}>
+                <motion.div
+                  className="relative w-full aspect-[4/3] overflow-hidden cursor-pointer mb-6"
+                  style={{ perspective: 1200 }}
+                >
+                  <motion.div
+                    className="w-full h-full origin-center"
+                    whileHover={{ scale: 1.03 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  >
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      unoptimized
+                      className="object-cover transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-brandBlack/20 group-hover:bg-transparent transition-colors duration-500" />
+                  </motion.div>
+                  
+                  {/* Plus Button overlay */}
+                  <div className="absolute bottom-5 right-5 w-12 h-12 bg-white text-brandBlack group-hover:bg-[#fceb3b] rounded-full flex items-center justify-center text-3xl font-light transition-colors duration-300 z-10 shadow-2xl pointer-events-none opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0">
+                    +
                   </div>
-
-                  <p className="text-zinc-400 mb-6 line-clamp-2 text-base md:text-lg leading-relaxed">
-                    {project.description}
-                  </p>
-
-                  {/* Category Pill */}
-                  <div className="mt-auto flex">
-                    <span className="bg-zinc-800 text-zinc-300 text-sm font-semibold px-5 py-2 rounded-full tracking-wide">
-                      {project.category}
-                    </span>
-                  </div>
-                </div>
+                </motion.div>
               </Link>
-            </SwiperSlide>
-          ))}
-        </Swiper>
 
-        {/* Custom Navigation Arrows */}
-        <button className="custom-prev absolute top-[40%] -translate-y-1/2 -left-4 md:-left-8 z-10 w-12 h-12 md:w-14 md:h-14 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-full flex items-center justify-center opacity-0 group-hover/swiper:opacity-100 group-hover/swiper:left-0 md:group-hover/swiper:-left-4 transition-all duration-300 hover:bg-brandYellow hover:text-black hover:scale-110 cursor-pointer disabled:opacity-0 hidden md:flex">
-          <FaArrowLeft className="text-lg md:text-xl" />
-        </button>
-        <button className="custom-next absolute top-[40%] -translate-y-1/2 -right-4 md:-right-8 z-10 w-12 h-12 md:w-14 md:h-14 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-full flex items-center justify-center opacity-0 group-hover/swiper:opacity-100 group-hover/swiper:right-0 md:group-hover/swiper:-right-4 transition-all duration-300 hover:bg-brandYellow hover:text-black hover:scale-110 cursor-pointer disabled:opacity-0 hidden md:flex">
-          <FaArrowRight className="text-lg md:text-xl" />
-        </button>
+              <h3 className="text-xl md:text-2xl font-bold text-white mb-3 group-hover:text-[#fceb3b] transition-colors duration-300">
+                <Link href={`/projects/${project.id}`}>
+                  {project.title}
+                </Link>
+              </h3>
+              <p className="text-zinc-500 text-sm md:text-base font-serif leading-relaxed line-clamp-2 mb-4">
+                {project.description}
+              </p>
+              
+              <div className="flex flex-wrap gap-2">
+                {project.tech.slice(0, 4).map((t, j) => (
+                  <span
+                    key={j}
+                    className="px-3 py-1 bg-zinc-800/60 text-zinc-400 text-xs rounded-full border border-zinc-700/30"
+                  >
+                    {t}
+                  </span>
+                ))}
+                {project.tech.length > 4 && (
+                  <span className="px-3 py-1 bg-zinc-800/60 text-zinc-400 text-xs rounded-full border border-zinc-700/30">
+                    +{project.tech.length - 4}
+                  </span>
+                )}
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );

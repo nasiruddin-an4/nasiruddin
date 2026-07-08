@@ -23,14 +23,14 @@ export default function Footer() {
 
       {/* Newsletter Section */}
       <div className="flex flex-col items-center mb-12 md:mb-24 max-w-3xl w-full text-center">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl uppercase">
+        <h2 className="text-xl sm:text-3xl md:text-4xl lg:text-6xl uppercase font-bold mb-2">
           NASIR&apos;S NEWSLETTER
         </h2>
-        <h3 className="text-base sm:text-lg md:text-xl lg:text-3xl uppercase tracking-wide mb-6 md:mb-10">
+        <h3 className="text-sm sm:text-lg md:text-xl lg:text-3xl uppercase tracking-wide mb-6 md:mb-10">
           SIGN UP FOR MY WEEKLY NEWSLETTER
         </h3>
 
-        <form className="flex flex-col md:flex-row items-end justify-center w-full gap-4 max-w-2xl mx-auto">
+        <form className="flex flex-col md:flex-row items-stretch md:items-end justify-center w-full gap-4 max-w-2xl mx-auto">
           <div className="flex flex-col w-full">
             <label
               htmlFor="email"
@@ -46,7 +46,7 @@ export default function Footer() {
           </div>
           <button
             type="button"
-            className="w-full md:w-auto bg-[#25d366] hover:bg-[#1db954] text-white font-bold uppercase px-8 py-3 min-h-[50px] rounded-full transition-colors whitespace-nowrap tracking-widest text-sm"
+            className="w-full md:w-auto bg-[#25d366] hover:bg-[#1db954] text-white font-bold uppercase px-8 py-3 min-h-[50px] transition-colors whitespace-nowrap tracking-widest text-sm"
           >
             SUBSCRIBE
           </button>

@@ -9,7 +9,7 @@ export default function ReadThisSection() {
       <div className="container mx-auto max-w-7xl">
         <div className="mb-12 inline-block">
           <AnimatedHeading
-            className="text-3xl"
+            className="text-2xl md:text-3xl"
             initialColor="text-brandBlack"
             finalColor="text-brandBlack"
           >
@@ -39,12 +39,12 @@ export default function ReadThisSection() {
                   </p>
                 </div>
                 <h3
-                  className={`text-2xl md:text-4xl pt-2 uppercase group-hover:text-gray-300 transition-colors duration-300 ${article.content ? "mb-4 line-clamp-3" : "line-clamp-4"}`}
+                  className={`text-xl md:text-4xl pt-2 uppercase group-hover:text-gray-300 transition-colors duration-300 ${article.content ? "mb-4 line-clamp-3" : "line-clamp-4"}`}
                 >
                   {article.title}
                 </h3>
                 {article.content && (
-                  <p className="text-gray-400 font-serif text-lg leading-relaxed line-clamp-2">
+                  <p className="text-gray-400 font-serif text-base md:text-lg leading-relaxed line-clamp-2">
                     {article.content}
                   </p>
                 )}

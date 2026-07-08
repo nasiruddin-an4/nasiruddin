@@ -1,16 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import AnimatedHeading from "@/app/components/AnimatedHeading";
 import Footer from "@/app/components/Footer";
 import projectsData from "@/data/projects.json";
-import { FaGithub, FaExternalLinkAlt, FaCode } from "react-icons/fa";
+import { FaGithub, FaExternalLinkAlt, FaCode, FaSearch, FaChevronDown, FaCheck } from "react-icons/fa";
 
 const categories = [
-  "All",
+  "All Categories",
   "Corporate Website",
   "Portfolio",
   "E-Commerce",
@@ -20,11 +20,36 @@ const categories = [
 ];
 
 export default function ProjectsPage() {
-  const [activeCategory, setActiveCategory] = useState("All");
+  const [activeCategory, setActiveCategory] = useState("All Categories");
   const [hoveredId, setHoveredId] = useState(null);
 
+  // Custom Dropdown State
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [dropdownSearch, setDropdownSearch] = useState(activeCategory);
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    setDropdownSearch(activeCategory);
+  }, [activeCategory]);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDropdownOpen(false);
+        // Reset search to active category if closed without selecting
+        setDropdownSearch(activeCategory);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [activeCategory]);
+
+  const filteredCategoriesList = categories.filter((c) =>
+    c.toLowerCase().includes(dropdownSearch.toLowerCase())
+  );
+
   const filteredProjects =
-    activeCategory === "All"
+    activeCategory === "All Categories"
       ? projectsData
       : projectsData.filter((p) => p.category === activeCategory);
 
@@ -80,14 +105,72 @@ export default function ProjectsPage() {
 
       {/* ── Category Filter ── */}
       <div className="px-6 md:px-12 lg:px-16 mb-10">
-        <div className="flex flex-wrap gap-2">
+        {/* Mobile Dropdown (Combobox) */}
+        <div className="block md:hidden w-full relative" ref={dropdownRef}>
+          <div className="relative flex items-center">
+            <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
+              <FaSearch className="text-zinc-500 text-sm" />
+            </div>
+            <input
+              type="text"
+              placeholder="Type to search categories..."
+              value={dropdownSearch}
+              onChange={(e) => {
+                setDropdownSearch(e.target.value);
+                setIsDropdownOpen(true);
+              }}
+              onFocus={() => {
+                setIsDropdownOpen(true);
+                // Clear input when focused so user can see all options and type easily
+                if (dropdownSearch === activeCategory) {
+                  setDropdownSearch("");
+                }
+              }}
+              className="w-full bg-[#1a1a1a] text-white border border-zinc-700 rounded-lg pl-10 pr-10 py-3 text-sm focus:outline-none focus:border-[#fceb3b] transition-colors placeholder:text-zinc-500"
+            />
+            <div
+              className="absolute inset-y-0 right-0 flex items-center px-4 cursor-pointer"
+              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+            >
+              <FaChevronDown className={`text-zinc-400 transition-transform duration-300 ${isDropdownOpen ? 'rotate-180' : ''}`} />
+            </div>
+          </div>
+
+          {isDropdownOpen && (
+            <div className="absolute top-full left-0 right-0 mt-2 bg-[#1a1a1a] border border-zinc-700 rounded-lg shadow-xl z-50 overflow-hidden">
+              <ul className="max-h-60 overflow-y-auto py-2">
+                {filteredCategoriesList.length > 0 ? (
+                  filteredCategoriesList.map((cat) => (
+                    <li
+                      key={cat}
+                      onClick={() => {
+                        handleCategoryChange(cat);
+                        setIsDropdownOpen(false);
+                      }}
+                      className={`px-4 py-3 text-sm cursor-pointer flex items-center justify-between hover:bg-zinc-800 transition-colors ${activeCategory === cat ? 'text-[#fceb3b] font-medium' : 'text-zinc-300'
+                        }`}
+                    >
+                      {cat}
+                      {activeCategory === cat && <FaCheck className="text-[#fceb3b] text-xs" />}
+                    </li>
+                  ))
+                ) : (
+                  <li className="px-4 py-3 text-sm text-zinc-500 text-center">No categories found</li>
+                )}
+              </ul>
+            </div>
+          )}
+        </div>
+
+        {/* Desktop Buttons */}
+        <div className="hidden md:flex flex-wrap gap-2">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => handleCategoryChange(cat)}
               className={`px-5 py-2 text-xs font-serif transition-all duration-300 rounded-full border ${activeCategory === cat
-                  ? "bg-white text-brandBlack border-white"
-                  : "bg-transparent text-zinc-500 border-zinc-700 hover:border-zinc-400 hover:text-zinc-200"
+                ? "bg-white text-brandBlack border-white"
+                : "bg-transparent text-zinc-500 border-zinc-700 hover:border-zinc-400 hover:text-zinc-200"
                 }`}
             >
               {cat}

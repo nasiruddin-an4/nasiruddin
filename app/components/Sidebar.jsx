@@ -29,27 +29,20 @@ import {
 } from "react-icons/fa";
 
 const navData = [
+  { name: "About Me", href: "/about" },
+  { name: "Experience", href: "/experience" },
+  { name: "Projects", href: "/projects" },
   {
     name: "Profile",
     id: "profile",
     subLinks: [
-      { label: "About", href: "/about" },
-      { label: "Experience", href: "/experience" },
-      { label: "Professional Photos", href: "/professional-photos" },
+      { label: "News & Blogs", href: "/news" },
+      { label: "Photos", href: "/photos" },
       { label: "CV", href: "/cv" },
     ],
   },
   {
-    name: "Portfolio",
-    id: "portfolio",
-    subLinks: [
-      { label: "Projects", href: "/projects" },
-      { label: "Blog", href: "/blog" },
-      { label: "News", href: "/news" },
-    ],
-  },
-  {
-    name: "Contact",
+    name: "Contact Me",
     href: "/contact",
   },
 ];
@@ -91,14 +84,14 @@ export default function Sidebar() {
   return (
     <>
       {/* MOBILE TOP NAVBAR */}
-      <div className="md:hidden fixed top-0 left-0 right-0 h-[72px] bg-black/50 backdrop-blur-sm flex items-center justify-between px-6 z-200 border-r border-gray-500">
+      <div className="md:hidden fixed top-0 left-0 right-0 h-[72px] bg-black backdrop-blur-sm flex items-center justify-between px-6 z-200 border-r border-gray-500">
         <Link
           href="/"
           className="flex items-center"
           onClick={() => setIsMobileMenuOpen(false)}
         >
           <Image
-            src="/A.png"
+            src="/nasirLogo.png"
             alt="Logo"
             width={120}
             height={40}
@@ -142,7 +135,7 @@ export default function Sidebar() {
           >
             {/* Logo from public folder */}
             <Image
-              src="/A.png"
+              src="/nasirLogo.png"
               alt="Logo"
               width={180}
               height={80}

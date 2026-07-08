@@ -9,8 +9,9 @@ import Sidebar from "./components/Sidebar";
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="overflow-x-clip max-w-full">
+    <html lang="en" className="overflow-x-clip max-w-full" suppressHydrationWarning>
       <body
+        suppressHydrationWarning
         className={`antialiased bg-brandBlack overflow-x-clip w-full max-w-full`}
       >
         <div className="flex min-h-screen">

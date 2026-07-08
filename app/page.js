@@ -4,9 +4,10 @@ import { useState } from "react";
 import { FaPlay, FaXmark } from "react-icons/fa6";
 import LegacySection from "./components/LegacySection";
 import AboutSection from "./components/AboutSection";
+import ProjectSection from "./components/ProjectSection";
 import ReadThisSection from "./components/ReadThisSection";
 import Footer from "./components/Footer";
-import ProjectSection from "./components/ProjectSection";
+
 
 export default function Home() {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
@@ -15,10 +16,10 @@ export default function Home() {
     <>
       <main className="flex-1 w-full flex flex-col relative bg-brandBlack">
         {/* Hero Image Section */}
-        <div className="flex-1 min-h-[80vh] md:min-h-screen w-full flex flex-col justify-end pb-16 px-8 md:px-16 relative bg-brandBlack overflow-hidden">
+        <div className="flex-1 min-h-[50vh] md:min-h-screen w-full flex flex-col justify-end pb-6 px-8 md:px-16 relative bg-brandBlack overflow-hidden">
           {/* Background Image with horizontal flip */}
           <div
-            className="absolute inset-0 bg-cover bg-center"
+            className="absolute inset-0 bg-cover bg-right md:bg-center"
             style={{ backgroundImage: "url('/nasirHeroBG.png')" }}
           />
           <div className="absolute inset-0 bg-linear-to-t from-brandBlack/50 to-transparent pointer-events-none" />
@@ -28,11 +29,11 @@ export default function Home() {
             <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-12 md:gap-24 w-full">
               <div className="w-full md:w-3/5">
 
-                <h1 className="text-left font-bold drop-shadow-xl flex flex-col gap-4">
-                  <span className="text-white text-5xl md:text-6xl lg:text-7xl tracking-tight">
+                <h1 className="text-left font-bold drop-shadow-xl flex flex-col gap-2 md:gap-4">
+                  <span className="text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight">
                     Nasir Uddin
                   </span>
-                  <span className="text-zinc-200 text-2xl md:text-3xl lg:text-4xl font-normal leading-snug max-w-4xl">
+                  <span className="text-zinc-200 text-lg sm:text-xl md:text-3xl lg:text-4xl font-normal leading-snug max-w-4xl">
                     Software Engineer <span className="font-light italic text-zinc-400">&</span> Full-Stack Digital Marketer Building Impactful Digital Experiences.
                   </span>
                 </h1>

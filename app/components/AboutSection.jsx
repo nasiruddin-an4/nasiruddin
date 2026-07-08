@@ -8,19 +8,21 @@ export default function AboutSection() {
       <div className="container mx-auto max-w-7xl">
         <div className="flex flex-col md:flex-row items-center gap-10 md:gap-12 lg:gap-20">
           {/* Image Column */}
-          <div className="w-full md:w-1/2 relative order-1 md:order-1">
-            <div className="relative w-full aspect-4/5">
+          <div className="w-full md:w-1/2 relative order-2 md:order-1 mt-8 md:mt-0">
+            <div className="relative w-full aspect-square md:aspect-[4/5]">
               <Image
                 src="/aboutImg.png"
                 alt="Nasir Uddin"
                 fill
+                unoptimized
+                priority
                 className="object-cover transition-all duration-700"
               />
             </div>
           </div>
 
           {/* Text Column */}
-          <div className="w-full md:w-1/2 flex flex-col justify-center order-2 md:order-2 mt-4 md:mt-0">
+          <div className="w-full md:w-1/2 flex flex-col justify-center order-1 md:order-2">
             <div className="mb-4 md:mb-6 inline-block">
               <AnimatedHeading
                 className="text-2xl md:text-3xl lg:text-4xl"
