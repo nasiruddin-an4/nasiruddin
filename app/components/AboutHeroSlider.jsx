@@ -79,7 +79,7 @@ function TimelineCard({ item }) {
       onMouseMove={handleMouseMove}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className="relative shrink-0 w-[90%] md:w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)] h-full snap-center group/card overflow-hidden"
+      className="relative shrink-0 w-[90%] md:w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)] h-full snap-center group/card overflow-hidden pt-10 md:pt-4"
       style={{ perspective: "1000px" }}
     >
       <div

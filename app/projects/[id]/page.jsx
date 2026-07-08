@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import projectsData from "@/data/projects.json";
 import { MoveLeft } from "lucide-react";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
+import Footer from "@/app/components/Footer";
 
 export async function generateMetadata({ params }) {
   const { id } = await params;
@@ -105,6 +106,7 @@ export default async function ProjectDetails({ params }) {
           </div>
         </div>
       </section>
+      <Footer />
     </div>
   );
 }

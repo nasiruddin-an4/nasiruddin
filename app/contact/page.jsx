@@ -3,6 +3,7 @@
 import { useState } from "react";
 import AnimatedHeading from "@/app/components/AnimatedHeading";
 import { MoveRight } from "lucide-react";
+import Footer from "@/app/components/Footer";
 import {
   FaFacebookF,
   FaInstagram,
@@ -236,6 +237,7 @@ export default function ContactPage() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

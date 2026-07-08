@@ -16,7 +16,8 @@
       "Betopia Group",
       "Digital Transformation",
       "Frontend Architecture"
-    ]
+    ],
+    "type": "News"
   },
   {
     "id": "2",
@@ -35,7 +36,8 @@
       "Automation",
       "Personalization",
       "Tech Meets Marketing"
-    ]
+    ],
+    "type": "Blog"
   },
   {
     "id": "3",
@@ -54,7 +56,8 @@
       "HR Portal",
       "User Experience",
       "Web Accessibility"
-    ]
+    ],
+    "type": "News"
   },
   {
     "id": "4",
@@ -73,7 +76,8 @@
       "React",
       "Internal Tools",
       "Tech Stack"
-    ]
+    ],
+    "type": "Blog"
   },
   {
     "id": "5",
@@ -92,6 +96,7 @@
       "Web Performance",
       "SSR",
       "Digital Marketing"
-    ]
+    ],
+    "type": "Blog"
   }
 ]

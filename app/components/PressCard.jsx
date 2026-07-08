@@ -20,7 +20,7 @@ export default function PressCard({ article }) {
 
   return (
     <Link
-      href={`/news/${article.id}`}
+      href={`/news-blogs/${article.id}`}
       ref={cardRef}
       className="group relative flex flex-col cursor-pointer"
       onMouseEnter={() => setIsHovered(true)}

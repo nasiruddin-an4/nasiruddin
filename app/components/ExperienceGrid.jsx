@@ -68,7 +68,7 @@ function ExperienceCard({ exp, index }) {
         >
           {exp.logo && !imageError ? (
             <div
-              className={`relative transition-all duration-700 grayscale-0 brightness-100 w-[80%] h-[80%] ${isHovered ? "md:grayscale-0 md:brightness-100 md:w-[80%] md:h-[80%]" : "md:w-full md:h-full md:grayscale md:brightness-200"}`}
+              className={`relative transition-all duration-700 grayscale-0 brightness-100 w-[50%] h-[80%] ${isHovered ? "md:grayscale-0 md:brightness-100 md:w-[80%] md:h-[80%]" : "md:w-full md:h-full md:grayscale md:brightness-200"}`}
             >
               <Image
                 src={exp.logo}

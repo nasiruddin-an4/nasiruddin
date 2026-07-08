@@ -1,9 +1,11 @@
 import Image from "next/image";
+import Link from "next/link";
 import AnimatedHeading from "../components/AnimatedHeading";
 import AboutHeroSlider from "../components/AboutHeroSlider";
 import EducationGrid from "../components/EducationGrid";
 import Footer from "../components/Footer";
 import educationRecords from "../../data/education.json";
+import projectsData from "../../data/projects.json";
 
 export const metadata = {
   title: "About | Nasir Uddin",
@@ -11,40 +13,7 @@ export const metadata = {
     "Learn more about Nasir Uddin — Software Engineer & Full-Stack Digital Marketer with experience in React, Next.js, and modern web development.",
 };
 
-// Notable work, reframed as an indexed casefile rather than a bullet list.
-// The category tag is real information — it tells you what kind of build this was.
-const projects = [
-  {
-    name: "Betopia Group",
-    tag: "CORPORATE",
-    note: "Corporate site representing 22+ business units, built for scale and performance.",
-  },
-  {
-    name: "Muhammad Monir Hossain",
-    tag: "PORTFOLIO",
-    note: "Official portfolio for the Founder & CEO of Betopia Group.",
-  },
-  {
-    name: "Betopia Daily",
-    tag: "INTERNAL TOOL",
-    note: "In-house e-commerce platform for employee grocery ordering.",
-  },
-  {
-    name: "Daffodil HR Portal",
-    tag: "INTERNAL TOOL",
-    note: "HR management frontend serving thousands of institutional users.",
-  },
-  {
-    name: "DIU Media Corner",
-    tag: "MEDIA PLATFORM",
-    note: "Centralized news and announcement portal for the university.",
-  },
-  {
-    name: "DIU Faculty Directory",
-    tag: "DIRECTORY",
-    note: "Searchable faculty directory with improved navigation and access.",
-  },
-];
+const topProjects = projectsData.slice(0, 6);
 
 export default function About() {
   return (
@@ -65,9 +34,7 @@ export default function About() {
 
         {/* Header Block */}
         <div className="mb-8 sm:mb-10 md:mb-14 border-b border-[#2a2a27] pb-6 sm:pb-8 md:pb-10">
-          <span className="block font-sans text-[11px] sm:text-xs tracking-[0.3em] uppercase text-[#fceb3b] mb-3 sm:mb-4">
-            Case File — Nasir Uddin
-          </span>
+
           <AnimatedHeading
             className="font-oswald font-bold uppercase text-2xl sm:text-3xl md:text-5xl lg:text-6xl tracking-tight"
             initialColor="text-brandBlack"
@@ -122,7 +89,7 @@ export default function About() {
               {/* Signature pull quote — oversized mark instead of a plain border box */}
               <div className="relative my-8 sm:my-10 md:my-14 pl-8 sm:pl-10 md:pl-14">
                 <span
-                  className="absolute -left-1 -top-6 sm:-top-8 md:-top-10 font-oswald text-[80px] sm:text-[100px] md:text-[130px] leading-none text-[#fceb3b]/90 select-none"
+                  className="absolute -left-1 -top-1 sm:-top-1 md:-top-1 font-oswald text-[80px] sm:text-[100px] md:text-[130px] leading-none text-[#fceb3b]/90 select-none"
                   aria-hidden="true"
                 >
                   &ldquo;
@@ -139,30 +106,35 @@ export default function About() {
                     Notable Projects
                   </h3>
                   <span className="font-sans text-[10px] sm:text-xs tracking-[0.25em] uppercase text-[#5a5a56]">
-                    {String(projects.length).padStart(2, "0")} Records
+                    {String(topProjects.length).padStart(2, "0")} Records
                   </span>
                 </div>
 
                 <ul>
-                  {projects.map((project, i) => (
+                  {topProjects.map((project, i) => (
                     <li
-                      key={project.name}
-                      className="group grid grid-cols-[2.5rem_1fr] sm:grid-cols-[3rem_1fr_auto] items-start gap-x-3 sm:gap-x-6 py-4 sm:py-5 border-b border-[#1c1c19] last:border-b-0"
+                      key={project.id}
+                      className="group border-b border-[#1c1c19] last:border-b-0"
                     >
-                      <span className="font-oswald text-sm sm:text-base text-[#5a5a56] pt-0.5">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                      <div>
-                        <p className="font-sans font-semibold text-sm sm:text-base md:text-lg text-[#f3f1ea]">
-                          {project.name}
-                        </p>
-                        <p className="font-serif text-xs sm:text-sm md:text-base text-[#8a8a86] mt-1 leading-relaxed">
-                          {project.note}
-                        </p>
-                      </div>
-                      <span className="hidden sm:inline-block font-sans text-[10px] tracking-[0.2em] uppercase text-[#fceb3b] border border-[#3a3a34] rounded-full px-3 py-1 h-fit self-center whitespace-nowrap">
-                        {project.tag}
-                      </span>
+                      <Link
+                        href={`/projects/${project.id}`}
+                        className="grid grid-cols-[2.5rem_1fr] sm:grid-cols-[3rem_1fr_auto] items-start gap-x-3 sm:gap-x-6 py-4 sm:py-5 cursor-pointer"
+                      >
+                        <span className="font-oswald text-sm sm:text-base text-[#5a5a56] pt-0.5 group-hover:text-[#fceb3b] transition-colors">
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                        <div>
+                          <p className="font-sans font-semibold text-sm sm:text-base md:text-lg text-[#f3f1ea] group-hover:text-[#fceb3b] transition-colors">
+                            {project.title}
+                          </p>
+                          <p className="font-serif text-xs sm:text-sm md:text-base text-[#8a8a86] mt-1 leading-relaxed line-clamp-2">
+                            {project.description}
+                          </p>
+                        </div>
+                        <span className="hidden sm:inline-block font-sans text-[10px] tracking-[0.2em] uppercase text-[#fceb3b] border border-[#3a3a34] rounded-full px-3 py-1 h-fit self-center whitespace-nowrap group-hover:bg-[#fceb3b] group-hover:text-brandBlack transition-colors">
+                          {project.category}
+                        </span>
+                      </Link>
                     </li>
                   ))}
                 </ul>

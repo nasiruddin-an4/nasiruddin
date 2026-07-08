@@ -36,7 +36,7 @@ const navData = [
     name: "Profile",
     id: "profile",
     subLinks: [
-      { label: "News & Blogs", href: "/news" },
+      { label: "News & Blogs", href: "/news-blogs" },
       { label: "Photos", href: "/photos" },
       { label: "CV", href: "/cv" },
     ],
