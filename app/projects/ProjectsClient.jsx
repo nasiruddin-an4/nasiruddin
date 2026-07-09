@@ -5,8 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import AnimatedHeading from "@/app/components/AnimatedHeading";
-import Footer from "@/app/components/Footer";
-import projectsData from "@/data/projects.json";
+
 import { FaGithub, FaExternalLinkAlt, FaCode, FaSearch, FaChevronDown, FaCheck } from "react-icons/fa";
 
 const categories = [
@@ -19,7 +18,7 @@ const categories = [
   "Institutional Website",
 ];
 
-export default function ProjectsPage() {
+export default function ProjectsClient({ projectsData = [] }) {
   const [activeCategory, setActiveCategory] = useState("All Categories");
   const [hoveredId, setHoveredId] = useState(null);
 
@@ -298,7 +297,6 @@ export default function ProjectsPage() {
         </div>
       </section>
 
-      <Footer />
     </main>
   );
 }

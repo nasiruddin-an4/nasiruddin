@@ -4,11 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useRef } from "react";
 import AnimatedHeading from "./AnimatedHeading";
-import pressData from "@/data/news.json";
+
 
 import PressCard from "./PressCard";
 
-export default function RecentPress() {
+export default function RecentPress({ pressData = [] }) {
   return (
     <section className="w-full bg-brandBlack text-white py-24 px-4 border-t border-zinc-900 overflow-hidden">
       <div className="container px-4 md:px-6 mx-auto">

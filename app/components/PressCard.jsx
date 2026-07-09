@@ -32,7 +32,7 @@ export default function PressCard({ article }) {
         <div className="relative w-full aspect-video mb-6 overflow-hidden">
           <Image
             src={article.image}
-            alt={article.alt}
+            alt={article.alt || article.title || "Press Image"}
             fill
             className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
           />

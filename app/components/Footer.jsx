@@ -6,7 +6,7 @@ import {
   FaXTwitter,
   FaBehance,
 } from "react-icons/fa6";
-import socialLinks from "@/data/social.json";
+import { fetchSettings } from "@/lib/api";
 
 const iconMap = {
   FaLinkedinIn,
@@ -16,7 +16,9 @@ const iconMap = {
   FaBehance,
 };
 
-export default function Footer() {
+export default async function Footer() {
+  const settings = await fetchSettings();
+  const socialLinks = settings?.socials || [];
   return (
     <footer className="w-full bg-[#282828] text-white flex flex-col items-center py-8 md:py-10 px-4 lg:px-8 relative overflow-hidden">
       {/* Background texture overlay could go here if needed, for now solid dark */}

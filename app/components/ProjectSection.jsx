@@ -4,9 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import AnimatedHeading from "./AnimatedHeading";
-import projectsData from "@/data/projects.json";
 
-export default function ProjectSection() {
+
+export default function ProjectSection({ projectsData = [] }) {
   // Take top 4 projects to display on the home screen
   const recentProjects = projectsData.slice(0, 4);
 

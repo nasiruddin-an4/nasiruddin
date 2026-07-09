@@ -3,19 +3,17 @@ import Link from "next/link";
 import AnimatedHeading from "../components/AnimatedHeading";
 import AboutHeroSlider from "../components/AboutHeroSlider";
 import EducationGrid from "../components/EducationGrid";
-import Footer from "../components/Footer";
-import educationRecords from "../../data/education.json";
-import projectsData from "../../data/projects.json";
-
+import { fetchEducations, fetchProjects } from "@/lib/api";
 export const metadata = {
   title: "About | Nasir Uddin",
   description:
     "Learn more about Nasir Uddin — Software Engineer & Full-Stack Digital Marketer with experience in React, Next.js, and modern web development.",
 };
 
-const topProjects = projectsData.slice(0, 6);
-
-export default function About() {
+export default async function About() {
+  const projectsData = await fetchProjects();
+  const educationRecords = await fetchEducations();
+  const topProjects = projectsData.slice(0, 6);
   return (
     <main className="flex-1 w-full max-w-full bg-brandBlack min-h-screen text-[#f3f1ea] flex flex-col overflow-x-clip box-border">
       {/* Full Bleed Draggable Hero Slider */}

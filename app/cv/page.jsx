@@ -1,4 +1,4 @@
-"use client";
+
 
 import {
   FaDownload,
@@ -10,14 +10,13 @@ import {
   FaGlobe,
   FaCode,
 } from "react-icons/fa";
-import Footer from "../components/Footer";
 import AnimatedHeading from "../components/AnimatedHeading";
-import socialLinks from "@/data/social.json";
+import { fetchSettings } from "@/lib/api";
+import PrintButton from "../components/PrintButton";
 
-export default function CVPage() {
-  const handleDownload = () => {
-    window.print();
-  };
+export default async function CVPage() {
+  const settings = await fetchSettings();
+  const socialLinks = settings?.socials || [];
 
   return (
     <main className="flex-1 w-full flex flex-col relative bg-zinc-950 min-h-screen font-serif">
@@ -98,14 +97,7 @@ export default function CVPage() {
           </div>
 
           <div className="w-full md:w-auto flex justify-start md:justify-end print:hidden">
-            <button
-              onClick={handleDownload}
-              className="group relative cursor-pointer flex items-center gap-3 bg-brandYellow text-brandBlack px-8 py-4 rounded-full font-bold uppercase tracking-widest overflow-hidden transition-all duration-300 hover:scale-105 shadow-[0_0_40px_rgba(234,179,8,0.2)]"
-            >
-              <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out z-0"></div>
-              <FaDownload className="relative z-10 text-xl" />
-              <span className="relative z-10">Download CV</span>
-            </button>
+            <PrintButton />
           </div>
         </div>
 
@@ -575,9 +567,7 @@ export default function CVPage() {
           </div>
         </div>
       </div>
-      <div className="print:hidden">
-        <Footer />
-      </div>
+
     </main>
   );
 }

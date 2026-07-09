@@ -1,9 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
 import AnimatedHeading from "./AnimatedHeading";
-import pressData from "@/data/news.json";
+import { fetchNews, fetchBlogs } from "@/lib/api";
 
-export default function ReadThisSection() {
+export default async function ReadThisSection() {
+  const news = await fetchNews();
+  const blogs = await fetchBlogs();
+  const pressData = [
+    ...news.map((n) => ({ ...n, type: n.type || "News" })),
+    ...blogs.map((b) => ({ ...b, type: b.type || "Blog" })),
+  ];
+  pressData.sort((a, b) => new Date(b.date) - new Date(a.date));
+
   return (
     <section className="w-full bg-[#161616] text-white flex flex-col py-24 md:py-32 px-4 sm:px-6 lg:px-8">
       <div className="container mx-auto max-w-7xl">

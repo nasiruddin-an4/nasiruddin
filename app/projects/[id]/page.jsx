@@ -1,13 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import projectsData from "@/data/projects.json";
+import { fetchProjects } from "@/lib/api";
 import { MoveLeft } from "lucide-react";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 import Footer from "@/app/components/Footer";
 
 export async function generateMetadata({ params }) {
   const { id } = await params;
+  const projectsData = await fetchProjects();
   const project = projectsData.find((item) => item.id.toString() === id);
   if (!project) return { title: "Project Not Found" };
   return {
@@ -18,6 +19,7 @@ export async function generateMetadata({ params }) {
 
 export default async function ProjectDetails({ params }) {
   const { id } = await params;
+  const projectsData = await fetchProjects();
   const project = projectsData.find((item) => item.id.toString() === id);
 
   if (!project) {

@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import {
   FaXTwitter,
   FaFacebookF,
@@ -11,7 +11,7 @@ import {
   FaInstagram,
   FaBehance,
 } from "react-icons/fa6";
-import socialLinks from "@/data/social.json";
+
 
 const iconMap = {
   FaLinkedinIn,
@@ -21,7 +21,6 @@ const iconMap = {
   FaBehance,
 };
 import {
-  FaPhoneAlt,
   FaSearch,
   FaChevronDown,
   FaBars,
@@ -47,13 +46,42 @@ const navData = [
   },
 ];
 
-export default function Sidebar() {
+export default function Sidebar({ socialLinks = [] }) {
   const [openDropdown, setOpenDropdown] = useState(null);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
   const searchInputRef = useRef(null);
   const pathname = usePathname();
+  const router = useRouter();
+  const [searchQuery, setSearchQuery] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
+  const [isSearching, setIsSearching] = useState(false);
+
+  // Debounced search suggestions
+  useEffect(() => {
+    if (!searchQuery.trim() || searchQuery.length < 2) {
+      setSuggestions([]);
+      return;
+    }
+
+    const timer = setTimeout(async () => {
+      setIsSearching(true);
+      try {
+        const res = await fetch(`/api/search?q=${encodeURIComponent(searchQuery)}`);
+        const data = await res.json();
+        if (data.suggestions) {
+          setSuggestions(data.suggestions);
+        }
+      } catch (e) {
+        console.error(e);
+      } finally {
+        setIsSearching(false);
+      }
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }, [searchQuery]);
 
   // Smoothly close search with exit animation
   const closeSearch = useCallback(() => {
@@ -62,6 +90,8 @@ export default function Sidebar() {
     setTimeout(() => {
       setIsSearchOpen(false);
       setIsClosing(false);
+      setSearchQuery("");
+      setSuggestions([]);
     }, 300);
   }, [isClosing]);
 
@@ -254,10 +284,22 @@ export default function Sidebar() {
             }}
           >
             <div className="w-full max-w-4xl mx-auto px-8 md:px-16 py-12 md:py-16">
-              {/* Input Row */}
-              <div className="relative flex items-center">
+              <div className="relative w-full">
+                {/* Input Row */}
+                <form 
+                  className="flex items-center w-full"
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  if (searchQuery.trim()) {
+                    closeSearch();
+                    router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
+                  }
+                }}
+              >
                 <input
                   ref={searchInputRef}
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
                   type="text"
                   placeholder="Search"
                   className="w-full bg-transparent text-white text-3xl md:text-5xl font-serif tracking-wide placeholder:text-white/80 focus:outline-none border-none pb-4 pr-14"
@@ -281,9 +323,37 @@ export default function Sidebar() {
                     <line x1="6" y1="6" x2="18" y2="18" />
                   </svg>
                 </button>
-              </div>
+              </form>
+
+              {/* Suggestions Dropdown */}
+              {searchQuery.trim().length >= 2 && (
+                <div className="absolute top-[100%] left-0 w-full mt-2 bg-[#1a1a1a] border border-zinc-800 rounded-lg shadow-2xl overflow-hidden z-[270]">
+                  {isSearching ? (
+                    <div className="p-4 text-zinc-400 font-serif text-sm">Loading suggestions...</div>
+                  ) : suggestions.length > 0 ? (
+                    <ul className="py-2">
+                      {suggestions.map((s, idx) => (
+                        <li key={idx}>
+                          <Link 
+                            href={s.link}
+                            onClick={closeSearch}
+                            className="flex items-center justify-between px-4 py-3 hover:bg-brandYellow hover:text-brandBlack transition-colors text-white font-serif"
+                          >
+                            <span className="truncate pr-4">{s.title}</span>
+                            <span className="text-xs font-mono opacity-70 uppercase tracking-widest shrink-0">{s.type}</span>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <div className="p-4 text-zinc-400 font-serif text-sm">No exact matches found. Hit Enter to search deeper.</div>
+                  )}
+                </div>
+              )}
+
               {/* Yellow underline */}
               <div className="h-[2px] w-full bg-brandYellow" />
+              </div>
               {/* Hint text */}
               <p className="mt-5 text-zinc-400 text-sm font-serif">
                 Hit enter to search or ESC to close

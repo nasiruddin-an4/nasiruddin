@@ -3,7 +3,6 @@
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import AnimatedHeading from "@/app/components/AnimatedHeading";
-import Footer from "@/app/components/Footer";
 
 const photos = [
   "/ab4.jpg",
@@ -216,7 +215,6 @@ export default function ProfessionalPhotosPage() {
         </div>
       )}
 
-      <Footer />
 
       <style jsx global>{`
         @keyframes lbFade {

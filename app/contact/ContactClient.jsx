@@ -3,7 +3,6 @@
 import { useState } from "react";
 import AnimatedHeading from "@/app/components/AnimatedHeading";
 import { MoveRight } from "lucide-react";
-import Footer from "@/app/components/Footer";
 import {
   FaFacebookF,
   FaInstagram,
@@ -11,7 +10,7 @@ import {
   FaXTwitter,
   FaBehance,
 } from "react-icons/fa6";
-import socialLinks from "@/data/social.json";
+
 
 const iconMap = {
   FaLinkedinIn,
@@ -21,7 +20,7 @@ const iconMap = {
   FaBehance,
 };
 
-export default function ContactPage() {
+export default function ContactClient({ socialLinks = [] }) {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -237,7 +236,6 @@ export default function ContactPage() {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 }

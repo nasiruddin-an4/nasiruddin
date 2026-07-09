@@ -3,12 +3,11 @@
 import { useState, useRef, useEffect } from "react";
 import AnimatedHeading from "@/app/components/AnimatedHeading";
 import PressCard from "@/app/components/PressCard";
-import pressData from "@/data/news.json";
+
 import Link from "next/link";
 import { FaChevronDown } from "react-icons/fa";
-import Footer from "@/app/components/Footer";
 
-export default function NewsBlogsPage() {
+export default function NewsBlogsClient({ pressData = [] }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [filterType, setFilterType] = useState("All");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -145,7 +144,6 @@ export default function NewsBlogsPage() {
         )}
       </div>
 
-      <Footer />
     </main>
   );
 }
