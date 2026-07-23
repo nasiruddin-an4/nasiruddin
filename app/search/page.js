@@ -1,5 +1,6 @@
 import { fetchProjects, fetchExperiences, fetchEducations, fetchNews, fetchBlogs } from "@/lib/api";
 import SearchClient from "./SearchClient";
+import { Suspense } from "react";
 
 export const metadata = {
   title: "Search | Nasir Uddin",
@@ -21,13 +22,15 @@ export default async function SearchPage() {
         <h1 className="text-4xl md:text-5xl uppercase tracking-wider mb-8 font-serif">
           Search Results
         </h1>
-        <SearchClient 
-          projects={projects} 
-          experiences={experiences} 
-          educations={educations}
-          news={news}
-          blogs={blogs}
-        />
+        <Suspense fallback={<div className="text-zinc-400 font-serif">Loading search...</div>}>
+          <SearchClient 
+            projects={projects} 
+            experiences={experiences} 
+            educations={educations}
+            news={news}
+            blogs={blogs}
+          />
+        </Suspense>
       </div>
     </main>
   );
