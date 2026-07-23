@@ -17,7 +17,7 @@ export default function ExperienceGrid({ experiences }) {
           EXPERIENCE
         </AnimatedHeading>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 px-12 pb-12">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 px-0 md:px-12 pb-12">
         {experiences.map((exp, idx) => (
           <ExperienceCard key={idx} exp={exp} index={idx} />
         ))}
@@ -63,18 +63,18 @@ function ExperienceCard({ exp, index }) {
 
         {/* Logo Container (Always Visible, Fades on hover) */}
         <div
-          className={`absolute inset-0 flex items-center justify-center p-8 transition-all duration-700 z-10 
+          className={`absolute inset-0 flex items-start md:items-center justify-start md:justify-center p-8 transition-all duration-700 z-10 
           opacity-100 ${isHovered ? "md:-translate-y-8 md:opacity-10 md:scale-95" : "md:translate-y-0"}`}
         >
           {exp.logo && !imageError ? (
             <div
-              className={`relative transition-all duration-700 w-full h-[60%] ${isHovered ? "md:grayscale-0 md:brightness-100" : "md:grayscale md:brightness-200"}`}
+              className={`relative transition-all duration-700 w-[75%] md:w-full h-[35%] md:h-[60%] ${isHovered ? "md:grayscale-0 md:brightness-100" : "md:grayscale md:brightness-200"}`}
             >
               <Image
                 src={exp.logo}
                 alt={exp.company}
                 fill
-                className="object-contain"
+                className="object-contain object-left md:object-center"
                 onError={() => setImageError(true)}
               />
             </div>
