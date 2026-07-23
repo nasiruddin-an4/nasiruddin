@@ -1,8 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { FaQuoteLeft } from "react-icons/fa6";
+import { motion } from "framer-motion";
 
 export default function ExperienceHero() {
   return (
@@ -15,49 +15,75 @@ export default function ExperienceHero() {
       </div>
 
       {/* Hero Section */}
-      <div className="relative h-[450px] md:h-[800px] w-full bg-[#0a0a0a] overflow-hidden border-b border-zinc-900">
+      <div className="relative h-[450px] md:h-[600px] w-full bg-[#0a0a0a] overflow-hidden border-b border-zinc-900">
         {/* Background Overlay with Pattern effect */}
         <div className="absolute inset-0 z-0">
-          <Image
-            src="/heroBG.jpeg"
-            alt="Background Pattern"
-            fill
-            className="object-cover grayscale opacity-25"
-            priority
+          <div
+            className="w-full h-full opacity-25"
+            style={{
+              backgroundImage: "url('/heroBG.jpeg')",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              filter: "grayscale(100%)"
+            }}
           />
           {/* Subtle gradient to focus on the text and portrait */}
-          <div className="absolute inset-0 bg-linear-to-r from-brandBlack via-brandBlack/70 to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-r from-brandBlack via-brandBlack/90 to-transparent" />
         </div>
 
-        <div className="container mx-auto h-full px-6 md:px-16 lg:px-24 relative z-10 flex flex-col md:flex-row items-center">
-          {/* Left Content: Quote & Intro */}
-          <div className="flex-1 pt-12 md:pt-0 md:pr-10 text-left">
-            <div className="mb-4">
+        <div className="container mx-auto h-full px-6 md:px-16 lg:px-24 relative z-10 flex flex-col items-center justify-center text-center">
+          {/* Content: Quote & Intro */}
+          <div className="w-full max-w-6xl mx-auto flex flex-col items-center pt-16 md:pt-0">
+            <div className="mb-4 md:mb-8">
               <FaQuoteLeft className="text-brandYellow text-3xl md:text-5xl" />
             </div>
 
-            <h1 className="text-3xl md:text-7xl text-white mb-4 max-w-5xl">
-              Building modern web applications that drive business growth.
+            <h1 className="text-4xl md:text-6xl lg:text-7xl text-white mb-6 font-bold leading-tight">
+              My Professional Journey <br /> & <span className="text-brandYellow">Experience.</span>
             </h1>
 
-            <p className="text-gray-400 text-sm md:text-lg font-serif font-medium leading-relaxed max-w-5xl opacity-90">
-              Software Engineer Nasir Uddin is a Full-Stack Developer and
-              Digital Marketer specializing in React, Next.js, and responsive
-              web solutions.
+            <p className="text-gray-400 text-base md:text-xl font-serif font-medium leading-relaxed max-w-2xl opacity-90 mx-auto">
+              A timeline of my professional roles, highlighting my journey as a Software Engineer and Digital Marketer across various companies and projects.
             </p>
           </div>
 
-          {/* Right Side: Portrait Image */}
-          <div className="flex-1 h-full relative flex items-end justify-center md:justify-end">
-            <div className="relative w-full md:w-[120%] h-[80%] md:h-full lg:h-[120%] md:-mb-2 translate-y-4 md:translate-y-8">
-              <Image
-                src="/Hero.webp"
-                alt="Nasir Uddin"
-                fill
-                className="object-contain object-bottom pointer-events-none drop-shadow-[0_20px_50px_rgba(0,0,0,0.8)]"
-                priority
-              />
-            </div>
+          {/* Balloon Pop Background Animation */}
+          <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-[-1]">
+            {Array.from({ length: 15 }).map((_, i) => {
+              // Deterministic values to prevent hydration mismatch
+              const left = `${(i * 17) % 100}%`;
+              const size = ((i * 13) % 50) + 20; // 20px to 70px
+              const duration = ((i * 7) % 4) + 4; // 4s to 8s
+              const delay = (i * 11) % 5;
+              const isSolid = i % 4 === 0;
+
+              return (
+                <motion.div
+                  key={i}
+                  className="absolute rounded-full"
+                  style={{
+                    left: left,
+                    width: size,
+                    height: size,
+                    backgroundColor: isSolid ? "rgba(252,235,59,0.6)" : "transparent",
+                    border: isSolid ? "none" : "2px solid rgba(252,235,59,0.3)",
+                    bottom: "-100px",
+                  }}
+                  animate={{
+                    y: [0, -400, -600],
+                    scale: [0.5, 1, 2.5],
+                    opacity: [0, 0.8, 0],
+                  }}
+                  transition={{
+                    duration: duration,
+                    delay: delay,
+                    repeat: Infinity,
+                    times: [0, 0.8, 1], // Floats up slowly, then scales up and fades out fast (pop)
+                    ease: "easeOut",
+                  }}
+                />
+              );
+            })}
           </div>
         </div>
       </div>

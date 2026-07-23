@@ -1,9 +1,8 @@
-import { fetchProjects } from "@/lib/api";
+import { fetchProjects, fetchNews } from "@/lib/api";
 import HomeClient from "./HomeClient.jsx";
 import AboutSection from "./components/AboutSection";
 import ProjectSection from "./components/ProjectSection";
-import ReadThisSection from "./components/ReadThisSection";
-
+import RecentPress from "./components/RecentPress";
 
 export const metadata = {
   title: "Nasir Uddin | Software Engineer",
@@ -12,12 +11,13 @@ export const metadata = {
 
 export default async function Home() {
   const projectsData = await fetchProjects();
+  const newsData = await fetchNews();
 
   return (
     <HomeClient>
       <AboutSection />
       <ProjectSection projectsData={projectsData} />
-      <ReadThisSection />
+      <RecentPress pressData={newsData} />
     </HomeClient>
   );
 }

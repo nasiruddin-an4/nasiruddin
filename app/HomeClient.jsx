@@ -1,74 +1,36 @@
 "use client";
 
-import { useState } from "react";
-import { FaPlay, FaXmark } from "react-icons/fa6";
-export default function HomeClient({ children }) {
-  const [isVideoOpen, setIsVideoOpen] = useState(false);
+import { HeroGeometric } from "@/components/ui/shape-landing-hero";
+import { ArrowRight, Sparkles } from "lucide-react";
+import Link from "next/link";
 
+export default function HomeClient({ children }) {
   return (
     <>
       <main className="flex-1 w-full flex flex-col relative bg-brandBlack">
-        {/* Hero Image Section */}
-        <div className="flex-1 min-h-[50vh] md:min-h-screen w-full flex flex-col justify-end pb-6 px-8 md:px-16 relative bg-brandBlack overflow-hidden">
-          {/* Background Image with horizontal flip */}
-          <div
-            className="absolute inset-0 bg-cover bg-right md:bg-center"
-            style={{ backgroundImage: "url('/nasirHeroBG.png')" }}
-          />
-          <div className="absolute inset-0 bg-linear-to-t from-brandBlack/50 to-transparent pointer-events-none" />
-
-          {/* Content over image */}
-          <div className="container mx-auto px-2 lg:px-8 relative z-10 w-full mb-4">
-            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-12 md:gap-24 w-full">
-              <div className="w-full md:w-3/5">
-
-                <h1 className="text-left font-bold drop-shadow-xl flex flex-col gap-2 md:gap-4">
-                  <span className="text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight">
-                    Nasir Uddin
-                  </span>
-                  <span className="text-zinc-200 text-lg sm:text-xl md:text-3xl lg:text-4xl font-normal leading-snug max-w-4xl">
-                    Software Engineer <span className="font-light italic text-zinc-400">&</span> Full-Stack Digital Marketer Building Impactful Digital Experiences.
-                  </span>
-                </h1>
-              </div>
-
-              <div className="w-full md:w-2/5 justify-start md:justify-center hidden md:flex">
-                <button
-                  onClick={() => setIsVideoOpen(true)}
-                  className="flex items-center justify-center w-[80px] h-[80px] rounded-full border-[3px] border-white text-white hover:bg-white hover:text-brandBlack transition-all shrink-0 group md:mt-0 cursor-pointer hover:scale-110 duration-300"
-                >
-                  <FaPlay className="text-[28px] ml-2 group-hover:scale-110 transition-transform duration-300" />
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+        {/* Hero Section */}
+        <HeroGeometric 
+          badge="Welcome! Let's solve your problems together."
+          title1="Turning Your Challenges"
+          title2="Into Digital Success"
+          description="Hi, I'm Nasir Uddin — a Software Engineer & Digital Marketer. I build scalable applications and marketing strategies designed to grow your business and solve real-world problems."
+          actions={
+            <>
+              <Link href="/contact" className="flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-white text-black font-semibold hover:bg-white/90 transition-all hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(255,255,255,0.2)]">
+                Start a Project
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link href="/projects" className="flex items-center justify-center gap-2 px-8 py-3.5 rounded-full border border-white/20 text-white hover:bg-white/10 transition-all hover:scale-105 active:scale-95 backdrop-blur-md">
+                View My Work
+                <Sparkles className="w-4 h-4" />
+              </Link>
+            </>
+          }
+        />
 
         {children}
       </main>
 
-      {/* Video Modal */}
-      {isVideoOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-brandBlack">
-          <button
-            onClick={() => setIsVideoOpen(false)}
-            className="absolute top-6 right-6 text-white text-4xl hover:text-gray-300 transition-colors z-60"
-          >
-            <FaXmark />
-          </button>
-
-          <div className="w-full h-auto max-h-screen md:w-[90vw] md:max-w-[1400px] aspect-video relative z-50 flex items-center justify-center">
-            <iframe
-              className="w-full h-full"
-              src="https://www.youtube.com/embed/LXb3EKWsInQ?autoplay=1"
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
-          </div>
-        </div>
-      )}
     </>
   );
 }

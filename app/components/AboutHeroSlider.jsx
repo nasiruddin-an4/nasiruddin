@@ -10,35 +10,35 @@ const timelineData = [
     year: "2021",
     description:
       "Begins career at Daffodil Institute of IT (DIIT) as Assistant Officer in Creative & Digital Marketing, managing social media platforms and executing digital campaigns.",
-    image: "/ab4.jpg",
+    image: "/diit2020.jpg",
   },
   {
     id: 2,
     year: "2023",
     description:
       "Takes on a part-time role as Social Media Creative Designer at SurmaTechZone, designing visual assets and conducting audience engagement research.",
-    image: "/ab5.jpg",
+    image: "/surmatech.jpg",
   },
   {
     id: 3,
     year: "2024",
     description:
       "Joins Daffodil International University (DIU) as Full Stack Developer, building responsive web applications with React JS, Next JS, and Tailwind CSS for institutional platforms.",
-    image: "/abdulla-1.jpg",
+    image: "/diu.jpg",
   },
   {
     id: 4,
     year: "2025",
     description:
       "Completes B.Sc. (Eng.) in Computer Science & Engineering from DIIT. Gains strong foundation in software engineering, algorithms, and modern web technologies.",
-    image: "/abdullah2.jpg",
+    image: "/graduation.jpg",
   },
   {
     id: 5,
     year: "2026",
     description:
       "Joins Betopia Group as Software Engineer and Executive, leading corporate website projects, digital branding, and web platform development across 22+ business units.",
-    image: "/heroBG.jpeg",
+    image: "/betopiagroup2.jpg",
   },
 ];
 

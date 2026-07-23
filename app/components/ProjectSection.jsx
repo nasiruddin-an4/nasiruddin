@@ -13,8 +13,17 @@ export default function ProjectSection({ projectsData = [] }) {
   return (
     <section className="w-full bg-brandBlack text-white flex flex-col py-16 md:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 border-t border-zinc-800/50">
       <div className="container mx-auto max-w-7xl">
-        <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-12 md:mb-16 gap-6">
-          <div>
+        <motion.div 
+          className="flex flex-col md:flex-row items-start md:items-end justify-between mb-12 md:mb-16 gap-6"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={{
+            visible: { transition: { staggerChildren: 0.2 } },
+            hidden: {}
+          }}
+        >
+          <motion.div variants={{ hidden: { opacity: 0, x: -30 }, visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: "easeOut" } } }}>
             <div className="mb-4">
               <AnimatedHeading
                 className="text-2xl md:text-3xl lg:text-4xl"
@@ -30,13 +39,15 @@ export default function ProjectSection({ projectsData = [] }) {
             <p className="mt-4 text-zinc-400 text-lg md:text-xl font-serif max-w-2xl">
               A selection of my recent work in web development, design, and digital experiences.
             </p>
-          </div>
-          <Link href="/projects">
-            <button className="bg-transparent hover:bg-white text-white hover:text-brandBlack border border-white transition-colors duration-300 px-6 py-4 uppercase tracking-widest text-sm font-bold">
-              View All Projects
-            </button>
-          </Link>
-        </div>
+          </motion.div>
+          <motion.div variants={{ hidden: { opacity: 0, x: 30 }, visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: "easeOut" } } }}>
+            <Link href="/projects">
+              <button className="bg-transparent hover:bg-white text-white hover:text-brandBlack border border-white transition-colors duration-300 px-6 py-4 uppercase tracking-widest text-sm font-bold">
+                View All Projects
+              </button>
+            </Link>
+          </motion.div>
+        </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-14">
           {recentProjects.map((project, i) => (

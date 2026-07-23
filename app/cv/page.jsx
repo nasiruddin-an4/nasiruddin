@@ -46,23 +46,23 @@ export default async function CVPage() {
                 <span className="w-8 h-8 rounded-full bg-zinc-900 flex items-center justify-center text-brandYellow print:bg-transparent print:text-brandBlack shrink-0">
                   <FaMapMarkerAlt />
                 </span>
-                <span>Savar, Dhaka, Bangladesh</span>
+                <span>Dhaka, Bangladesh</span>
               </div>
               <div className="flex items-center gap-3">
                 <span className="w-8 h-8 rounded-full bg-zinc-900 flex items-center justify-center text-brandYellow print:bg-transparent print:text-brandBlack shrink-0">
                   <FaPhoneAlt />
                 </span>
-                <span>+880 1XX XXXX XXX</span>
+                <span>+880 1815654292</span>
               </div>
               <div className="flex items-center gap-3">
                 <span className="w-8 h-8 rounded-full bg-zinc-900 flex items-center justify-center text-brandYellow print:bg-transparent print:text-brandBlack shrink-0">
                   <FaEnvelope />
                 </span>
                 <a
-                  href="mailto:your.email@example.com"
+                  href="mailto:nasiruddin.an4@gmail.com"
                   className="hover:text-white print:text-brandBlack hover:underline transition-all"
                 >
-                  your.email@example.com
+                  nasiruddin.an4@gmail.com
                 </a>
               </div>
               {socialLinks.find((s) => s.name === "LinkedIn") && (

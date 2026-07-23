@@ -21,6 +21,7 @@ const categories = [
 export default function ProjectsClient({ projectsData = [] }) {
   const [activeCategory, setActiveCategory] = useState("All Categories");
   const [hoveredId, setHoveredId] = useState(null);
+  const [sortBy, setSortBy] = useState("Newest");
 
   // Custom Dropdown State
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -47,10 +48,20 @@ export default function ProjectsClient({ projectsData = [] }) {
     c.toLowerCase().includes(dropdownSearch.toLowerCase())
   );
 
-  const filteredProjects =
+  let filteredProjects =
     activeCategory === "All Categories"
-      ? projectsData
+      ? [...projectsData]
       : projectsData.filter((p) => p.category === activeCategory);
+
+  if (sortBy === "Newest") {
+    filteredProjects.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+  } else if (sortBy === "Oldest") {
+    filteredProjects.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+  } else if (sortBy === "A-Z") {
+    filteredProjects.sort((a, b) => (a.title || "").localeCompare(b.title || ""));
+  } else if (sortBy === "Z-A") {
+    filteredProjects.sort((a, b) => (b.title || "").localeCompare(a.title || ""));
+  }
 
   const handleCategoryChange = (cat) => {
     setActiveCategory(cat);
@@ -161,20 +172,39 @@ export default function ProjectsClient({ projectsData = [] }) {
           )}
         </div>
 
-        {/* Desktop Buttons */}
-        <div className="hidden md:flex flex-wrap gap-2">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => handleCategoryChange(cat)}
-              className={`px-5 py-2 text-xs font-serif transition-all duration-300 rounded-full border ${activeCategory === cat
-                ? "bg-white text-brandBlack border-white"
-                : "bg-transparent text-zinc-500 border-zinc-700 hover:border-zinc-400 hover:text-zinc-200"
-                }`}
+        {/* Desktop Buttons & Sorting */}
+        <div className="hidden md:flex flex-wrap gap-4 items-center justify-between w-full">
+          <div className="flex flex-wrap gap-2">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => handleCategoryChange(cat)}
+                className={`px-5 py-2 text-xs font-serif transition-all duration-300 rounded-full border ${activeCategory === cat
+                  ? "bg-white text-brandBlack border-white"
+                  : "bg-transparent text-zinc-500 border-zinc-700 hover:border-zinc-400 hover:text-zinc-200"
+                  }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+          
+          {/* Sorting Dropdown */}
+          <div className="relative">
+            <select
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value)}
+              className="appearance-none bg-[#1a1a1a] text-white border border-zinc-700 rounded-lg pl-4 pr-10 py-2 text-sm focus:outline-none focus:border-brandYellow cursor-pointer hover:border-zinc-500 transition-colors"
             >
-              {cat}
-            </button>
-          ))}
+              <option value="Newest">Newest First</option>
+              <option value="Oldest">Oldest First</option>
+              <option value="A-Z">A-Z</option>
+              <option value="Z-A">Z-A</option>
+            </select>
+            <div className="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none">
+              <FaChevronDown className="text-zinc-400 text-xs" />
+            </div>
+          </div>
         </div>
       </div>
 
