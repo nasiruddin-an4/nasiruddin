@@ -108,7 +108,6 @@ export default async function ProjectDetails({ params }) {
           </div>
         </div>
       </section>
-      <Footer />
     </div>
   );
 }
