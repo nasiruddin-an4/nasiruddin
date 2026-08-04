@@ -7,6 +7,9 @@ import RecentPress from "../components/RecentPress";
 export const metadata = {
   title: "Experience | Nasir Uddin",
   description: "Professional experience of Nasir Uddin — Software Engineer & Full-Stack Digital Marketer.",
+  alternates: {
+    canonical: "/experience",
+  },
 };
 
 export default async function Experience() {

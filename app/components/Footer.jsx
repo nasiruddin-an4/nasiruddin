@@ -64,7 +64,7 @@ export default async function Footer() {
               key={link.name}
               href={link.url}
               target="_blank" rel="noopener noreferrer"
-              className={`w-12 h-12 rounded-full flex items-center justify-center ${link.color} hover:scale-110 transition-transform duration-300`}
+              className="w-12 h-12 rounded-full flex items-center justify-center text-white hover:text-[#fceb3b] hover:scale-110 transition-all duration-300"
             >
               <Icon className="text-xl sm:text-2xl" />
             </Link>

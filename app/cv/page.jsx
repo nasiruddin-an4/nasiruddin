@@ -14,6 +14,14 @@ import AnimatedHeading from "../components/AnimatedHeading";
 import { fetchSettings } from "@/lib/api";
 import PrintButton from "../components/PrintButton";
 
+export const metadata = {
+  title: "CV | Nasir Uddin",
+  description: "Curriculum Vitae of Nasir Uddin — Software Engineer and Full-Stack Digital Marketer based in Dhaka.",
+  alternates: {
+    canonical: "/cv",
+  },
+};
+
 export default async function CVPage() {
   const settings = await fetchSettings();
   const socialLinks = settings?.socials || [];

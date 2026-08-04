@@ -3,7 +3,10 @@ import NewsBlogsClient from "./NewsBlogsClient.jsx";
 
 export const metadata = {
   title: "News & Blogs | Nasir Uddin",
-  description: "Insights, press releases, and articles exploring the intersection of software engineering and digital marketing.",
+  description: "Read insights, press releases, and articles by Nasir Uddin, exploring the intersection of software engineering, digital marketing, and AI.",
+  alternates: {
+    canonical: "/news-blogs",
+  },
 };
 
 export default async function NewsBlogsPage() {

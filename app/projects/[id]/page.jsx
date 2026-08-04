@@ -14,6 +14,9 @@ export async function generateMetadata({ params }) {
   return {
     title: `${project.title} | Nasir Uddin`,
     description: project.description ? project.description.substring(0, 160) : `View ${project.title} by Nasir Uddin.`,
+    alternates: {
+      canonical: `/projects/${id}`,
+    },
   };
 }
 

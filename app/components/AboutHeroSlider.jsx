@@ -108,12 +108,12 @@ function TimelineCard({ item }) {
 
         {/* Content */}
         <div
-          className={`absolute inset-x-0 bottom-0 p-6 sm:p-10 md:p-12 lg:p-16 w-full text-white pointer-events-none z-10 transition-all duration-500 ${isHovered ? "-translate-y-4" : "translate-y-0"}`}
+          className={`absolute inset-x-0 bottom-0 p-4 sm:p-6 md:p-8 lg:p-10 w-full text-white pointer-events-none z-10 transition-all duration-500 ${isHovered ? "-translate-y-4" : "translate-y-0"}`}
         >
-          <h2 className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl uppercase drop-shadow-2xl mb-2 sm:mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl uppercase drop-shadow-2xl mb-1 sm:mb-2">
             {item.year}
           </h2>
-          <p className="text-sm sm:text-base md:text-lg lg:text-xl font-serif text-gray-300 leading-relaxed max-w-lg drop-shadow-lg">
+          <p className="text-xs sm:text-sm md:text-base lg:text-base font-serif text-gray-300 leading-relaxed max-w-lg drop-shadow-lg">
             {item.description}
           </p>
         </div>
