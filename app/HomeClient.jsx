@@ -11,9 +11,9 @@ export default function HomeClient({ children }) {
         {/* Hero Section */}
         <HeroGeometric 
           badge="Welcome! Let's solve your problems together."
-          title1="Turning Your Challenges"
-          title2="Into Digital Success"
-          description="Hi, I'm Nasir Uddin — a Software Engineer & Digital Marketer. I build scalable applications and marketing strategies designed to grow your business and solve real-world problems."
+          title1="Nasir Uddin"
+          title2="Software Engineer & Marketer"
+          description="Hi, I'm Nasir — a Full-Stack Software Engineer and Digital Marketer based in Dhaka. I build high-performance web applications and marketing strategies designed to grow your business."
           actions={
             <>
               <Link href="/contact" className="flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-white text-black font-semibold hover:bg-white/90 transition-all hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(255,255,255,0.2)]">

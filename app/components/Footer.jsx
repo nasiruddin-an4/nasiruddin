@@ -74,7 +74,7 @@ export default async function Footer() {
 
       {/* Copyright Links */}
       <div className="flex flex-col items-center justify-center text-xs sm:text-sm text-gray-400 font-sans mt-auto border-t border-zinc-800 pt-6 md:pt-8 w-full">
-        <p className="mb-2">© Nasir Uddin 2025. All rights reserved.</p>
+        <p className="mb-2">© Nasir Uddin 2026. All rights reserved.</p>
         <div className="flex items-center gap-2">
           <Link href="#" className="hover:text-white transition-colors">
             Privacy Policy

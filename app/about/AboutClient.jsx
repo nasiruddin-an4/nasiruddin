@@ -77,26 +77,17 @@ export default function AboutClient({ topProjects, educationRecords }) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 md:gap-12 lg:gap-20" style={{ transformStyle: "preserve-3d" }}>
           {/* Main Bio Content */}
           <motion.div className="lg:col-span-7 flex flex-col order-2 lg:order-1" style={{ y: y1 }}>
-            <h2 className="font-oswald uppercase leading-snug md:leading-tight text-xl sm:text-2xl md:text-4xl lg:text-5xl font-semibold tracking-tight mb-5 sm:mb-7 md:mb-9 text-[#f3f1ea]">
-              Building responsive, user-friendly, and
-              high-performance digital solutions.
-            </h2>
+            <h1 className="font-oswald uppercase leading-snug md:leading-tight text-xl sm:text-2xl md:text-4xl lg:text-5xl font-semibold tracking-tight mb-5 sm:mb-7 md:mb-9 text-[#f3f1ea]">
+              Software Engineer & Digital Marketer delivering high-performance web solutions.
+            </h1>
 
             <div className="space-y-4 sm:space-y-6 md:space-y-8 text-[#a8a8a3] text-sm sm:text-base md:text-lg lg:text-xl font-serif leading-relaxed">
               <p>
-                I am a Software Engineer and Full-Stack Digital Marketer with
-                experience in developing modern web applications, corporate
-                websites, enterprise dashboards, and digital products. I have a
-                strong interest in creating responsive, user-friendly, and
-                high-performance digital solutions that support business growth
-                and enhance user experience.
+                I am a <strong>Software Engineer</strong> and <strong>Full-Stack Digital Marketer</strong> based in Dhaka, Bangladesh, with extensive experience in developing modern web applications, corporate websites, enterprise dashboards, and data-driven digital products. My expertise lies in leveraging the React and Next.js ecosystems to create highly responsive, SEO-optimized, and high-performance solutions that support business growth and enhance user experience.
               </p>
 
               <p>
-                I enjoy combining software engineering with digital marketing to
-                build impactful digital experiences. By leveraging modern web
-                technologies and AI-powered tools, I continuously strive to
-                deliver innovative, efficient, and business-focused solutions.
+                I enjoy combining advanced software engineering principles with targeted digital marketing strategies to build impactful online experiences. By leveraging modern web technologies and AI-powered tools, I continuously strive to deliver innovative, efficient, and scalable business solutions.
               </p>
 
               {/* Signature pull quote — oversized mark instead of a plain border box */}
@@ -134,7 +125,7 @@ export default function AboutClient({ topProjects, educationRecords }) {
                   <div className="relative w-full h-full overflow-hidden">
                     <Image
                       src="/surmatech.jpg"
-                      alt="Nasir Uddin"
+                      alt="Nasir Uddin - Software Engineer and Next.js Developer in Dhaka"
                       fill
                       priority
                       className="object-cover object-top transition-transform duration-1000 hover:scale-105 grayscale hover:grayscale-0"
