@@ -12,6 +12,10 @@ export const metadata = {
   authors: [{ name: "Nasir Uddin", url: "https://nasiruddin.net" }],
   creator: "Nasir Uddin",
   publisher: "Nasir Uddin",
+  icons: {
+    icon: '/nasirLogo.png',
+    apple: '/nasirLogo.png',
+  },
   alternates: {
     canonical: "/",
     languages: {
