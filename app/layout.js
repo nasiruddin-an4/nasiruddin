@@ -13,8 +13,8 @@ export const metadata = {
   creator: "Nasir Uddin",
   publisher: "Nasir Uddin",
   icons: {
-    icon: '/nasirLogo.png',
-    apple: '/nasirLogo.png',
+    icon: '/ogimg.png',
+    apple: '/ogimg.png',
   },
   alternates: {
     canonical: "/",
@@ -31,7 +31,7 @@ export const metadata = {
     siteName: "Nasir Uddin Portfolio",
     images: [
       {
-        url: "/OGImg.png",
+        url: "/ogimg.png",
         width: 1200,
         height: 630,
         alt: "Nasir Uddin - Software Engineer & Digital Marketer",
@@ -42,7 +42,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Nasir Uddin | Software Engineer",
     description: "Software Engineer and Full-Stack Digital Marketer based in Dhaka.",
-    images: ["/OGImg.png"],
+    images: ["/ogimg.png"],
     creator: "@nasiruddin", 
   },
   robots: {
@@ -77,7 +77,7 @@ export default async function RootLayout({ children }) {
               "@type": "Person",
               "name": "Nasir Uddin",
               "url": "https://nasiruddin.net",
-              "image": "https://nasiruddin.net/OGImg.png",
+              "image": "https://nasiruddin.net/ogimg.png",
               "jobTitle": "Software Engineer & Digital Marketer",
               "worksFor": {
                 "@type": "Organization",
