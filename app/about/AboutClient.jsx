@@ -10,7 +10,7 @@ import EducationGrid from "../components/EducationGrid";
 
 export default function AboutClient({ topProjects, educationRecords }) {
   const containerRef = useRef(null);
-  
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"]
@@ -21,7 +21,7 @@ export default function AboutClient({ topProjects, educationRecords }) {
   const y2 = useTransform(scrollYProgress, [0, 1], [0, -100]);
   const rotateX = useTransform(scrollYProgress, [0, 1], [0, 10]);
   const scale = useTransform(scrollYProgress, [0, 1], [1, 0.9]);
-  
+
   const imgRotateY = useTransform(scrollYProgress, [0, 1], [0, 15]);
   const imgScale = useTransform(scrollYProgress, [0, 0.5, 1], [1, 1.05, 1.1]);
 
@@ -30,7 +30,7 @@ export default function AboutClient({ topProjects, educationRecords }) {
       {/* Full Bleed Draggable Hero Slider */}
       <AboutHeroSlider />
 
-      <motion.div 
+      <motion.div
         className="relative w-full max-w-7xl mx-auto px-4 md:px-0 pb-10 mt-8 sm:mt-12 md:mt-20"
         style={{ perspective: 1200, scale, rotateX }}
       >
@@ -45,7 +45,7 @@ export default function AboutClient({ topProjects, educationRecords }) {
         </div>
 
         {/* Header Block */}
-        <motion.div 
+        <motion.div
           className="mb-8 sm:mb-10 md:mb-14 border-b border-[#2a2a27] pb-6 sm:pb-8 md:pb-10"
           style={{ y: y1 }}
         >
@@ -118,14 +118,14 @@ export default function AboutClient({ topProjects, educationRecords }) {
           <motion.div className="lg:col-span-5 h-full relative order-1 lg:order-2 hidden md:block" style={{ y: y2 }}>
             <div className="sticky top-24 space-y-6 sm:space-y-8" style={{ perspective: 1200 }}>
               <div className="w-[55%] sm:w-[65%] md:w-full mx-auto md:mx-0">
-                <motion.div 
+                <motion.div
                   className="relative w-full aspect-square sm:aspect-3/4 md:aspect-4/5 bg-[#141412] border border-[#2a2a27] p-1 sm:p-2 shadow-2xl"
                   style={{ rotateY: imgRotateY, scale: imgScale }}
                 >
                   <div className="relative w-full h-full overflow-hidden">
                     <Image
-                      src="/surmatech.jpg"
-                      alt="Nasir Uddin - Software Engineer and Next.js Developer in Dhaka"
+                      src="/about_img.png"
+                      alt="Nasir Uddin - Software Engineer"
                       fill
                       priority
                       className="object-cover object-top transition-transform duration-1000 hover:scale-105 grayscale hover:grayscale-0"
@@ -143,7 +143,7 @@ export default function AboutClient({ topProjects, educationRecords }) {
               </div>
 
               {/* Spec sheet card — replaces the plain paragraph block */}
-              <motion.div 
+              <motion.div
                 className="bg-[#141412] border border-[#2a2a27] shadow-xl"
                 whileHover={{ scale: 1.05, rotateX: 5 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}

@@ -58,9 +58,12 @@ export const metadata = {
   },
 };
 
-import Sidebar from "./components/Sidebar";
 import { fetchSettings } from "@/lib/api";
+import LayoutWrapper from "./components/LayoutWrapper";
+import Sidebar from "./components/Sidebar";
 import Footer from "./components/Footer";
+import AnalyticsTracker from "./components/AnalyticsTracker";
+import { Suspense } from "react";
 
 export default async function RootLayout({ children }) {
   const settings = await fetchSettings();
@@ -127,15 +130,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           />
         </noscript>
         {/* End Google Tag Manager (noscript) */}
-        <div className="flex min-h-screen">
-          <Sidebar socialLinks={socialLinks} />
-          <div className="flex-1 ml-0 md:ml-72 pt-[72px] md:pt-0 flex flex-col min-h-screen">
-            {children}
-            <div className="print:hidden mt-auto">
-              <Footer />
-            </div>
-          </div>
-        </div>
+        <Suspense fallback={null}>
+          <AnalyticsTracker />
+        </Suspense>
+        <LayoutWrapper sidebar={<Sidebar socialLinks={socialLinks} />} footer={<Footer />}>
+          {children}
+        </LayoutWrapper>
       </body>
     </html>
   );

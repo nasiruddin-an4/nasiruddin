@@ -11,6 +11,12 @@ const ProjectSchema = new mongoose.Schema(
     thumbnail: { type: String },
     liveUrl: { type: String },
     githubUrl: { type: String },
+    coverImage: { type: String },
+    aboutText: { type: String },
+    middleImage: { type: String },
+    problemStatement: { type: String },
+    solutionText: { type: String },
+    showcaseImages: [{ type: String }],
   },
   { timestamps: true }
 );

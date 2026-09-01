@@ -8,7 +8,7 @@ import { revalidatePath } from "next/cache";
 
 export async function getProjects() {
   await dbConnect();
-  const docs = await Project.find({}).sort({ createdAt: -1 });
+  const docs = await Project.find({}).sort({ createdAt: -1 }).lean();
   return JSON.parse(JSON.stringify(docs));
 }
 
@@ -28,9 +28,17 @@ export async function deleteProject(id) {
   revalidatePath("/");
 }
 
+export async function updateProject(id, data) {
+  await dbConnect();
+  await Project.findByIdAndUpdate(id, data);
+  revalidatePath("/admin/projects");
+  revalidatePath("/projects");
+  revalidatePath("/");
+}
+
 export async function getBlogs() {
   await dbConnect();
-  const docs = await Blog.find({}).sort({ createdAt: -1 });
+  const docs = await Blog.find({}).sort({ createdAt: -1 }).lean();
   return JSON.parse(JSON.stringify(docs));
 }
 
@@ -50,7 +58,7 @@ export async function deleteBlog(id) {
 
 export async function getNews() {
   await dbConnect();
-  const docs = await News.find({}).sort({ createdAt: -1 });
+  const docs = await News.find({}).sort({ createdAt: -1 }).lean();
   return JSON.parse(JSON.stringify(docs));
 }
 
