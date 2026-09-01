@@ -59,8 +59,8 @@ export default function AboutClient({ topProjects, educationRecords }) {
 
           <div className="mt-5 sm:mt-6 md:mt-8 flex flex-wrap gap-x-3 gap-y-2">
             {[
-              "Software Engineer",
-              "Full-Stack Digital Marketer",
+              "Full-Stack Software Engineer",
+              "Digital Marketing (Bonus Skill)",
               "AI-Powered Web Solutions",
             ].map((role, i) => (
               <span key={role} className="flex items-center gap-3">
@@ -78,12 +78,12 @@ export default function AboutClient({ topProjects, educationRecords }) {
           {/* Main Bio Content */}
           <motion.div className="lg:col-span-7 flex flex-col order-2 lg:order-1" style={{ y: y1 }}>
             <h1 className="font-oswald uppercase leading-snug md:leading-tight text-xl sm:text-2xl md:text-4xl lg:text-5xl font-semibold tracking-tight mb-5 sm:mb-7 md:mb-9 text-[#f3f1ea]">
-              Software Engineer & Digital Marketer delivering high-performance web solutions.
+              Full-Stack Software Engineer delivering high-performance web solutions.
             </h1>
 
             <div className="space-y-4 sm:space-y-6 md:space-y-8 text-[#a8a8a3] text-sm sm:text-base md:text-lg lg:text-xl font-serif leading-relaxed">
               <p>
-                I am a <strong>Software Engineer</strong> and <strong>Full-Stack Digital Marketer</strong> based in Dhaka, Bangladesh, with extensive experience in developing modern web applications, corporate websites, enterprise dashboards, and data-driven digital products. My expertise lies in leveraging the React and Next.js ecosystems to create highly responsive, SEO-optimized, and high-performance solutions that support business growth and enhance user experience.
+                I am a <strong>Full-Stack Software Engineer</strong> specializing in developing modern web applications, corporate websites, enterprise dashboards, and data-driven digital products. My expertise lies in leveraging the React and Next.js ecosystems to create highly responsive, SEO-optimized, and high-performance solutions that support business growth and enhance user experience.
               </p>
 
               <p>
@@ -150,10 +150,9 @@ export default function AboutClient({ topProjects, educationRecords }) {
               >
                 <dl className="divide-y divide-[#2a2a27]">
                   {[
-                    { label: "Role", value: "Software Engineer / Digital Marketer" },
-                    { label: "Based in", value: "Dhaka, Bangladesh" },
-                    { label: "Status", value: "Open to Full-Stack & Marketing roles" },
-                    { label: "Focus", value: "Software Engineering, Digital Marketing, AI Solutions" },
+                    { label: "Role", value: "Full-Stack Software Engineer" },
+                    { label: "Status", value: "Open to Full-Stack Software Engineering roles" },
+                    { label: "Focus", value: "Software Engineering, Web Architecture, AI Solutions" },
                   ].map((row) => (
                     <div
                       key={row.label}

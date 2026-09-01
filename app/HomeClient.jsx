@@ -9,11 +9,11 @@ export default function HomeClient({ children }) {
     <>
       <main className="flex-1 w-full flex flex-col relative bg-brandBlack">
         {/* Hero Section */}
-        <HeroGeometric 
+        <HeroGeometric
           badge="Welcome! Let's solve your problems together."
           title1="Nasir Uddin"
-          title2="Software Engineer & Marketer"
-          description="Hi, I'm Nasir — a Full-Stack Software Engineer and Digital Marketer based in Dhaka. I build high-performance web applications and marketing strategies designed to grow your business."
+          title2="Full-Stack Software Engineer"
+          description="Hi, I'm Nasir, a Full-Stack Software Engineer. I build high-performance web applications with a bonus superpower in digital marketing strategies to help grow your business."
           actions={
             <>
               <Link href="/contact" className="flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-white text-black font-semibold hover:bg-white/90 transition-all hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(255,255,255,0.2)]">

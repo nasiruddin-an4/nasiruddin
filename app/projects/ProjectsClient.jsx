@@ -272,6 +272,32 @@ export default function ProjectsClient({ projectsData = [] }) {
                       </span>
                     ))}
                   </div>
+                  
+                  {/* Quick Links */}
+                  <div className="flex items-center gap-5 mt-5">
+                    {project.liveUrl && project.liveUrl !== "#" && (
+                      <Link
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-zinc-400 hover:text-brandYellow transition-colors flex items-center gap-2 text-sm font-semibold"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <FaExternalLinkAlt /> Live Demo
+                      </Link>
+                    )}
+                    {project.githubUrl && project.githubUrl !== "#" && (
+                      <Link
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-zinc-400 hover:text-white transition-colors flex items-center gap-2 text-sm font-semibold"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <FaGithub /> Source Code
+                      </Link>
+                    )}
+                  </div>
                 </div>
               </motion.div>
             ))}
