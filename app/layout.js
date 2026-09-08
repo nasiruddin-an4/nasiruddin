@@ -4,7 +4,7 @@ import Script from "next/script";
 export const metadata = {
   metadataBase: new URL("https://nasiruddin.net"),
   title: {
-    default: "Nasir Uddin | Software Engineer & Digital Marketer",
+    default: "Nasir Uddin | Software Engineer & Full-Stack Digital Marketer",
     template: "%s | Nasir Uddin",
   },
   description: "Nasir Uddin is a Software Engineer and Full-Stack Digital Marketer based in Dhaka, specializing in building modern, scalable web applications and SEO optimization.",
@@ -13,20 +13,17 @@ export const metadata = {
   creator: "Nasir Uddin",
   publisher: "Nasir Uddin",
   icons: {
-    icon: '/ogimg.png',
-    apple: '/ogimg.png',
+    icon: '/favicon.png',
+    apple: '/favicon.png',
   },
   alternates: {
     canonical: "/",
-    languages: {
-      "en-US": "/en-US",
-    },
   },
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://nasiruddin.net",
-    title: "Nasir Uddin | Software Engineer & Digital Marketer",
+    title: "Nasir Uddin | Software Engineer & Full-Stack Digital Marketer",
     description: "Nasir Uddin is a Software Engineer and Full-Stack Digital Marketer based in Dhaka, specializing in building modern, scalable web applications.",
     siteName: "Nasir Uddin Portfolio",
     images: [
@@ -34,16 +31,16 @@ export const metadata = {
         url: "/ogimg.png",
         width: 1200,
         height: 630,
-        alt: "Nasir Uddin - Software Engineer & Digital Marketer",
+        alt: "Nasir Uddin - Software Engineer & Full-Stack Digital Marketer",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Nasir Uddin | Software Engineer",
+    title: "Nasir Uddin | Software Engineer & Full-Stack Digital Marketer",
     description: "Software Engineer and Full-Stack Digital Marketer based in Dhaka.",
     images: ["/ogimg.png"],
-    creator: "@nasiruddin", 
+    creator: "@nasiruddin",
   },
   robots: {
     index: true,
@@ -81,14 +78,30 @@ export default async function RootLayout({ children }) {
               "name": "Nasir Uddin",
               "url": "https://nasiruddin.net",
               "image": "https://nasiruddin.net/ogimg.png",
-              "jobTitle": "Software Engineer & Digital Marketer",
+              "jobTitle": "Software Engineer & Full-Stack Digital Marketer",
               "worksFor": {
                 "@type": "Organization",
-                "name": "Self-Employed"
+                "name": "Betopia Group"
+              },
+              "alumniOf": {
+                "@type": "CollegeOrUniversity",
+                "name": "Daffodil Institute of IT (DIIT)"
+              },
+              "homeLocation": {
+                "@type": "Place",
+                "address": {
+                  "@type": "PostalAddress",
+                  "addressLocality": "Dhaka",
+                  "addressCountry": "BD"
+                }
               },
               "sameAs": socialLinks.map(link => link.url),
               "description": "Nasir Uddin is a Software Engineer and Full-Stack Digital Marketer based in Dhaka, specializing in building modern, scalable web applications.",
-              "knowsAbout": ["Web Development", "React", "Next.js", "SEO", "Digital Marketing", "Full-Stack Development"]
+              "knowsAbout": [
+                "Web Development", "React", "Next.js", "Node.js", "MongoDB",
+                "JavaScript", "TypeScript", "SEO", "Digital Marketing",
+                "Full-Stack Development", "Tailwind CSS"
+              ]
             })
           }}
         />

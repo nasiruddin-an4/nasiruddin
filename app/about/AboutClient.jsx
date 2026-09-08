@@ -7,6 +7,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import AnimatedHeading from "../components/AnimatedHeading";
 import AboutHeroSlider from "../components/AboutHeroSlider";
 import EducationGrid from "../components/EducationGrid";
+import FAQSection from "../components/FAQSection";
 
 export default function AboutClient({ topProjects, educationRecords }) {
   const containerRef = useRef(null);
@@ -83,7 +84,7 @@ export default function AboutClient({ topProjects, educationRecords }) {
 
             <div className="space-y-4 sm:space-y-6 md:space-y-8 text-[#a8a8a3] text-sm sm:text-base md:text-lg lg:text-xl font-serif leading-relaxed">
               <p>
-                I am a <strong>Full-Stack Software Engineer</strong> specializing in developing modern web applications, corporate websites, enterprise dashboards, and data-driven digital products. My expertise lies in leveraging the React and Next.js ecosystems to create highly responsive, SEO-optimized, and high-performance solutions that support business growth and enhance user experience.
+                <strong>Nasir Uddin</strong> is a Software Engineer and Full-Stack Digital Marketer based in Dhaka, Bangladesh, currently working at Betopia Group. I specialize in developing modern web applications, corporate websites, enterprise dashboards, and data-driven digital products. My expertise lies in leveraging the React and Next.js ecosystems to create highly responsive, SEO-optimized, and high-performance solutions that support business growth and enhance user experience.
               </p>
 
               <p>
@@ -128,7 +129,7 @@ export default function AboutClient({ topProjects, educationRecords }) {
                       alt="Nasir Uddin - Software Engineer"
                       fill
                       priority
-                      className="object-cover object-top transition-transform duration-1000 hover:scale-105 grayscale hover:grayscale-0"
+                      className="object-cover object-top transition-transform duration-1000 hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-linear-to-t from-brandBlack/60 to-transparent pointer-events-none" />
 
@@ -181,6 +182,8 @@ export default function AboutClient({ topProjects, educationRecords }) {
       <div className="w-full bg-[#0a0a0a] pt-10 pb-10 relative z-10 shadow-[0_-20px_50px_rgba(0,0,0,0.5)]">
         <EducationGrid educationRecords={educationRecords} />
       </div>
+
+      <FAQSection />
 
     </main>
   );

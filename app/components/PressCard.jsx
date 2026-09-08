@@ -20,7 +20,7 @@ export default function PressCard({ article }) {
 
   return (
     <Link
-      href={`/news-blogs/${article.id}`}
+      href={`/news-blogs/${article.slug || article.id}`}
       ref={cardRef}
       className="group relative flex flex-col cursor-pointer"
       onMouseEnter={() => setIsHovered(true)}
@@ -32,7 +32,7 @@ export default function PressCard({ article }) {
         <div className="relative w-full aspect-video mb-6 overflow-hidden">
           <Image
             src={article.image}
-            alt={article.alt || article.title || "Press Image"}
+            alt={article.alt || article.title || "Nasir Uddin — news and press coverage"}
             fill
             className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
           />

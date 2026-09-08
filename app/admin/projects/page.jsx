@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { getProjects, deleteProject } from "../actions";
-import { Plus, Trash2, ExternalLink, Github, Edit } from "lucide-react";
+import { Plus, Trash2, ExternalLink, Edit } from "lucide-react";
 
 export default function AdminProjects() {
   const [projects, setProjects] = useState([]);
@@ -52,7 +52,6 @@ export default function AdminProjects() {
               <div className="flex justify-between items-center mt-auto border-t border-zinc-800 pt-4">
                 <div className="flex gap-3">
                   {p.liveUrl && p.liveUrl !== "#" && <ExternalLink className="w-4 h-4 text-brandYellow" />}
-                  {p.githubUrl && p.githubUrl !== "#" && <Github className="w-4 h-4 text-zinc-400" />}
                 </div>
                 <div className="flex gap-2">
                   <Link

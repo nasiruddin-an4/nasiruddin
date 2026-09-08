@@ -4,7 +4,7 @@ export default async function sitemap() {
   const baseUrl = "https://nasiruddin.net";
 
   // Static routes
-  const staticRoutes = ["", "/about", "/projects", "/news-blogs", "/contact", "/cv", "/experience"].map((route) => ({
+  const staticRoutes = ["", "/about", "/projects", "/news-blogs", "/contact", "/cv", "/experience", "/photos", "/privacy", "/terms"].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date().toISOString(),
     changeFrequency: "weekly",
@@ -17,21 +17,21 @@ export default async function sitemap() {
   const blogs = await fetchBlogs();
 
   const projectRoutes = projects.map((project) => ({
-    url: `${baseUrl}/projects/${project.id}`,
+    url: `${baseUrl}/projects/${project.slug || project.id}`,
     lastModified: new Date(project.updatedAt || new Date()).toISOString(),
     changeFrequency: "monthly",
     priority: 0.7,
   }));
 
   const newsRoutes = news.map((item) => ({
-    url: `${baseUrl}/news-blogs/${item.id}`,
+    url: `${baseUrl}/news-blogs/${item.slug || item.id}`,
     lastModified: new Date(item.updatedAt || new Date()).toISOString(),
     changeFrequency: "weekly",
     priority: 0.7,
   }));
 
   const blogRoutes = blogs.map((item) => ({
-    url: `${baseUrl}/news-blogs/${item.id}`,
+    url: `${baseUrl}/news-blogs/${item.slug || item.id}`,
     lastModified: new Date(item.updatedAt || new Date()).toISOString(),
     changeFrequency: "weekly",
     priority: 0.7,

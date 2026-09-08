@@ -6,15 +6,17 @@ import { createProject } from "../../actions";
 import { MoveLeft, Save } from "lucide-react";
 import Link from "next/link";
 import CloudinaryUpload from "../../components/CloudinaryUpload";
+import RichTextEditor from "../../components/RichTextEditor";
 
 export default function NewProject() {
   const router = useRouter();
   const [formData, setFormData] = useState({
     title: "",
     category: "",
+    company: "",
+    timeline: "",
     tech: "",
     liveUrl: "",
-    githubUrl: "",
     description: "",
     aboutText: "",
     problemStatement: "",
@@ -23,13 +25,21 @@ export default function NewProject() {
     coverImage: "", // hero image
     middleImage: "",
     showcaseImages: [],
+    myRole: "",
+    keyFeatures: "",
+    impact: "",
+    testimonialQuote: "",
+    testimonialAuthor: "",
   });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const splitList = (v) => (v ? v.split(",").map((t) => t.trim()).filter(Boolean) : []);
     const dataToSave = {
       ...formData,
-      tech: formData.tech ? formData.tech.split(",").map((t) => t.trim()) : [],
+      tech: splitList(formData.tech),
+      keyFeatures: splitList(formData.keyFeatures),
+      impact: splitList(formData.impact),
     };
     await createProject(dataToSave);
     router.push("/admin/projects");
@@ -74,19 +84,23 @@ export default function NewProject() {
               <input required className="w-full bg-zinc-900 border border-zinc-700 text-white px-4 py-3 rounded-lg focus:border-brandYellow outline-none transition-colors" value={formData.category} onChange={e => setFormData({...formData, category: e.target.value})} placeholder="e.g. Web Development" />
             </div>
           </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label className="block text-xs font-mono uppercase tracking-widest text-zinc-400 mb-2">Company / Client</label>
+              <input className="w-full bg-zinc-900 border border-zinc-700 text-white px-4 py-3 rounded-lg focus:border-brandYellow outline-none transition-colors" value={formData.company} onChange={e => setFormData({...formData, company: e.target.value})} placeholder="Defaults to the project title if left blank" />
+            </div>
+            <div>
+              <label className="block text-xs font-mono uppercase tracking-widest text-zinc-400 mb-2">Timeline</label>
+              <input className="w-full bg-zinc-900 border border-zinc-700 text-white px-4 py-3 rounded-lg focus:border-brandYellow outline-none transition-colors" value={formData.timeline} onChange={e => setFormData({...formData, timeline: e.target.value})} placeholder="e.g. Jan 2026 – Mar 2026" />
+            </div>
+          </div>
           <div>
             <label className="block text-xs font-mono uppercase tracking-widest text-zinc-400 mb-2">Tech Stack (comma separated)</label>
             <input className="w-full bg-zinc-900 border border-zinc-700 text-white px-4 py-3 rounded-lg focus:border-brandYellow outline-none transition-colors" value={formData.tech} onChange={e => setFormData({...formData, tech: e.target.value})} placeholder="Next.js, Tailwind, MongoDB" />
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <label className="block text-xs font-mono uppercase tracking-widest text-zinc-400 mb-2">Live Demo URL</label>
-              <input className="w-full bg-zinc-900 border border-zinc-700 text-white px-4 py-3 rounded-lg focus:border-brandYellow outline-none transition-colors" value={formData.liveUrl} onChange={e => setFormData({...formData, liveUrl: e.target.value})} placeholder="https://" />
-            </div>
-            <div>
-              <label className="block text-xs font-mono uppercase tracking-widest text-zinc-400 mb-2">Github URL</label>
-              <input className="w-full bg-zinc-900 border border-zinc-700 text-white px-4 py-3 rounded-lg focus:border-brandYellow outline-none transition-colors" value={formData.githubUrl} onChange={e => setFormData({...formData, githubUrl: e.target.value})} placeholder="https://github.com/..." />
-            </div>
+          <div>
+            <label className="block text-xs font-mono uppercase tracking-widest text-zinc-400 mb-2">Live Demo URL</label>
+            <input className="w-full bg-zinc-900 border border-zinc-700 text-white px-4 py-3 rounded-lg focus:border-brandYellow outline-none transition-colors" value={formData.liveUrl} onChange={e => setFormData({...formData, liveUrl: e.target.value})} placeholder="https://" />
           </div>
           <div>
             <label className="block text-xs font-mono uppercase tracking-widest text-zinc-400 mb-2">Short Description (for project list cards)</label>
@@ -99,16 +113,44 @@ export default function NewProject() {
           <h2 className="text-xl font-oswald uppercase tracking-widest text-white border-b border-zinc-800 pb-2">Case Study Story</h2>
           <div>
             <label className="block text-xs font-mono uppercase tracking-widest text-zinc-400 mb-2">About The Project</label>
-            <textarea rows={5} className="w-full bg-zinc-900 border border-zinc-700 text-white px-4 py-3 rounded-lg focus:border-brandYellow outline-none transition-colors" value={formData.aboutText} onChange={e => setFormData({...formData, aboutText: e.target.value})} placeholder="In-depth background about the project..." />
+            <RichTextEditor value={formData.aboutText} onChange={(html) => setFormData({...formData, aboutText: html})} placeholder="In-depth background about the project..." />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label className="block text-xs font-mono uppercase tracking-widest text-zinc-400 mb-2">The Problem</label>
-              <textarea rows={6} className="w-full bg-zinc-900 border border-zinc-700 text-white px-4 py-3 rounded-lg focus:border-brandYellow outline-none transition-colors" value={formData.problemStatement} onChange={e => setFormData({...formData, problemStatement: e.target.value})} placeholder="What challenge were you solving?" />
+              <RichTextEditor value={formData.problemStatement} onChange={(html) => setFormData({...formData, problemStatement: html})} placeholder="What challenge were you solving?" />
             </div>
             <div>
               <label className="block text-xs font-mono uppercase tracking-widest text-zinc-400 mb-2">The Solution</label>
-              <textarea rows={6} className="w-full bg-zinc-900 border border-zinc-700 text-white px-4 py-3 rounded-lg focus:border-brandYellow outline-none transition-colors" value={formData.solutionText} onChange={e => setFormData({...formData, solutionText: e.target.value})} placeholder="How did you solve it?" />
+              <RichTextEditor value={formData.solutionText} onChange={(html) => setFormData({...formData, solutionText: html})} placeholder="How did you solve it?" />
+            </div>
+          </div>
+        </section>
+
+        {/* Credibility */}
+        <section className="space-y-6">
+          <h2 className="text-xl font-oswald uppercase tracking-widest text-white border-b border-zinc-800 pb-2">Credibility</h2>
+          <div>
+            <label className="block text-xs font-mono uppercase tracking-widest text-zinc-400 mb-2">My Role</label>
+            <input className="w-full bg-zinc-900 border border-zinc-700 text-white px-4 py-3 rounded-lg focus:border-brandYellow outline-none transition-colors" value={formData.myRole} onChange={e => setFormData({...formData, myRole: e.target.value})} placeholder="e.g. Solo Full-Stack Developer, or Led frontend & SEO on a team of 4" />
+          </div>
+          <div>
+            <label className="block text-xs font-mono uppercase tracking-widest text-zinc-400 mb-2">Key Features (comma separated)</label>
+            <input className="w-full bg-zinc-900 border border-zinc-700 text-white px-4 py-3 rounded-lg focus:border-brandYellow outline-none transition-colors" value={formData.keyFeatures} onChange={e => setFormData({...formData, keyFeatures: e.target.value})} placeholder="Faculty search, Admin CMS, Responsive design" />
+          </div>
+          <div>
+            <label className="block text-xs font-mono uppercase tracking-widest text-zinc-400 mb-2">Results / Impact (comma separated)</label>
+            <input className="w-full bg-zinc-900 border border-zinc-700 text-white px-4 py-3 rounded-lg focus:border-brandYellow outline-none transition-colors" value={formData.impact} onChange={e => setFormData({...formData, impact: e.target.value})} placeholder="40% faster page load, 500+ faculty profiles migrated" />
+            <p className="text-xs text-zinc-500 mt-2">Short, quantifiable outcomes. This is what makes the case study read as proof, not just a description.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label className="block text-xs font-mono uppercase tracking-widest text-zinc-400 mb-2">Testimonial Quote (optional)</label>
+              <textarea rows={3} className="w-full bg-zinc-900 border border-zinc-700 text-white px-4 py-3 rounded-lg focus:border-brandYellow outline-none transition-colors" value={formData.testimonialQuote} onChange={e => setFormData({...formData, testimonialQuote: e.target.value})} placeholder="Leave blank if you don't have one — never fabricate a quote." />
+            </div>
+            <div>
+              <label className="block text-xs font-mono uppercase tracking-widest text-zinc-400 mb-2">Testimonial Author</label>
+              <input className="w-full bg-zinc-900 border border-zinc-700 text-white px-4 py-3 rounded-lg focus:border-brandYellow outline-none transition-colors" value={formData.testimonialAuthor} onChange={e => setFormData({...formData, testimonialAuthor: e.target.value})} placeholder="Name, Role at Company" />
             </div>
           </div>
         </section>

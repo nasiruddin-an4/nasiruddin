@@ -32,7 +32,12 @@ export default function AdminLayout({ children }) {
   };
 
   if (pathname === "/admin/login") {
-    return children;
+    return (
+      <>
+        <meta name="robots" content="noindex, nofollow" />
+        {children}
+      </>
+    );
   }
 
   const handleLogout = async () => {
@@ -50,6 +55,7 @@ export default function AdminLayout({ children }) {
 
   return (
     <div className="min-h-screen bg-brandBlack text-white flex">
+      <meta name="robots" content="noindex, nofollow" />
       {/* Sidebar */}
       <aside className="w-64 bg-[#111111] border-r border-zinc-800 flex flex-col hidden md:flex">
         <div className="p-6 border-b border-zinc-800">

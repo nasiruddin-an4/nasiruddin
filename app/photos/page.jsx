@@ -5,15 +5,15 @@ import Image from "next/image";
 import AnimatedHeading from "@/app/components/AnimatedHeading";
 
 const photos = [
-  "/ab4.jpg",
-  "/ab5.jpg",
-  "/abdulla-1.jpg",
-  "/abdullah2.jpg",
-  "/heroBG.jpeg",
-  "/ab5.jpg",
-  "/heroBG.jpeg",
-  "/heroBG.jpeg",
-  "/ab4.jpg",
+  { src: "/about_img.png", alt: "Nasir Uddin — professional headshot" },
+  { src: "/graduation.jpg", alt: "Nasir Uddin at his university graduation" },
+  { src: "/betopiagroup.jpg", alt: "Nasir Uddin at Betopia Group" },
+  { src: "/betopiagroup2.jpg", alt: "Nasir Uddin working at Betopia Group" },
+  { src: "/diit2020.jpg", alt: "Nasir Uddin at Daffodil Institute of IT (DIIT), 2020" },
+  { src: "/diu.jpg", alt: "Nasir Uddin at Daffodil International University (DIU)" },
+  { src: "/betopiagroupnews2.png", alt: "Nasir Uddin featured in Betopia Group press coverage" },
+  { src: "/news3.jpeg", alt: "Nasir Uddin in press and media coverage" },
+  { src: "/surmatech.jpg", alt: "Nasir Uddin at SurmaTechZone" },
 ];
 
 export default function ProfessionalPhotosPage() {
@@ -47,7 +47,7 @@ export default function ProfessionalPhotosPage() {
     <main className="flex-1 w-full bg-brandBlack min-h-screen text-white flex flex-col">
       {/* ── Page Title ── */}
       <div className="pt-10 pb-4 md:pb-10 px-4 md:px-10">
-        <AnimatedHeading className="text-2xl md:text-5xl tracking-wide">
+        <AnimatedHeading as="h1" className="text-2xl md:text-5xl tracking-wide">
           Headshots & Photos
         </AnimatedHeading>
       </div>
@@ -69,11 +69,10 @@ export default function ProfessionalPhotosPage() {
               {/* Image wrapper — natural aspect ratio via width/height */}
               <div className="relative w-full overflow-hidden bg-zinc-900">
                 <Image
-                  src={photo}
-                  alt={`Professional Photo ${i + 1}`}
+                  src={photo.src}
+                  alt={photo.alt}
                   width={800}
                   height={i % 3 === 0 ? 1100 : i % 2 === 0 ? 800 : 1000}
-                  unoptimized
                   className="w-full h-auto block transition-transform duration-800 ease-out group-hover:scale-[1.06]"
                 />
 
@@ -181,10 +180,9 @@ export default function ProfessionalPhotosPage() {
           >
             <Image
               key={selectedIndex}
-              src={photos[selectedIndex]}
-              alt={`Professional Photo ${selectedIndex + 1}`}
+              src={photos[selectedIndex].src}
+              alt={photos[selectedIndex].alt}
               fill
-              unoptimized
               className="object-contain"
             />
           </div>

@@ -48,7 +48,7 @@ export default function NewsBlogsClient({ pressData = [] }) {
         <div className="flex flex-col lg:flex-row justify-between gap-10">
           {/* Left Side: Title & Description */}
           <div className="flex-1">
-            <AnimatedHeading className="text-3xl md:text-5xl">
+            <AnimatedHeading as="h1" className="text-3xl md:text-5xl">
               News & Blogs
             </AnimatedHeading>
             <p className="mt-6 text-zinc-500 text-base md:text-lg font-serif max-w-xl">

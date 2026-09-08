@@ -5,6 +5,7 @@ import { Suspense } from "react";
 export const metadata = {
   title: "Search | Nasir Uddin",
   description: "Search across Nasir Uddin's projects, experience, news, and blogs.",
+  robots: { index: false, follow: true },
 };
 
 export default async function SearchPage() {

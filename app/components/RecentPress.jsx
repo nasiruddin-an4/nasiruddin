@@ -22,7 +22,7 @@ export default function RecentPress({ pressData = [] }) {
 
         {/* Load More Button */}
         <div className="mt-10 flex justify-center">
-          <Link href="/news">
+          <Link href="/news-blogs">
             <button className="px-8 py-2 cursor-pointer border border-zinc-600 rounded-full text-md text-white hover:bg-white hover:text-brandBlack transition-colors duration-300">
               LOAD MORE
             </button>

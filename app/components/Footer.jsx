@@ -76,11 +76,11 @@ export default async function Footer() {
       <div className="flex flex-col items-center justify-center text-xs sm:text-sm text-gray-400 font-sans mt-auto border-t border-zinc-800 pt-6 md:pt-8 w-full">
         <p className="mb-2">© Nasir Uddin 2026. All rights reserved.</p>
         <div className="flex items-center gap-2">
-          <Link href="#" className="hover:text-white transition-colors">
+          <Link href="/privacy" className="hover:text-white transition-colors">
             Privacy Policy
           </Link>
           <span>|</span>
-          <Link href="#" className="hover:text-white transition-colors">
+          <Link href="/terms" className="hover:text-white transition-colors">
             Terms of Use
           </Link>
         </div>

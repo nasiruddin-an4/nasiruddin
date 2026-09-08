@@ -4,7 +4,7 @@ export default function robots() {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/", "/dashboard/"],
+        disallow: ["/api/", "/dashboard/", "/admin/", "/search"],
       },
       {
         userAgent: ["GPTBot", "ChatGPT-User", "Google-Extended", "Claude-Web", "anthropic-ai", "PerplexityBot", "CCBot"],

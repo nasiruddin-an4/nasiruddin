@@ -6,7 +6,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import AnimatedHeading from "@/app/components/AnimatedHeading";
 
-import { FaGithub, FaExternalLinkAlt, FaCode, FaSearch, FaChevronDown, FaCheck } from "react-icons/fa";
+import { FaExternalLinkAlt, FaCode, FaSearch, FaChevronDown, FaCheck } from "react-icons/fa";
 
 const categories = [
   "All Categories",
@@ -74,7 +74,7 @@ export default function ProjectsClient({ projectsData = [] }) {
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-10">
           {/* Left Side: Title & Description */}
           <div className="flex-1">
-            <AnimatedHeading className="text-3xl md:text-5xl">
+            <AnimatedHeading as="h1" className="text-3xl md:text-5xl">
               Projects
             </AnimatedHeading>
             <p className="mt-6 text-zinc-500 text-base md:text-lg font-serif max-w-xl">
@@ -223,7 +223,7 @@ export default function ProjectsClient({ projectsData = [] }) {
                 className="flex flex-col gap-6 group"
               >
                 {/* Image Container with 3D Hover */}
-                <Link href={`/projects/${project.id}`}>
+                <Link href={`/projects/${project.slug || project.id}`}>
                   <motion.div
                     className="relative w-full aspect-[4/3] overflow-hidden cursor-pointer"
                     style={{ perspective: 1200 }}
@@ -235,9 +235,8 @@ export default function ProjectsClient({ projectsData = [] }) {
                     >
                       <Image
                         src={project.image}
-                        alt={project.title}
+                        alt={`${project.title} — screenshot`}
                         fill
-                        unoptimized
                         className="object-cover"
                       />
                       <div className="absolute inset-0 bg-brandBlack/20 group-hover:bg-transparent transition-colors duration-500" />
@@ -253,7 +252,7 @@ export default function ProjectsClient({ projectsData = [] }) {
                 {/* Content */}
                 <div className="flex flex-col">
                   <h3 className="text-xl md:text-2xl font-bold text-white mb-3 group-hover:text-brandYellow transition-colors duration-300">
-                    <Link href={`/projects/${project.id}`}>
+                    <Link href={`/projects/${project.slug || project.id}`}>
                       {project.title}
                     </Link>
                   </h3>
@@ -286,17 +285,7 @@ export default function ProjectsClient({ projectsData = [] }) {
                         <FaExternalLinkAlt /> Live Demo
                       </Link>
                     )}
-                    {project.githubUrl && project.githubUrl !== "#" && (
-                      <Link
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-zinc-400 hover:text-white transition-colors flex items-center gap-2 text-sm font-semibold"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        <FaGithub /> Source Code
-                      </Link>
-                    )}
+
                   </div>
                 </div>
               </motion.div>

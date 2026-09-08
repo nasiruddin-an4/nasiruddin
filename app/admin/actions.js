@@ -30,7 +30,10 @@ export async function deleteProject(id) {
 
 export async function updateProject(id, data) {
   await dbConnect();
-  await Project.findByIdAndUpdate(id, data);
+  const project = await Project.findById(id);
+  if (!project) return;
+  Object.assign(project, data);
+  await project.save();
   revalidatePath("/admin/projects");
   revalidatePath("/projects");
   revalidatePath("/");
@@ -45,6 +48,16 @@ export async function getBlogs() {
 export async function createBlog(data) {
   await dbConnect();
   await Blog.create(data);
+  revalidatePath("/admin/blogs");
+  revalidatePath("/news-blogs");
+}
+
+export async function updateBlog(id, data) {
+  await dbConnect();
+  const blog = await Blog.findById(id);
+  if (!blog) return;
+  Object.assign(blog, data);
+  await blog.save();
   revalidatePath("/admin/blogs");
   revalidatePath("/news-blogs");
 }
@@ -65,6 +78,16 @@ export async function getNews() {
 export async function createNews(data) {
   await dbConnect();
   await News.create(data);
+  revalidatePath("/admin/news");
+  revalidatePath("/news-blogs");
+}
+
+export async function updateNews(id, data) {
+  await dbConnect();
+  const news = await News.findById(id);
+  if (!news) return;
+  Object.assign(news, data);
+  await news.save();
   revalidatePath("/admin/news");
   revalidatePath("/news-blogs");
 }

@@ -122,7 +122,7 @@ export default function Sidebar({ socialLinks = [] }) {
         >
           <Image
             src="/nasirLogo.png"
-            alt="Logo"
+            alt="Nasir Uddin logo"
             width={120}
             height={40}
             className="h-8 w-auto object-contain"
@@ -166,7 +166,7 @@ export default function Sidebar({ socialLinks = [] }) {
             {/* Logo from public folder */}
             <Image
               src="/nasirLogo.png"
-              alt="Logo"
+              alt="Nasir Uddin logo"
               width={180}
               height={80}
               className="w-full h-auto"

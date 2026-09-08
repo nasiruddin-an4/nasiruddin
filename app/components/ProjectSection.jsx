@@ -59,7 +59,7 @@ export default function ProjectSection({ projectsData = [] }) {
               transition={{ duration: 0.5, delay: i * 0.1 }}
               className="flex flex-col group"
             >
-              <Link href={`/projects/${project.id}`}>
+              <Link href={`/projects/${project.slug || project.id}`}>
                 <motion.div
                   className="relative w-full aspect-[4/3] overflow-hidden cursor-pointer mb-6"
                   style={{ perspective: 1200 }}
@@ -71,9 +71,8 @@ export default function ProjectSection({ projectsData = [] }) {
                   >
                     <Image
                       src={project.image}
-                      alt={project.title}
+                      alt={`${project.title} — screenshot`}
                       fill
-                      unoptimized
                       className="object-cover transition-transform duration-700"
                     />
                     <div className="absolute inset-0 bg-brandBlack/20 group-hover:bg-transparent transition-colors duration-500" />
@@ -87,7 +86,7 @@ export default function ProjectSection({ projectsData = [] }) {
               </Link>
 
               <h3 className="text-xl md:text-2xl font-bold text-white mb-3 group-hover:text-[#fceb3b] transition-colors duration-300">
-                <Link href={`/projects/${project.id}`}>
+                <Link href={`/projects/${project.slug || project.id}`}>
                   {project.title}
                 </Link>
               </h3>

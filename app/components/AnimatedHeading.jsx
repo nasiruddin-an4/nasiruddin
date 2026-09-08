@@ -7,6 +7,7 @@ export default function AnimatedHeading({
   className = "text-3xl md:text-5xl",
   initialColor = "text-brandBlack",
   finalColor = "text-brandBlack",
+  as: Tag = "h2",
 }) {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef(null);
@@ -38,11 +39,11 @@ export default function AnimatedHeading({
         <div
           className={`absolute inset-0 bg-[#fceb3b] transition-transform duration-1000 ease-out origin-left ${isVisible ? "scale-x-100" : "scale-x-0"}`}
         />
-        <h2
+        <Tag
           className={`relative z-10 uppercase transition-colors duration-700 delay-300 ${isVisible ? finalColor : initialColor} ${className}`}
         >
           {children}
-        </h2>
+        </Tag>
       </div>
     </div>
   );

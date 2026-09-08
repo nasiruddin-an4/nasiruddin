@@ -60,7 +60,7 @@ export default function ContactClient({ socialLinks = [] }) {
           {/* Contact Information Sidebar */}
           <div className="flex flex-col lg:col-span-4">
             <div className="mb-10">
-              <AnimatedHeading className="text-4xl">CONTACT</AnimatedHeading>
+              <AnimatedHeading as="h1" className="text-4xl">CONTACT</AnimatedHeading>
               <p className="text-xl md:text-2xl text-zinc-400 max-w-2xl font-serif mt-4">
                 A few different options for getting in touch with me or the
                 team.

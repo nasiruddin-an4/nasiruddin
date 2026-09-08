@@ -1,22 +1,12 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { getBlogs, createBlog, deleteBlog } from "../actions";
-import { Plus, Trash2, X } from "lucide-react";
-import CloudinaryUpload from "../components/CloudinaryUpload";
+import Link from "next/link";
+import { getBlogs, deleteBlog } from "../actions";
+import { Plus, Trash2, Edit } from "lucide-react";
 
 export default function AdminBlogs() {
   const [blogs, setBlogs] = useState([]);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [formData, setFormData] = useState({
-    title: "",
-    excerpt: "",
-    content: "",
-    category: "",
-    date: new Date().toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }),
-    readTime: "5 min read",
-    image: "",
-  });
 
   useEffect(() => {
     loadBlogs();
@@ -25,14 +15,6 @@ export default function AdminBlogs() {
   const loadBlogs = async () => {
     const data = await getBlogs();
     setBlogs(data);
-  };
-
-  const handleCreate = async (e) => {
-    e.preventDefault();
-    await createBlog(formData);
-    setIsModalOpen(false);
-    setFormData({ ...formData, title: "", excerpt: "", content: "", image: "" });
-    loadBlogs();
   };
 
   const handleDelete = async (id) => {
@@ -46,12 +28,12 @@ export default function AdminBlogs() {
     <div className="space-y-6 text-white font-sans">
       <div className="flex justify-between items-center bg-[#1a1a1a] p-6 rounded-xl border border-zinc-800">
         <h1 className="text-2xl font-oswald uppercase tracking-widest text-brandYellow">Manage Blogs</h1>
-        <button
-          onClick={() => setIsModalOpen(true)}
+        <Link
+          href="/admin/blogs/new"
           className="bg-brandYellow text-brandBlack px-4 py-2 rounded-lg font-bold uppercase tracking-wider flex items-center gap-2 hover:bg-white transition-colors"
         >
           <Plus className="w-5 h-5" /> Add Blog
-        </button>
+        </Link>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -67,70 +49,30 @@ export default function AdminBlogs() {
               <span className="text-xs text-brandYellow font-mono uppercase tracking-widest mb-2">{b.category}</span>
               <h3 className="text-xl font-bold mb-2">{b.title}</h3>
               <p className="text-sm text-zinc-400 line-clamp-2 mb-4 flex-1">{b.excerpt}</p>
-              
+
               <div className="flex justify-between items-center mt-auto border-t border-zinc-800 pt-4">
                 <span className="text-xs text-zinc-500">{b.date}</span>
-                <button
-                  onClick={() => handleDelete(b._id)}
-                  className="text-red-500 hover:text-red-400 transition-colors bg-red-500/10 p-2 rounded-lg"
-                >
-                  <Trash2 className="w-4 h-4" />
-                </button>
+                <div className="flex gap-2">
+                  <Link
+                    href={`/admin/blogs/${b._id}`}
+                    className="text-blue-500 hover:text-blue-400 transition-colors bg-blue-500/10 p-2 rounded-lg"
+                    title="Edit Blog"
+                  >
+                    <Edit className="w-4 h-4" />
+                  </Link>
+                  <button
+                    onClick={() => handleDelete(b._id)}
+                    className="text-red-500 hover:text-red-400 transition-colors bg-red-500/10 p-2 rounded-lg"
+                    title="Delete Blog"
+                  >
+                    <Trash2 className="w-4 h-4" />
+                  </button>
+                </div>
               </div>
             </div>
           </div>
         ))}
       </div>
-
-      {isModalOpen && (
-        <div className="fixed inset-0 bg-black/80 flex items-center justify-center p-4 z-50">
-          <div className="bg-[#1a1a1a] border border-zinc-800 rounded-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
-            <div className="flex justify-between items-center p-6 border-b border-zinc-800">
-              <h2 className="text-xl font-oswald uppercase tracking-widest text-brandYellow">New Blog</h2>
-              <button onClick={() => setIsModalOpen(false)} className="text-zinc-400 hover:text-white">
-                <X className="w-6 h-6" />
-              </button>
-            </div>
-            
-            <form onSubmit={handleCreate} className="p-6 space-y-4">
-              <div>
-                <label className="block text-xs font-mono uppercase tracking-widest text-zinc-400 mb-2">Title</label>
-                <input required className="w-full bg-zinc-900 border border-zinc-700 text-white px-4 py-2 rounded focus:border-brandYellow outline-none" value={formData.title} onChange={e => setFormData({...formData, title: e.target.value})} />
-              </div>
-              
-              <div>
-                <label className="block text-xs font-mono uppercase tracking-widest text-zinc-400 mb-2">Excerpt</label>
-                <textarea required rows={2} className="w-full bg-zinc-900 border border-zinc-700 text-white px-4 py-2 rounded focus:border-brandYellow outline-none" value={formData.excerpt} onChange={e => setFormData({...formData, excerpt: e.target.value})} />
-              </div>
-              
-              <div>
-                <label className="block text-xs font-mono uppercase tracking-widest text-zinc-400 mb-2">Full Content</label>
-                <textarea required rows={5} className="w-full bg-zinc-900 border border-zinc-700 text-white px-4 py-2 rounded focus:border-brandYellow outline-none" value={formData.content} onChange={e => setFormData({...formData, content: e.target.value})} />
-              </div>
-
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-xs font-mono uppercase tracking-widest text-zinc-400 mb-2">Category</label>
-                  <input className="w-full bg-zinc-900 border border-zinc-700 text-white px-4 py-2 rounded focus:border-brandYellow outline-none" value={formData.category} onChange={e => setFormData({...formData, category: e.target.value})} />
-                </div>
-                <div>
-                  <label className="block text-xs font-mono uppercase tracking-widest text-zinc-400 mb-2">Read Time</label>
-                  <input className="w-full bg-zinc-900 border border-zinc-700 text-white px-4 py-2 rounded focus:border-brandYellow outline-none" value={formData.readTime} onChange={e => setFormData({...formData, readTime: e.target.value})} />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-xs font-mono uppercase tracking-widest text-zinc-400 mb-2">Blog Cover Image</label>
-                <CloudinaryUpload onUploadSuccess={(url) => setFormData({...formData, image: url})} />
-              </div>
-
-              <button type="submit" className="w-full bg-brandYellow text-brandBlack font-bold py-3 rounded uppercase tracking-wider mt-6">
-                Publish Blog
-              </button>
-            </form>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
