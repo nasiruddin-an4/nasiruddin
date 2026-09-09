@@ -49,13 +49,13 @@ export default function FAQSection() {
   };
 
   return (
-    <section className="w-full bg-[#0a0a0a] py-16 md:py-24 px-4 sm:px-6 lg:px-8 border-t border-zinc-900">
+    <section className="w-full bg-[#0a0a0a] py-6 md:py-12 px-4 sm:px-6 lg:px-8 border-t border-zinc-900">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <div className="container mx-auto max-w-4xl">
-        <AnimatedHeading className="text-2xl md:text-4xl mb-10">
+        <AnimatedHeading className="text-2xl md:text-4xl">
           Frequently Asked Questions
         </AnimatedHeading>
 
@@ -74,15 +74,13 @@ export default function FAQSection() {
                   {faq.question}
                 </span>
                 <FaChevronDown
-                  className={`text-brandYellow shrink-0 transition-transform duration-300 ${
-                    openIndex === i ? "rotate-180" : ""
-                  }`}
+                  className={`text-brandYellow shrink-0 transition-transform duration-300 ${openIndex === i ? "rotate-180" : ""
+                    }`}
                 />
               </button>
               <div
-                className={`grid transition-all duration-300 ease-in-out ${
-                  openIndex === i ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
-                }`}
+                className={`grid transition-all duration-300 ease-in-out ${openIndex === i ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+                  }`}
               >
                 <div className="overflow-hidden">
                   <p className="px-5 pb-4 md:px-6 md:pb-5 text-zinc-400 font-serif leading-relaxed">
