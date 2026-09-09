@@ -81,7 +81,8 @@ export default async function RootLayout({ children }) {
               "jobTitle": "Software Engineer & Full-Stack Digital Marketer",
               "worksFor": {
                 "@type": "Organization",
-                "name": "Betopia Group"
+                "name": "Betopia Group",
+                "url": "https://betopiagroup.com/"
               },
               "alumniOf": [
                 {
@@ -90,7 +91,8 @@ export default async function RootLayout({ children }) {
                 },
                 {
                   "@type": "CollegeOrUniversity",
-                  "name": "Daffodil Institute of IT (DIIT)"
+                  "name": "Daffodil Institute of IT (DIIT)",
+                  "url": "https://diit.edu.bd/"
                 }
               ],
               "homeLocation": {
