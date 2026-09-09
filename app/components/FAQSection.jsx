@@ -8,7 +8,12 @@ const faqs = [
   {
     question: "Who is Nasir Uddin?",
     answer:
-      "Nasir Uddin is a Software Engineer and Full-Stack Digital Marketer based in Dhaka, Bangladesh, currently working at Betopia Group.",
+      "Nasir Uddin is a Software Engineer and Full-Stack Digital Marketer based in Dhaka, Bangladesh, currently working at Betopia Group. He holds a B.Sc. in Computer Science & Engineering (CSE) from Daffodil Institute of IT (DIIT).",
+  },
+  {
+    question: "What is Nasir Uddin's educational background?",
+    answer:
+      "Nasir Uddin completed a B.Sc. (Engineering) in Computer Science & Engineering (CSE) at Daffodil Institute of IT (DIIT), part of the Daffodil Family of institutions in Dhaka, Bangladesh, alongside Daffodil International University (DIU), where he has also worked as a Web Developer.",
   },
   {
     question: "What does Nasir Uddin do?",

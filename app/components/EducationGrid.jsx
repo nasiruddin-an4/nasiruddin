@@ -61,7 +61,23 @@ export default function EducationGrid({ educationRecords }) {
                             </span>
                           </>
                         )}
+                        {edu.location && (
+                          <>
+                            <span className="hidden sm:inline text-zinc-600">
+                              •
+                            </span>
+                            <span className="text-sm font-sans text-zinc-500">
+                              {edu.location}
+                            </span>
+                          </>
+                        )}
                       </div>
+
+                      {edu.description && (
+                        <p className="mt-4 text-zinc-400 font-serif text-sm md:text-base leading-relaxed">
+                          {edu.description}
+                        </p>
+                      )}
                     </div>
                   </div>
                 </motion.div>

@@ -76,6 +76,10 @@ export default function AboutClient({ topProjects, educationRecords }) {
                 I enjoy combining advanced software engineering principles with targeted digital marketing strategies to build impactful online experiences. By leveraging modern web technologies and AI-powered tools, I continuously strive to deliver innovative, efficient, and scalable business solutions.
               </p>
 
+              <p>
+                I hold a B.Sc. (Engineering) in Computer Science &amp; Engineering (CSE) from Daffodil Institute of IT (DIIT), part of the Daffodil Family of institutions in Dhaka, Bangladesh, alongside Daffodil International University (DIU) — where I&apos;ve also worked directly as a Web Developer.
+              </p>
+
               {/* Signature pull quote — oversized mark instead of a plain border box */}
               <div className="relative my-8 sm:my-10 md:my-14 pl-8 sm:pl-10 md:pl-14">
                 <span

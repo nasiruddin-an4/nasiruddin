@@ -4,7 +4,7 @@ import AboutClient from "./AboutClient";
 export const metadata = {
   title: "About | Nasir Uddin",
   description:
-    "Learn more about Nasir Uddin — a Software Engineer & Full-Stack Digital Marketer based in Dhaka, with experience in React, Next.js, and modern web development.",
+    "Nasir Uddin is a Software Engineer & Full-Stack Digital Marketer based in Dhaka. B.Sc. in Computer Science & Engineering (CSE) from Daffodil Institute of IT (DIIT), part of the Daffodil Family of institutions alongside Daffodil International University (DIU).",
   alternates: {
     canonical: "/about",
   },
