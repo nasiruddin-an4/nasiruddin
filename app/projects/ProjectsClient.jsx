@@ -71,45 +71,14 @@ export default function ProjectsClient({ projectsData = [] }) {
     <main className="flex-1 w-full bg-brandBlack min-h-screen text-white flex flex-col">
       {/* ── Header & Stats ── */}
       <div className="pt-10 md:pt-20 pb-10 px-4 md:px-12 lg:px-16 mb-8 border-b border-zinc-800/50">
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-10">
-          {/* Left Side: Title & Description */}
-          <div className="flex-1">
-            <AnimatedHeading as="h1" className="text-3xl md:text-5xl">
-              Projects
-            </AnimatedHeading>
-            <p className="mt-6 text-zinc-500 text-base md:text-lg font-serif max-w-xl">
-              A showcase of web applications, corporate websites, and digital
-              products I&apos;ve built using modern technologies.
-            </p>
-          </div>
-
-          {/* Right Side: Stats Data */}
-          <div className="flex flex-wrap gap-8 md:gap-12 pt-6 lg:pt-0">
-            <div className="flex flex-col">
-              <span className="text-3xl md:text-5xl text-brandYellow font-bold">
-                {projectsData.length}+
-              </span>
-              <span className="text-zinc-500 text-xs md:text-sm uppercase tracking-widest mt-2 font-semibold">
-                Projects
-              </span>
-            </div>
-            <div className="flex flex-col">
-              <span className="text-3xl md:text-5xl text-brandYellow font-bold">
-                {new Set(projectsData.flatMap((p) => p.tech)).size}+
-              </span>
-              <span className="text-zinc-500 text-xs md:text-sm uppercase tracking-widest mt-2 font-semibold">
-                Technologies
-              </span>
-            </div>
-            <div className="flex flex-col">
-              <span className="text-3xl md:text-5xl text-brandYellow font-bold">
-                {new Set(projectsData.map((p) => p.category)).size}
-              </span>
-              <span className="text-zinc-500 text-xs md:text-sm uppercase tracking-widest mt-2 font-semibold">
-                Categories
-              </span>
-            </div>
-          </div>
+        <div className="flex-1">
+          <AnimatedHeading as="h1" className="text-3xl md:text-5xl">
+            Projects
+          </AnimatedHeading>
+          <p className="mt-6 text-zinc-500 text-base md:text-lg font-serif max-w-xl">
+            A showcase of web applications, corporate websites, and digital
+            products I&apos;ve built using modern technologies.
+          </p>
         </div>
       </div>
 
@@ -157,11 +126,11 @@ export default function ProjectsClient({ projectsData = [] }) {
                         handleCategoryChange(cat);
                         setIsDropdownOpen(false);
                       }}
-                      className={`px-4 py-3 text-sm cursor-pointer flex items-center justify-between hover:bg-zinc-800 transition-colors ${activeCategory === cat ? 'text-[#fceb3b] font-medium' : 'text-zinc-300'
+                      className={`px-4 py-3 text-sm cursor-pointer flex items-center justify-between hover:bg-zinc-800 transition-colors ${activeCategory === cat ? 'text-brandYellow font-medium' : 'text-zinc-300'
                         }`}
                     >
                       {cat}
-                      {activeCategory === cat && <FaCheck className="text-[#fceb3b] text-xs" />}
+                      {activeCategory === cat && <FaCheck className="text-brandYellow text-xs" />}
                     </li>
                   ))
                 ) : (
@@ -188,7 +157,7 @@ export default function ProjectsClient({ projectsData = [] }) {
               </button>
             ))}
           </div>
-          
+
           {/* Sorting Dropdown */}
           <div className="relative">
             <select
@@ -272,7 +241,7 @@ export default function ProjectsClient({ projectsData = [] }) {
                       </span>
                     ))}
                   </div>
-                  
+
                   {/* Quick Links */}
                   <div className="flex items-center gap-5 mt-5">
                     {project.liveUrl && project.liveUrl !== "#" && (
