@@ -83,10 +83,16 @@ export default async function RootLayout({ children }) {
                 "@type": "Organization",
                 "name": "Betopia Group"
               },
-              "alumniOf": {
-                "@type": "CollegeOrUniversity",
-                "name": "Daffodil Institute of IT (DIIT)"
-              },
+              "alumniOf": [
+                {
+                  "@type": "CollegeOrUniversity",
+                  "name": "Daffodil International University (DIU)"
+                },
+                {
+                  "@type": "CollegeOrUniversity",
+                  "name": "Daffodil Institute of IT (DIIT)"
+                }
+              ],
               "homeLocation": {
                 "@type": "Place",
                 "address": {
