@@ -78,7 +78,7 @@ export default async function ArticlePage({ params }) {
     notFound();
   }
 
-  const articleUrl = `https://nasiruddin.net/news-blogs/${article.slug || article.id}`;
+  const articleUrl = `https://www.nasiruddin.net/news-blogs/${article.slug || article.id}`;
   const readTime = article.readTime || estimateReadTime(article.content || article.excerpt);
   const relatedArticles = getRelatedArticles(news, blogs, article);
 
@@ -99,12 +99,12 @@ export default async function ArticlePage({ params }) {
     author: {
       "@type": "Person",
       name: "Nasir Uddin",
-      url: "https://nasiruddin.net",
+      url: "https://www.nasiruddin.net",
     },
     publisher: {
       "@type": "Person",
       name: "Nasir Uddin",
-      url: "https://nasiruddin.net",
+      url: "https://www.nasiruddin.net",
     },
     description: article.metaDescription || stripHtml(article.content) || article.excerpt,
     mainEntityOfPage: {

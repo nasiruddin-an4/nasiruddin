@@ -59,7 +59,7 @@ export default async function ProjectDetails({ params }) {
     creator: {
       "@type": "Person",
       name: "Nasir Uddin",
-      url: "https://nasiruddin.net",
+      url: "https://www.nasiruddin.net",
     },
     keywords: (project.tech || []).join(", "),
     ...(project.liveUrl && project.liveUrl !== "#" ? { url: project.liveUrl } : {}),

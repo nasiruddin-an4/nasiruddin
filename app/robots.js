@@ -11,6 +11,6 @@ export default function robots() {
         allow: "/",
       }
     ],
-    sitemap: "https://nasiruddin.net/sitemap.xml",
+    sitemap: "https://www.nasiruddin.net/sitemap.xml",
   };
 }

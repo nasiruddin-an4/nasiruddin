@@ -1,7 +1,7 @@
 import { fetchProjects, fetchNews, fetchBlogs } from "@/lib/api";
 
 export default async function sitemap() {
-  const baseUrl = "https://nasiruddin.net";
+  const baseUrl = "https://www.nasiruddin.net";
 
   // Static routes
   const staticRoutes = ["", "/about", "/projects", "/news-blogs", "/contact", "/cv", "/experience", "/photos", "/privacy", "/terms"].map((route) => ({

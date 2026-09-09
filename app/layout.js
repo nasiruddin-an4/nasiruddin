@@ -2,14 +2,14 @@ import "./globals.css";
 import Script from "next/script";
 
 export const metadata = {
-  metadataBase: new URL("https://nasiruddin.net"),
+  metadataBase: new URL("https://www.nasiruddin.net"),
   title: {
     default: "Nasir Uddin | Software Engineer & Full-Stack Digital Marketer",
     template: "%s | Nasir Uddin",
   },
   description: "Nasir Uddin is a Software Engineer and Full-Stack Digital Marketer based in Dhaka, specializing in building modern, scalable web applications and SEO optimization.",
   keywords: ["Software Engineer", "Full-Stack Developer", "Digital Marketing Expert", "Next.js Developer", "React Developer", "SEO Expert", "Web Development", "Dhaka, Bangladesh", "Nasir Uddin"],
-  authors: [{ name: "Nasir Uddin", url: "https://nasiruddin.net" }],
+  authors: [{ name: "Nasir Uddin", url: "https://www.nasiruddin.net" }],
   creator: "Nasir Uddin",
   publisher: "Nasir Uddin",
   icons: {
@@ -22,7 +22,7 @@ export const metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://nasiruddin.net",
+    url: "https://www.nasiruddin.net",
     title: "Nasir Uddin | Software Engineer & Full-Stack Digital Marketer",
     description: "Nasir Uddin is a Software Engineer and Full-Stack Digital Marketer based in Dhaka, specializing in building modern, scalable web applications.",
     siteName: "Nasir Uddin Portfolio",
@@ -76,8 +76,8 @@ export default async function RootLayout({ children }) {
               "@context": "https://schema.org",
               "@type": "Person",
               "name": "Nasir Uddin",
-              "url": "https://nasiruddin.net",
-              "image": "https://nasiruddin.net/ogimg.png",
+              "url": "https://www.nasiruddin.net",
+              "image": "https://www.nasiruddin.net/ogimg.png",
               "jobTitle": "Software Engineer & Full-Stack Digital Marketer",
               "worksFor": {
                 "@type": "Organization",
@@ -112,10 +112,10 @@ export default async function RootLayout({ children }) {
               "@context": "https://schema.org",
               "@type": "WebSite",
               "name": "Nasir Uddin Portfolio",
-              "url": "https://nasiruddin.net",
+              "url": "https://www.nasiruddin.net",
               "potentialAction": {
                 "@type": "SearchAction",
-                "target": "https://nasiruddin.net/search?q={search_term_string}",
+                "target": "https://www.nasiruddin.net/search?q={search_term_string}",
                 "query-input": "required name=search_term_string"
               }
             })
