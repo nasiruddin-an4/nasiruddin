@@ -17,6 +17,8 @@ export default function NewProject() {
     timeline: "",
     tech: "",
     liveUrl: "",
+    featured: false,
+    order: 0,
     description: "",
     aboutText: "",
     problemStatement: "",
@@ -40,6 +42,7 @@ export default function NewProject() {
       tech: splitList(formData.tech),
       keyFeatures: splitList(formData.keyFeatures),
       impact: splitList(formData.impact),
+      order: Number(formData.order) || 0,
     };
     await createProject(dataToSave);
     router.push("/admin/projects");
@@ -105,6 +108,19 @@ export default function NewProject() {
           <div>
             <label className="block text-xs font-mono uppercase tracking-widest text-zinc-400 mb-2">Short Description (for project list cards)</label>
             <textarea required rows={2} className="w-full bg-zinc-900 border border-zinc-700 text-white px-4 py-3 rounded-lg focus:border-brandYellow outline-none transition-colors resize-none" value={formData.description} onChange={e => setFormData({...formData, description: e.target.value})} placeholder="A brief 1-2 sentence overview." />
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-end">
+            <div>
+              <label className="block text-xs font-mono uppercase tracking-widest text-zinc-400 mb-2">Display Order (serial number)</label>
+              <input type="number" className="w-full bg-zinc-900 border border-zinc-700 text-white px-4 py-3 rounded-lg focus:border-brandYellow outline-none transition-colors" value={formData.order} onChange={e => setFormData({...formData, order: e.target.value})} placeholder="0" />
+              <p className="text-xs text-zinc-500 mt-2">Lower numbers show first. Featured projects always come before non-featured ones regardless of this number.</p>
+            </div>
+            <div>
+              <label className="flex items-center gap-3 bg-zinc-900 border border-zinc-700 px-4 py-3 rounded-lg cursor-pointer select-none">
+                <input type="checkbox" className="w-5 h-5 accent-brandYellow" checked={formData.featured} onChange={e => setFormData({...formData, featured: e.target.checked})} />
+                <span className="text-sm font-semibold text-white">Pin as Featured</span>
+              </label>
+            </div>
           </div>
         </section>
 

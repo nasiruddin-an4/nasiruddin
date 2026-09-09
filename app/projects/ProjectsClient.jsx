@@ -21,7 +21,7 @@ const categories = [
 export default function ProjectsClient({ projectsData = [] }) {
   const [activeCategory, setActiveCategory] = useState("All Categories");
   const [hoveredId, setHoveredId] = useState(null);
-  const [sortBy, setSortBy] = useState("Newest");
+  const [sortBy, setSortBy] = useState("Recommended");
 
   // Custom Dropdown State
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -196,6 +196,7 @@ export default function ProjectsClient({ projectsData = [] }) {
               onChange={(e) => setSortBy(e.target.value)}
               className="appearance-none bg-[#1a1a1a] text-white border border-zinc-700 rounded-lg pl-4 pr-10 py-2 text-sm focus:outline-none focus:border-brandYellow cursor-pointer hover:border-zinc-500 transition-colors"
             >
+              <option value="Recommended">Recommended</option>
               <option value="Newest">Newest First</option>
               <option value="Oldest">Oldest First</option>
               <option value="A-Z">A-Z</option>

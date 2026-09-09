@@ -2,6 +2,7 @@ import ExperienceHero from "../components/ExperienceHero";
 import ExperienceGrid from "../components/ExperienceGrid";
 import { FaCode } from "react-icons/fa";
 import { fetchExperiences, fetchNews } from "@/lib/api";
+import { sortExperiencesByRecency } from "@/lib/utils";
 import RecentPress from "../components/RecentPress";
 
 export const metadata = {
@@ -14,32 +15,7 @@ export const metadata = {
 
 export default async function Experience() {
   const rawExperiences = await fetchExperiences();
-  
-  // Parse end date for sorting. "Present" is Infinity.
-  const parseEndDate = (duration) => {
-    if (!duration) return 0;
-    const parts = duration.split(/[-–]/).map(s => s.trim());
-    const endStr = parts.length > 1 ? parts[1] : parts[0];
-    if (endStr.toLowerCase() === 'present' || endStr.toLowerCase() === 'current') return Infinity;
-    const date = new Date(endStr);
-    return isNaN(date.getTime()) ? 0 : date.getTime();
-  };
-
-  // Parse start date for secondary sorting.
-  const parseStartDate = (duration) => {
-    if (!duration) return 0;
-    const parts = duration.split(/[-–]/).map(s => s.trim());
-    const date = new Date(parts[0]);
-    return isNaN(date.getTime()) ? 0 : date.getTime();
-  };
-
-  const experiences = [...rawExperiences].sort((a, b) => {
-    const aEnd = parseEndDate(a.duration);
-    const bEnd = parseEndDate(b.duration);
-    if (aEnd !== bEnd) return bEnd - aEnd;
-    return parseStartDate(b.duration) - parseStartDate(a.duration);
-  });
-
+  const experiences = sortExperiencesByRecency(rawExperiences);
   const newsData = await fetchNews();
   return (
     <main className="flex-1 w-full bg-brandBlack text-white flex flex-col">

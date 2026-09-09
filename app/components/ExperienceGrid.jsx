@@ -40,7 +40,7 @@ export default function ExperienceGrid({ experiences }) {
   );
 }
 
-function ExperienceCard({ exp, index }) {
+export function ExperienceCard({ exp, index }) {
   const [isHovered, setIsHovered] = useState(false);
   const [imageError, setImageError] = useState(false);
 
@@ -99,7 +99,7 @@ function ExperienceCard({ exp, index }) {
             <h3 className="text-2xl text-white uppercase tracking-wider mb-2 font-oswald">
               {exp.company}
             </h3>
-            <p className="text-zinc-300 text-lg font-serif leading-snug">{exp.role}</p>
+            <p className="text-zinc-300 text-lg font-serif leading-snug">{exp.title}</p>
           </div>
         </div>
       </Link>

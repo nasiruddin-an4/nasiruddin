@@ -11,6 +11,7 @@ const ProjectSchema = new mongoose.Schema(
     company: { type: String },
     timeline: { type: String },
     featured: { type: Boolean, default: false },
+    order: { type: Number, default: 0 },
     image: { type: String },
     thumbnail: { type: String },
     liveUrl: { type: String },

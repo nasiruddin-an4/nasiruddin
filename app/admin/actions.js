@@ -4,12 +4,22 @@ import dbConnect from "@/lib/mongodb";
 import Project from "@/models/Project";
 import News from "@/models/News";
 import Blog from "@/models/Blog";
+import Experience from "@/models/Experience";
+import { sortProjectsForDisplay } from "@/lib/utils";
 import { revalidatePath } from "next/cache";
 
 export async function getProjects() {
   await dbConnect();
   const docs = await Project.find({}).sort({ createdAt: -1 }).lean();
-  return JSON.parse(JSON.stringify(docs));
+  return sortProjectsForDisplay(JSON.parse(JSON.stringify(docs)));
+}
+
+export async function toggleFeaturedProject(id, featured) {
+  await dbConnect();
+  await Project.findByIdAndUpdate(id, { featured });
+  revalidatePath("/admin/projects");
+  revalidatePath("/projects");
+  revalidatePath("/");
 }
 
 export async function createProject(data) {
@@ -97,4 +107,37 @@ export async function deleteNews(id) {
   await News.findByIdAndDelete(id);
   revalidatePath("/admin/news");
   revalidatePath("/news-blogs");
+}
+
+export async function getExperiences() {
+  await dbConnect();
+  const docs = await Experience.find({}).sort({ createdAt: -1 }).lean();
+  return JSON.parse(JSON.stringify(docs));
+}
+
+export async function createExperience(data) {
+  await dbConnect();
+  await Experience.create(data);
+  revalidatePath("/admin/experience");
+  revalidatePath("/experience");
+  revalidatePath("/");
+}
+
+export async function updateExperience(id, data) {
+  await dbConnect();
+  const experience = await Experience.findById(id);
+  if (!experience) return;
+  Object.assign(experience, data);
+  await experience.save();
+  revalidatePath("/admin/experience");
+  revalidatePath("/experience");
+  revalidatePath("/");
+}
+
+export async function deleteExperience(id) {
+  await dbConnect();
+  await Experience.findByIdAndDelete(id);
+  revalidatePath("/admin/experience");
+  revalidatePath("/experience");
+  revalidatePath("/");
 }

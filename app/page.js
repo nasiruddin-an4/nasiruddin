@@ -1,7 +1,9 @@
-import { fetchProjects, fetchNews } from "@/lib/api";
+import { fetchProjects, fetchNews, fetchExperiences } from "@/lib/api";
+import { sortExperiencesByRecency } from "@/lib/utils";
 import HomeClient from "./HomeClient.jsx";
 import AboutSection from "./components/AboutSection";
 import ProjectSection from "./components/ProjectSection";
+import ExperienceSection from "./components/ExperienceSection";
 import RecentPress from "./components/RecentPress";
 
 export const metadata = {
@@ -15,11 +17,13 @@ export const metadata = {
 export default async function Home() {
   const projectsData = await fetchProjects();
   const newsData = await fetchNews();
+  const experiencesData = sortExperiencesByRecency(await fetchExperiences());
 
   return (
     <HomeClient>
       <AboutSection />
       <ProjectSection projectsData={projectsData} />
+      <ExperienceSection experiencesData={experiencesData} />
       <RecentPress pressData={newsData} />
     </HomeClient>
   );
