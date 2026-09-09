@@ -8,14 +8,14 @@ import { Plus, Trash2, Edit } from "lucide-react";
 export default function AdminBlogs() {
   const [blogs, setBlogs] = useState([]);
 
-  useEffect(() => {
-    loadBlogs();
-  }, []);
-
   const loadBlogs = async () => {
     const data = await getBlogs();
     setBlogs(data);
   };
+
+  useEffect(() => {
+    loadBlogs();
+  }, []);
 
   const handleDelete = async (id) => {
     if (confirm("Are you sure you want to delete this blog?")) {

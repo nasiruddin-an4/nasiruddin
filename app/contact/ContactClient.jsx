@@ -31,6 +31,9 @@ export default function ContactClient({ socialLinks = [] }) {
     message: "",
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+
   const handleChange = (e) => {
     setFormData((prev) => ({
       ...prev,
@@ -38,19 +41,38 @@ export default function ContactClient({ socialLinks = [] }) {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted", formData);
-    alert("Thanks for reaching out! We will get back to you soon.");
-    setFormData({
-      firstName: "",
-      lastName: "",
-      email: "",
-      phone: "",
-      subject: "",
-      otherSubject: "",
-      message: "",
-    });
+    setIsSubmitting(true);
+    setSubmitError("");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+
+      if (!res.ok || !data.success) {
+        throw new Error(data.message || "Failed to send message");
+      }
+
+      alert("Thanks for reaching out! We will get back to you soon.");
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        subject: "",
+        otherSubject: "",
+        message: "",
+      });
+    } catch (err) {
+      setSubmitError("Something went wrong sending your message. Please try again or email me directly.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -79,6 +101,7 @@ export default function ContactClient({ socialLinks = [] }) {
               <div className="flex gap-4">
                 {socialLinks.map((link) => {
                   const Icon = iconMap[link.icon];
+                  if (!Icon) return null;
                   return (
                     <a
                       key={link.name}
@@ -223,12 +246,17 @@ export default function ContactClient({ socialLinks = [] }) {
                 />
               </div>
 
+              {submitError && (
+                <p className="text-red-400 text-sm font-serif">{submitError}</p>
+              )}
+
               <div className="pt-4">
                 <button
                   type="submit"
-                  className="w-full md:w-auto px-12 py-4 bg-white text-brandBlack rounded-full font-bold flex font-serif items-center justify-center gap-3 hover:bg-brandYellow hover:gap-5 transition-all duration-300 group cursor-pointer uppercase tracking-wider text-sm"
+                  disabled={isSubmitting}
+                  className="w-full md:w-auto px-12 py-4 bg-white text-brandBlack rounded-full font-bold flex font-serif items-center justify-center gap-3 hover:bg-brandYellow hover:gap-5 transition-all duration-300 group cursor-pointer uppercase tracking-wider text-sm disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:gap-3"
                 >
-                  Submit
+                  {isSubmitting ? "Sending..." : "Submit"}
                   <MoveRight className="w-5 h-5 transition-transform" />
                 </button>
               </div>

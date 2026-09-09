@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { LayoutDashboard, FolderKanban, FileText, Newspaper, Briefcase, LogOut, User, Settings } from "lucide-react";
+import { LayoutDashboard, FolderKanban, FileText, Newspaper, Briefcase, Mail, LogOut, User, Settings } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 
 export default function AdminLayout({ children }) {
@@ -27,6 +27,7 @@ export default function AdminLayout({ children }) {
     if (pathname.startsWith("/admin/blogs")) return "Blogs";
     if (pathname.startsWith("/admin/news")) return "News";
     if (pathname.startsWith("/admin/experience")) return "Experience";
+    if (pathname.startsWith("/admin/messages")) return "Messages";
     if (pathname.startsWith("/admin/settings")) return "Settings";
     return "Admin Panel";
   };
@@ -52,6 +53,7 @@ export default function AdminLayout({ children }) {
     { name: "Blogs", href: "/admin/blogs", icon: FileText },
     { name: "News", href: "/admin/news", icon: Newspaper },
     { name: "Experience", href: "/admin/experience", icon: Briefcase },
+    { name: "Messages", href: "/admin/messages", icon: Mail },
   ];
 
   return (

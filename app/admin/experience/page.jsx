@@ -8,14 +8,14 @@ import { Plus, Trash2, ExternalLink, Edit, Briefcase } from "lucide-react";
 export default function AdminExperience() {
   const [experiences, setExperiences] = useState([]);
 
-  useEffect(() => {
-    loadExperiences();
-  }, []);
-
   const loadExperiences = async () => {
     const data = await getExperiences();
     setExperiences(data);
   };
+
+  useEffect(() => {
+    loadExperiences();
+  }, []);
 
   const handleDelete = async (id) => {
     if (confirm("Are you sure you want to delete this experience?")) {

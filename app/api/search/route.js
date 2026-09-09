@@ -35,8 +35,8 @@ export async function GET(req) {
 
     // Experiences
     experiences.forEach(e => {
-      if (isExperienceSearch || e.role?.toLowerCase().includes(query) || e.company?.toLowerCase().includes(query)) {
-        suggestions.push({ type: 'Experience', title: `${e.role} at ${e.company}`, link: `/experience` });
+      if (isExperienceSearch || e.title?.toLowerCase().includes(query) || e.company?.toLowerCase().includes(query)) {
+        suggestions.push({ type: 'Experience', title: `${e.title} at ${e.company}`, link: `/experience` });
       }
     });
 

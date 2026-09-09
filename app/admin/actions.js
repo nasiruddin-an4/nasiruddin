@@ -5,6 +5,8 @@ import Project from "@/models/Project";
 import News from "@/models/News";
 import Blog from "@/models/Blog";
 import Experience from "@/models/Experience";
+import Contact from "@/models/Contact";
+import Setting from "@/models/Setting";
 import { sortProjectsForDisplay } from "@/lib/utils";
 import { revalidatePath } from "next/cache";
 
@@ -140,4 +142,38 @@ export async function deleteExperience(id) {
   revalidatePath("/admin/experience");
   revalidatePath("/experience");
   revalidatePath("/");
+}
+
+export async function getContacts() {
+  await dbConnect();
+  const docs = await Contact.find({}).sort({ createdAt: -1 }).lean();
+  return JSON.parse(JSON.stringify(docs));
+}
+
+export async function markContactRead(id, read) {
+  await dbConnect();
+  await Contact.findByIdAndUpdate(id, { read });
+  revalidatePath("/admin/messages");
+  revalidatePath("/admin");
+}
+
+export async function deleteContact(id) {
+  await dbConnect();
+  await Contact.findByIdAndDelete(id);
+  revalidatePath("/admin/messages");
+  revalidatePath("/admin");
+}
+
+export async function getSettings() {
+  await dbConnect();
+  const doc = await Setting.findOne({}).lean();
+  return doc ? JSON.parse(JSON.stringify(doc)) : null;
+}
+
+export async function updateSettings(data) {
+  await dbConnect();
+  await Setting.findOneAndUpdate({}, data, { upsert: true, new: true });
+  revalidatePath("/admin/settings");
+  // Socials/logo render via the root layout (Sidebar/Footer) on every page.
+  revalidatePath("/", "layout");
 }

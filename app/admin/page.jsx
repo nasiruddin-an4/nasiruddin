@@ -1,10 +1,11 @@
 import Link from 'next/link';
-import { FolderKanban, FileText, Newspaper, Activity, Zap, ArrowRight } from 'lucide-react';
+import { FolderKanban, FileText, Newspaper, Activity, Mail, Zap, ArrowRight } from 'lucide-react';
 import connectToDatabase from '@/lib/mongodb';
 import Project from '@/models/Project';
 import Blog from '@/models/Blog';
 import News from '@/models/News';
 import Experience from '@/models/Experience';
+import Contact from '@/models/Contact';
 import Visit from '@/models/Visit';
 import VisitsChart from './components/VisitsChart';
 
@@ -12,12 +13,14 @@ export const revalidate = 0; // Ensure data is always fresh on reload
 
 export default async function AdminDashboard() {
   await connectToDatabase();
-  
-  const [projectCount, blogCount, newsCount, experienceCount, totalVisits, uniqueVisits, utmSources, monthlyVisitsRaw] = await Promise.all([
+
+  const [projectCount, blogCount, newsCount, experienceCount, unreadMessageCount, recentMessages, totalVisits, uniqueVisits, utmSources, monthlyVisitsRaw] = await Promise.all([
     Project.countDocuments(),
     Blog.countDocuments(),
     News.countDocuments(),
     Experience.countDocuments(),
+    Contact.countDocuments({ read: false }),
+    Contact.find({}).sort({ createdAt: -1 }).limit(5).lean(),
     Visit.countDocuments(),
     Visit.distinct('sessionId').then(res => res.length),
     Visit.aggregate([
@@ -78,18 +81,28 @@ export default async function AdminDashboard() {
       title: 'Experiences',
       count: experienceCount,
       icon: Activity,
-      href: '/admin', // Update href if a dedicated route exists
+      href: '/admin/experience',
       color: 'from-emerald-500/20 to-emerald-500/0',
       iconColor: 'text-emerald-400',
       borderColor: 'border-emerald-500/20',
       hoverBorder: 'hover:border-emerald-500/50'
+    },
+    {
+      title: 'Unread Messages',
+      count: unreadMessageCount,
+      icon: Mail,
+      href: '/admin/messages',
+      color: 'from-rose-500/20 to-rose-500/0',
+      iconColor: 'text-rose-400',
+      borderColor: 'border-rose-500/20',
+      hoverBorder: 'hover:border-rose-500/50'
     }
   ];
 
   return (
     <div className="space-y-8 animate-in fade-in duration-500">
       {/* Stats Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
         {stats.map((stat, index) => {
           const Icon = stat.icon;
           return (
@@ -176,6 +189,10 @@ export default async function AdminDashboard() {
               <div className="p-2 bg-purple-500/10 text-purple-400 rounded-lg group-hover:scale-110 transition-transform"><Newspaper className="w-4 h-4" /></div>
               <span className="text-sm text-zinc-300 group-hover:text-white transition-colors">Publish News</span>
             </Link>
+            <Link href="/admin/experience" className="flex items-center gap-3 p-3 rounded-xl bg-zinc-900/50 hover:bg-zinc-800 border border-transparent hover:border-zinc-700 transition-all group">
+              <div className="p-2 bg-emerald-500/10 text-emerald-400 rounded-lg group-hover:scale-110 transition-transform"><Activity className="w-4 h-4" /></div>
+              <span className="text-sm text-zinc-300 group-hover:text-white transition-colors">Manage Experience</span>
+            </Link>
           </div>
           
           <div className="mt-6 pt-6 border-t border-zinc-800">
@@ -186,6 +203,41 @@ export default async function AdminDashboard() {
             <p className="text-xs text-zinc-400">Your custom analytics tracker is active and capturing visits.</p>
           </div>
         </div>
+      </div>
+
+      {/* Recent Messages */}
+      <div className="bg-[#151515] border border-zinc-800 rounded-2xl p-6 shadow-xl">
+        <div className="flex items-center justify-between mb-6">
+          <h3 className="text-lg font-oswald uppercase tracking-widest text-white flex items-center gap-2">
+            <Mail className="w-5 h-5 text-brandYellow" />
+            Recent Messages
+          </h3>
+          <Link href="/admin/messages" className="text-sm text-brandYellow hover:text-white transition-colors flex items-center gap-1">
+            View All <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+
+        {recentMessages.length > 0 ? (
+          <div className="space-y-3">
+            {recentMessages.map((m) => (
+              <Link
+                key={m._id}
+                href="/admin/messages"
+                className="flex items-center justify-between p-4 bg-zinc-900/50 rounded-xl border border-zinc-800/50 hover:border-zinc-700 transition-colors"
+              >
+                <div className="min-w-0">
+                  <p className="text-sm font-semibold text-white truncate">
+                    {m.firstName} {m.lastName} {!m.read && <span className="ml-2 text-xs bg-brandYellow text-brandBlack font-bold px-2 py-0.5 rounded-full uppercase">New</span>}
+                  </p>
+                  <p className="text-xs text-zinc-400 truncate">{m.subject} — {m.message}</p>
+                </div>
+                <span className="text-xs text-zinc-500 shrink-0 ml-4">{new Date(m.createdAt).toLocaleDateString()}</span>
+              </Link>
+            ))}
+          </div>
+        ) : (
+          <p className="text-sm text-zinc-500 italic p-4 bg-black/20 rounded-lg border border-zinc-800/30 text-center">No messages yet.</p>
+        )}
       </div>
     </div>
   );

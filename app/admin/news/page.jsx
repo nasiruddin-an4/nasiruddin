@@ -8,14 +8,14 @@ import { Plus, Trash2, Edit } from "lucide-react";
 export default function AdminNews() {
   const [news, setNews] = useState([]);
 
-  useEffect(() => {
-    loadNews();
-  }, []);
-
   const loadNews = async () => {
     const data = await getNews();
     setNews(data);
   };
+
+  useEffect(() => {
+    loadNews();
+  }, []);
 
   const handleDelete = async (id) => {
     if (confirm("Are you sure you want to delete this news item?")) {

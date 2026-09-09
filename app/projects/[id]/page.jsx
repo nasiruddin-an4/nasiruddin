@@ -295,10 +295,10 @@ export default async function ProjectDetails({ params }) {
             {/* CTA Left: Text and Profile */}
             <div className="">
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-                Have a project idea in mind? <br /><span className="text-brandYellow">Let's get started</span>
+                Have a project idea in mind? <br /><span className="text-brandYellow">Let&apos;s get started</span>
               </h2>
               <p className="text-lg text-zinc-400 mb-12 max-w-md leading-relaxed">
-                We'll schedule a call to discuss your idea. After discovery sessions, we'll send a proposal, and upon approval, we'll get started.
+                We&apos;ll schedule a call to discuss your idea. After discovery sessions, we&apos;ll send a proposal, and upon approval, we&apos;ll get started.
               </p>
 
               <div className="flex items-center gap-5">

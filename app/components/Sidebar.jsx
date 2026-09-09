@@ -248,6 +248,7 @@ export default function Sidebar({ socialLinks = [] }) {
           <div className="grid grid-cols-4 gap-y-6 gap-x-4 text-md text-white/90">
             {socialLinks.map((link) => {
               const Icon = iconMap[link.icon];
+              if (!Icon) return null;
               return (
                 <Link
                   key={link.name}

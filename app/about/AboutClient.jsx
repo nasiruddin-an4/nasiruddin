@@ -57,21 +57,6 @@ export default function AboutClient({ topProjects, educationRecords }) {
           >
             About Nasir
           </AnimatedHeading>
-
-          <div className="mt-5 sm:mt-6 md:mt-8 flex flex-wrap gap-x-3 gap-y-2">
-            {[
-              "Full-Stack Software Engineer",
-              "Digital Marketing (Bonus Skill)",
-              "AI-Powered Web Solutions",
-            ].map((role, i) => (
-              <span key={role} className="flex items-center gap-3">
-                <span className="font-sans text-xs sm:text-sm md:text-base uppercase tracking-wide text-[#c9c9c4]">
-                  {role}
-                </span>
-                {i < 3 && <span className="text-[#fceb3b]">/</span>}
-              </span>
-            ))}
-          </div>
         </motion.div>
 
         {/* Content Layout */}

@@ -8,14 +8,14 @@ import { Plus, Trash2, ExternalLink, Edit, Star } from "lucide-react";
 export default function AdminProjects() {
   const [projects, setProjects] = useState([]);
 
-  useEffect(() => {
-    loadProjects();
-  }, []);
-
   const loadProjects = async () => {
     const data = await getProjects();
     setProjects(data);
   };
+
+  useEffect(() => {
+    loadProjects();
+  }, []);
 
   const handleDelete = async (id) => {
     if (confirm("Are you sure you want to delete this project?")) {

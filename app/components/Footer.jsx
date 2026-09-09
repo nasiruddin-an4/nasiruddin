@@ -59,6 +59,7 @@ export default async function Footer() {
       <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-2 max-w-4xl">
         {socialLinks.map((link) => {
           const Icon = iconMap[link.icon];
+          if (!Icon) return null;
           return (
             <Link
               key={link.name}
